@@ -65,7 +65,7 @@ fun encodeBytesToString(bytes: MutableList<Byte>): String {
     return deckString
 }
 
-
+@ExperimentalUnsignedTypes
 private fun encodeBytes(deckContent: Deck): MutableList<Byte> {
 
     deckContent.heroes.sortedBy { it.id }
@@ -133,6 +133,7 @@ private fun encodeBytes(deckContent: Deck): MutableList<Byte> {
     return bytes
 }
 
+@ExperimentalUnsignedTypes
 fun extractNBitsWithCarry(value: Int, numBits: Int): UInt {
 
     val limitBit: UInt = 1U shl numBits
@@ -144,6 +145,7 @@ fun extractNBitsWithCarry(value: Int, numBits: Int): UInt {
     return result
 }
 
+@ExperimentalUnsignedTypes
 fun addByte(bytes: MutableList<Byte>, b: UInt) {
 
     if (b > 255U) {
@@ -158,6 +160,7 @@ fun addByte(bytes: MutableList<Byte>, b: UInt) {
  * @param alreadyWrittenBits Int
  * @param bytes MutableList<Byte>
  */
+@ExperimentalUnsignedTypes
 fun addRemainingNumberToBuffer(value: Int, alreadyWrittenBits: Int, bytes: MutableList<Byte>) {
 
     var valueCopy: Int = value shr alreadyWrittenBits
@@ -170,6 +173,7 @@ fun addRemainingNumberToBuffer(value: Int, alreadyWrittenBits: Int, bytes: Mutab
     }
 }
 
+@ExperimentalUnsignedTypes
 fun addCardToBuffer(count: UInt, value: Int, bytes: MutableList<Byte>) {
 
 
@@ -200,6 +204,7 @@ fun addCardToBuffer(count: UInt, value: Int, bytes: MutableList<Byte>) {
     }
 }
 
+@ExperimentalUnsignedTypes
 fun computeChecksum(bytes: MutableList<Byte>, numBytes: Int): UInt {
     var checksum: UInt = 0U
     for (addCheck in HEADER_SIZE until (numBytes + HEADER_SIZE)) {
