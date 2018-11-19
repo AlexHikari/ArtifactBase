@@ -1,16 +1,29 @@
 package com.alex.domain.repository
 
-import com.alex.domain.models.NewsCard
+import com.alex.domain.models.NewsOverview
+import io.reactivex.Single
 
 /**
- * Interface to implement in data module with either jsoup or realm
+ * Interface to be implemented by HTMLSource and RealmSource
  */
-interface Source {
+interface INewsSource {
 
     /**
      * Get all the news from the playArtifact site
-     * @return SingleInteractor<MutableList<NewsCard>> returns single object
+     * @return MutableList<NewsCard> returns single object
      */
-    fun getAllNews(): MutableList<NewsCard>
+    fun getAllNews(): MutableList<NewsOverview>
+}
+
+/**
+ * Interface to be implemented by the GetNewsUseCase
+ */
+interface INewsRepository {
+
+    /**
+     * Get all the news from The repositorySource
+     * @return Single<MutableList<NewsOverview>>
+     */
+    fun getNews(): Single<MutableList<NewsOverview>>
 }
 

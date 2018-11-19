@@ -1,12 +1,16 @@
 package com.alex.data.entities.mapper
 
-import com.alex.data.entities.NewsCardEntity
-import com.alex.domain.models.NewsCard
+import com.alex.data.entities.RawNewsOverview
+import com.alex.domain.models.NewsOverview
 
+/**
+ * Maps from Raw response to Domain news model
+ * @receiver RawNewsOverview
+ * @return NewsOverview
+ */
+fun RawNewsOverview.toNewsOverview(): NewsOverview {
 
-fun NewsCardEntity.toNewsCard(): NewsCard {
-
-    return NewsCard(
+    return NewsOverview(
             title = this.title,
             resourceURL = this.resourceURL,
             resourceIMG = this.resourceIMG
@@ -14,9 +18,14 @@ fun NewsCardEntity.toNewsCard(): NewsCard {
 
 }
 
-fun NewsCard.toNewsCardEntity(): NewsCardEntity {
+/**
+ * Maps from Domain news model to RawData
+ * @receiver NewsOverview
+ * @return RawNewsOverview
+ */
+fun NewsOverview.toRawNewsOverview(): RawNewsOverview {
 
-    return NewsCardEntity(
+    return RawNewsOverview(
             title = this.title,
             resourceURL = this.resourceURL,
             resourceIMG = this.resourceIMG
