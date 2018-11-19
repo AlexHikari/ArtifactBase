@@ -4,7 +4,6 @@ import com.alex.data.entities.NewsCardEntity
 import com.alex.data.entities.mapper.toNewsCard
 import com.alex.domain.models.NewsCard
 import com.alex.domain.repository.Source
-import io.reactivex.Single
 import org.jsoup.Jsoup
 
 private const val PLAYARTIFACT_URL: String = "https://playartifact.com/"
@@ -17,7 +16,7 @@ private const val BLOGPOST_TITLE: String = "blog_post_title"
 
 class HMTLSource : Source {
 
-    override fun getAllNews(): Single<MutableList<NewsCard>> {
+    override fun getAllNews(): MutableList<NewsCard> {
         val returnedResponse: MutableList<NewsCard> = mutableListOf()
         var singleNews: NewsCardEntity
         Jsoup.connect(PLAYARTIFACT_URL).get().run {
@@ -41,7 +40,7 @@ class HMTLSource : Source {
                 returnedResponse.add(singleNews.toNewsCard())
             }
         }
-        return Single.just(returnedResponse)
+        return returnedResponse
     }
 }
 

@@ -2,9 +2,9 @@ package com.alex.data.repository
 
 import com.alex.data.entities.NewsCardEntity
 import com.alex.data.entities.mapper.toNewsCard
+import com.alex.data.entities.mapper.toNewsCardEntity
 import com.alex.domain.models.NewsCard
 import com.alex.domain.repository.Source
-import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.RealmResults
@@ -16,26 +16,24 @@ class RealmSource : Source {
 
     private val realm: Realm = Realm.getInstance(config)
 
-    private var newsEmpty = false
-
-    override fun getAllNews(): Single<MutableList<NewsCard>> {
+    override fun getAllNews(): MutableList<NewsCard> {
         val results: RealmResults<NewsCardEntity> = realm.where(NewsCardEntity::class.java).findAll()
         val returnedResponse: MutableList<NewsCard> = mutableListOf()
-        if (results.size == 0) {
-            newsEmpty = true
-            return Single.just(returnedResponse)
-        }
         results.map {
             returnedResponse.add(it.toNewsCard())
         }
-        return Single.just(returnedResponse)
+        return returnedResponse
     }
 
     fun isNewsEmpty(): Boolean {
-        return newsEmpty
+        return realm.where(NewsCardEntity::class.java).findAll().isEmpty()
     }
 
-    fun setAllNews(response: Single<MutableList<NewsCard>>) {
-
+    fun setAllNews(response: MutableList<NewsCard>) {
+        response.forEach { newsItem ->
+            realm.beginTransaction()
+            realm.insertOrUpdate(newsItem.toNewsCardEntity())
+            realm.commitTransaction()
+        }
     }
 }

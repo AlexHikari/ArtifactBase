@@ -13,3 +13,12 @@ fun NewsCardEntity.toNewsCard(): NewsCard {
     )
 
 }
+
+fun NewsCard.toNewsCardEntity(): NewsCardEntity {
+
+    return NewsCardEntity(
+            title = this.title,
+            resourceURL = this.resourceURL,
+            resourceIMG = this.resourceIMG
+    )
+}
