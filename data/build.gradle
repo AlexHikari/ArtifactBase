@@ -41,6 +41,7 @@ dependencies {
     implementation dataDependencies.okthttp
     implementation dataDependencies.loggingInterceptor
     implementation dataDependencies.jsoup
+    implementation dataDependencies.anko
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxJavaCallAdapter
