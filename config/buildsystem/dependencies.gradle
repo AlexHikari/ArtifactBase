@@ -20,6 +20,7 @@ ext {
     supportVersion = '27.1.1'
     glideVersion = '4.7.1'
     permissionsVersion = '1.1.3'
+    bottomNavigationVersion = '2.1.0'
 
     //Frameworks
     retrofitVersion = '2.3.0'
@@ -46,6 +47,7 @@ ext {
             support_v4              : "com.android.support:support-v4:${supportVersion}",
             design                  : "com.android.support:design:${supportVersion}",
             cardView                : "com.android.support:cardview-v7:${supportVersion}",
+            ahbottomnavigation      : "com.aurelhubert:ahbottomnavigation:${bottomNavigationVersion}",
             kodein                  : "com.github.salomonbrys.kodein:kodein:${kodeinVersion}",
             kodeinAndroid           : "com.github.salomonbrys.kodein:kodein-android:${kodeinVersion}",
             rxJava                  : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",

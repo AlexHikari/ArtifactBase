@@ -1,42 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/ArtifactTheme">
 
-    <include
-        android:id="@+id/home-header"
-        layout="@layout/header_bar"></include>
 
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/testText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:text="Count: 2" />
+        <include
+            android:id="@+id/home-header"
+            layout="@layout/header_bar"></include>
 
-        <Button
-            android:id="@+id/click"
+        <include
+            android:id="@+id/progressView"
+            layout="@layout/view_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="@string/click_me" />
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
 
-    </LinearLayout>
+        <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
 
-    <include
-        android:id="@+id/progressView"
-        layout="@layout/view_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        </com.aurelhubert.ahbottomnavigation.AHBottomNavigation>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </RelativeLayout>

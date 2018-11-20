@@ -37,14 +37,7 @@ class HomePresenter(private val getNewsUseCase: GetNewsUseCase, view: HomePresen
 
     }
 
-    fun onClickClicked() {
-        view.hideProgress()
-        count++
-        view.showText("Count $count")
-    }
-
     interface View : Presenter.View {
-        fun showText(text: String)
         fun showNews(newsList: List<NewsCard>)
     }
 }

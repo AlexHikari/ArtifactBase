@@ -37,6 +37,7 @@ dependencies {
     implementation appDependencies.appCompat_v7
     implementation appDependencies.design
     implementation appDependencies.cardView
+    implementation appDependencies.ahbottomnavigation
 
     implementation appDependencies.glide
 

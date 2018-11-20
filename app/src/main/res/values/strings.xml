@@ -4,4 +4,5 @@
     <string name="default_error">There was an application error</string>
     <string name="click_me">Click me</string>
     <string name="ImgDescriptionIco">Logo</string>
+    <string name="tab_1">News</string>
 </resources>
