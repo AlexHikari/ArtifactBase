@@ -2,6 +2,7 @@ package com.alex.phom.view.activity
 
 import android.view.View
 import com.alex.phom.R
+import com.alex.phom.models.NewsCard
 import com.alex.phom.presenter.HomePresenter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -21,7 +22,8 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
         bind<HomePresenter>() with provider {
             HomePresenter(
                     view = this@HomeActivity,
-                    errorHandler = instance()
+                    errorHandler = instance(),
+                    getNewsUseCase = instance()
             )
         }
     }
@@ -36,5 +38,9 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
 
     override fun showText(text: String) {
         testText.text = text
+    }
+
+    override fun showNews(newsList: List<NewsCard>) {
+        //populate it
     }
 }

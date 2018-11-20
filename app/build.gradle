@@ -57,4 +57,5 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':data')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

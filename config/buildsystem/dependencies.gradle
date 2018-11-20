@@ -10,7 +10,7 @@ allprojects {
 ext {
     //Android
     androidCompileSdkVersion = 27
-    androidMinSdkVersion = 21
+    androidMinSdkVersion = 26
     androidTargetSdkVersion = 27
 
     versionCode = 1

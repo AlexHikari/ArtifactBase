@@ -1,6 +1,6 @@
 package com.alex.data.datasource
 
-import com.alex.data.entities.RawNewsOverview
+import com.alex.data.models.RawNewsOverview
 import com.alex.data.entities.mapper.toNewsOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.INewsSource

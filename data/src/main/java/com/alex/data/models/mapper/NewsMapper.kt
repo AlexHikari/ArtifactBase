@@ -1,6 +1,6 @@
 package com.alex.data.entities.mapper
 
-import com.alex.data.entities.RawNewsOverview
+import com.alex.data.models.RawNewsOverview
 import com.alex.domain.models.NewsOverview
 
 /**
