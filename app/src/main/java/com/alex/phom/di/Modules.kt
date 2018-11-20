@@ -6,6 +6,7 @@ import com.alex.data.datasource.RealmSource
 import com.alex.data.repository.NewsRepository
 import com.alex.domain.executor.Executor
 import com.alex.domain.interactor.home.GetNewsUseCase
+import com.alex.domain.repository.INewsRepository
 import com.alex.phom.error.AndroidErrorHandler
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.executor.RxExecutor
@@ -35,5 +36,5 @@ val dataModule = Kodein.Module {
 
     //Repositories
 
-    bind<NewsRepository>() with singleton { NewsRepository(htmlSource = instance(), realmSource = instance()) }
+    bind<INewsRepository>() with singleton { NewsRepository(htmlSource = instance(), realmSource = instance()) }
 }

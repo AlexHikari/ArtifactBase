@@ -1,7 +1,7 @@
 package com.alex.data.datasource
 
-import com.alex.data.models.RawNewsOverview
 import com.alex.data.entities.mapper.toNewsOverview
+import com.alex.data.models.RawNewsOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.INewsSource
 import org.jsoup.Jsoup
@@ -28,6 +28,7 @@ class HMTLSource : INewsSource {
      * @return MutableList<NewsOverview>
      */
     override fun getAllNews(): MutableList<NewsOverview> {
+
         val returnedResponse: MutableList<NewsOverview> = mutableListOf()
         var singleNews: RawNewsOverview
         Jsoup.connect(PLAYARTIFACT_URL).get().run {

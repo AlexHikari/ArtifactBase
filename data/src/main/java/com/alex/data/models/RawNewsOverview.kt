@@ -11,8 +11,8 @@ import io.realm.annotations.PrimaryKey
  * @constructor
  */
 open class RawNewsOverview(
-        val title: String = "",
-        @PrimaryKey val resourceURL: String = "",
-        val resourceIMG: String = ""
+        var title: String = "",
+        @PrimaryKey var resourceURL: String = "",
+        var resourceIMG: String = ""
 ) : RealmObject()
 

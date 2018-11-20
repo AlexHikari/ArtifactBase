@@ -5,6 +5,7 @@ import android.view.View
 import com.alex.phom.R
 import com.alex.phom.models.NewsCard
 import com.alex.phom.presenter.HomePresenter
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -31,11 +32,13 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
     }
 
     override fun initializeUI() {
-        val item1: AHBottomNavigationItem = AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_launcher_foreground, R.color.colorRedSource)
+        val item1 = AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_launcher_foreground, R.color.colorRedSource)
         bottom_navigation.addItem(item1)
         bottom_navigation.addItem(item1)
         bottom_navigation.addItem(item1)
         bottom_navigation.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBackgroundDark))
+        bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
+        bottom_navigation.currentItem = 1
     }
 
     override fun registerListeners() {
