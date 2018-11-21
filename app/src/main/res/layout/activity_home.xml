@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:theme="@style/ArtifactTheme">
 
 
-    <android.support.design.widget.CoordinatorLayout
+    <include
+        android:id="@+id/home-header"
+        layout="@layout/header_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" />
 
-        <include
-            android:id="@+id/home-header"
-            layout="@layout/header_bar"></include>
+    <FrameLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorBlueSource" />
 
-        <include
-            android:id="@+id/progressView"
-            layout="@layout/view_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center" />
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/home-coordinator-layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
             android:id="@+id/bottom_navigation"
@@ -31,4 +39,4 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-</RelativeLayout>
+</LinearLayout>

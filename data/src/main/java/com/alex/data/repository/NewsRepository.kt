@@ -6,17 +6,16 @@ import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.INewsRepository
 import io.reactivex.Single
 
-class NewsRepository(private val htmlSource: HMTLSource, private val realmSource: RealmSource) : INewsRepository {
+class NewsRepository(private val remoteSource: HMTLSource, private val localSource: RealmSource) : INewsRepository {
 
-    override fun getNews(): Single<MutableList<NewsOverview>> {
-        val response: MutableList<NewsOverview>
-        if (realmSource.isNewsEmpty()) {
-            response = htmlSource.getAllNews()
-            realmSource.setAllNews(response)
-        } else {
-            response = realmSource.getAllNews()
-        }
-
-        return Single.just(response)
-    }
+    override fun retrieveNews(): Single<MutableList<NewsOverview>> =
+            localSource.retrieveAllNews().flatMap {
+                if (it.isEmpty()) {
+                    remoteSource.retrieveAllNews().map { news ->
+                        localSource.setNews(news)
+                        return@map news
+                    }
+                }
+                return@flatMap Single.just(it)
+            }
 }

@@ -3,7 +3,8 @@ package com.alex.data.datasource
 import com.alex.data.entities.mapper.toNewsOverview
 import com.alex.data.models.RawNewsOverview
 import com.alex.domain.models.NewsOverview
-import com.alex.domain.repository.INewsSource
+import com.alex.domain.repository.RemoteSource
+import io.reactivex.Single
 import org.jsoup.Jsoup
 
 
@@ -21,13 +22,13 @@ private const val BLOGPOST_TITLE: String = "blog_post_title"
 /**
  * Retrieves all things related to HTML
  */
-class HMTLSource : INewsSource {
+class HMTLSource : RemoteSource {
 
     /**
      * Fetch all news from the homepage
      * @return MutableList<NewsOverview>
      */
-    override fun getAllNews(): MutableList<NewsOverview> {
+    override fun retrieveAllNews(): Single<MutableList<NewsOverview>> {
 
         val returnedResponse: MutableList<NewsOverview> = mutableListOf()
         var singleNews: RawNewsOverview
@@ -52,7 +53,7 @@ class HMTLSource : INewsSource {
                 returnedResponse.add(singleNews.toNewsOverview())
             }
         }
-        return returnedResponse
+        return Single.just(returnedResponse)
     }
 }
 

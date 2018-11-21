@@ -4,7 +4,8 @@ import com.alex.data.entities.mapper.toNewsOverview
 import com.alex.data.entities.mapper.toRawNewsOverview
 import com.alex.data.models.RawNewsOverview
 import com.alex.domain.models.NewsOverview
-import com.alex.domain.repository.INewsSource
+import com.alex.domain.repository.LocalSource
+import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.RealmResults
@@ -14,7 +15,7 @@ import io.realm.RealmResults
  * @property config (io.realm.RealmConfiguration..io.realm.RealmConfiguration?)
  * @property realm Realm
  */
-class RealmSource : INewsSource {
+class RealmSource : LocalSource {
 
     /**
      * Actual configuration of realm
@@ -30,29 +31,29 @@ class RealmSource : INewsSource {
      * Retrieves all news from DB
      * @return MutableList<NewsOverview>
      */
-    override fun getAllNews(): MutableList<NewsOverview> {
+    override fun retrieveAllNews(): Single<MutableList<NewsOverview>> {
         val results: RealmResults<RawNewsOverview> = realm.where(RawNewsOverview::class.java).findAll()
         val returnedResponse: MutableList<NewsOverview> = mutableListOf()
         results.map {
             returnedResponse.add(it.toNewsOverview())
         }
-        return returnedResponse
+        return Single.just(returnedResponse)
     }
 
     /**
      * Any News in database?
      * @return Boolean
      */
-    fun isNewsEmpty(): Boolean {
+    override fun isNewsEmpty(): Boolean {
         return realm.where(RawNewsOverview::class.java).findAll().isEmpty()
     }
 
     /**
      * Stores response( each news) onto the DB
-     * @param response MutableList<NewsOverview>
+     * @param news MutableList<NewsOverview>
      */
-    fun setAllNews(response: MutableList<NewsOverview>) {
-        response.forEach { newsItem ->
+    override fun setNews(news: MutableList<NewsOverview>) {
+        news.forEach { newsItem ->
             realm.beginTransaction()
             realm.insertOrUpdate(newsItem.toRawNewsOverview())
             realm.commitTransaction()

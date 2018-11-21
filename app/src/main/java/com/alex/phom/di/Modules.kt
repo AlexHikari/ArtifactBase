@@ -36,5 +36,5 @@ val dataModule = Kodein.Module {
 
     //Repositories
 
-    bind<INewsRepository>() with singleton { NewsRepository(htmlSource = instance(), realmSource = instance()) }
+    bind<INewsRepository>() with singleton { NewsRepository(localSource = instance(), remoteSource = instance()) }
 }

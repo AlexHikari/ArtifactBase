@@ -1,26 +1,19 @@
 package com.alex.phom.presenter
 
-import com.alex.domain.interactor.home.GetNewsUseCase
+import com.alex.phom.R
 import com.alex.phom.error.ErrorHandler
-import com.alex.phom.models.NewsCard
-import com.alex.phom.models.mappers.toNewsCard
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 
-class HomePresenter(private val getNewsUseCase: GetNewsUseCase, view: HomePresenter.View, errorHandler: ErrorHandler) :
+class HomePresenter(view: HomePresenter.View, errorHandler: ErrorHandler) :
         Presenter<HomePresenter.View>(view = view, errorHandler = errorHandler) {
 
     override fun initialize() {
-
-        view.showProgress()
-        getNewsUseCase.execute(
-                onSuccess = {
-                    val elements: MutableList<NewsCard> = mutableListOf()
-                    it.forEach { elem ->
-                        elements.add(elem.toNewsCard())
-                    }
-                    view.showNews(elements)
-                },
-                onError = onError { view.showError(it) }
-        )
+        val listItems: List<AHBottomNavigationItem> = listOf(
+                AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_launcher_foreground, R.color.colorBlueSource),
+                AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_launcher_foreground, R.color.colorRedSource),
+                AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_launcher_foreground, R.color.colorGreenSource))
+        view.initializeBottomNavigationView(listItems)
+        view.showNewsScreen()
     }
 
     override fun resume() {
@@ -36,6 +29,7 @@ class HomePresenter(private val getNewsUseCase: GetNewsUseCase, view: HomePresen
     }
 
     interface View : Presenter.View {
-        fun showNews(newsList: List<NewsCard>)
+        fun initializeBottomNavigationView(items: List<AHBottomNavigationItem>)
+        fun showNewsScreen()
     }
 }
