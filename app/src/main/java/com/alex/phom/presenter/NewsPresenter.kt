@@ -1,5 +1,6 @@
 package com.alex.phom.presenter
 
+import android.util.Log
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.NewsCard
@@ -15,7 +16,9 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
                     val elements: MutableList<NewsCard> = mutableListOf()
                     it.forEach { elem ->
                         elements.add(elem.toNewsCard())
+
                     }
+                    Log.e("", "Hey estoy añadiendo el elemento " + elements.size)
                     view.showNews(elements)
                     view.hideProgress()
                 },

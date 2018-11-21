@@ -2,6 +2,7 @@ package com.alex.phom.view.fragment
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
@@ -51,6 +52,7 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
     override fun hideProgress() = progressView.hideMe()
 
     override fun showNews(newsList: List<NewsCard>) {
+        Log.e("", "HEY ESTOY PASANDO POR Show News y tengo " + newsList.size)
         newsAdapter.addAll(newsList.toMutableList())
     }
 

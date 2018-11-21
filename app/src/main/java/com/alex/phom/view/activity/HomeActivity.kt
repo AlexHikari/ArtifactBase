@@ -44,7 +44,7 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
         bottom_navigation.addItems(items)
         bottom_navigation.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBackgroundDark))
         bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
-        bottom_navigation.currentItem = 1
+        bottom_navigation.currentItem = 0
     }
 
     override fun showNewsScreen() {

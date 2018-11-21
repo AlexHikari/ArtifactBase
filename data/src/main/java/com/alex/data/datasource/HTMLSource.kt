@@ -12,12 +12,12 @@ import org.jsoup.Jsoup
  * All constants needed to fetch the news list from artifact site
  */
 private const val PLAYARTIFACT_URL: String = "https://playartifact.com/"
-private const val BLOG_LIST_HTML: String = "div.blog_post"
+private const val BLOG_LIST_HTML: String = "#blog_posts"
 private const val SINGLE_NEWS_CONTAINER: String = "div.single_blog_container"
-private const val BLOGPOST_IMAGE: String = "div.blog_image_container"
+private const val BLOGPOST_IMAGE: String = "#blog_image_container"
 private const val BLOGPOST_IMAGE_FOOTER: String = "div.blog_post_footer"
 private const val BLOGPOST_IMAGE_FOOTER_DARKEN: String = "div.blog_post_footer_darken"
-private const val BLOGPOST_TITLE: String = "blog_post_title"
+private const val BLOGPOST_TITLE: String = ".blog_post_title"
 
 /**
  * Retrieves all things related to HTML
