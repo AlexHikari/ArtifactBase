@@ -1,15 +1,25 @@
 package com.alex.phom.view.activity
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.alex.phom.R
+import com.alex.phom.extension.load
+import com.alex.phom.models.Article
 import com.alex.phom.presenter.ArticlePresenter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.activity_article.*
 
 class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.View {
+
+    companion object {
+        const val ARTICLE_URL = "ARTICLE_URL"
+    }
 
     override val progress: View by lazy { progressView }
     override val presenter: ArticlePresenter by instance()
@@ -18,21 +28,39 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
         bind<ArticlePresenter>() with provider {
             ArticlePresenter(
                     view = this@ArticleActivity,
-                    errorHandler = instance()
+                    errorHandler = instance(),
+                    getArticleUseCase = instance()
             )
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun initializeUI() {
-
+        articleText.setBackgroundColor(Color.TRANSPARENT)
+        articleText.settings.javaScriptEnabled = true
+        articleText.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                articleText.loadUrl("javascript:document.body.style.setProperty(\"color\", \"white\");"
+                )
+            }
+        }
     }
 
     override fun registerListeners() {
 
     }
 
-    override fun showArticle() {
+    override fun showArticle(article: Article) {
+        articleText.loadData(article.post_text, "text/html", "UTF-8")
+        articleImage.load(article.post_image)
+        articleTitle.text = article.post_title
+        articleDate.text = article.post_date
 
+    }
+
+    override fun getArticleUrl(): String {
+        return intent.getStringExtra(ARTICLE_URL)
     }
 
 

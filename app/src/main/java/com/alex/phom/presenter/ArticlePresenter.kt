@@ -1,13 +1,23 @@
 package com.alex.phom.presenter
 
+import com.alex.domain.interactor.article.GetArticleUseCase
 import com.alex.phom.error.ErrorHandler
+import com.alex.phom.models.Article
+import com.alex.phom.models.mappers.toArticle
 
-class ArticlePresenter(view: ArticlePresenter.View, errorHandler: ErrorHandler) :
+class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: ArticlePresenter.View, errorHandler: ErrorHandler) :
         Presenter<ArticlePresenter.View>(view = view, errorHandler = errorHandler) {
 
 
     override fun initialize() {
-
+        view.showProgress()
+        getArticleUseCase.execute(
+                url = view.getArticleUrl(),
+                onSuccess = {
+                    view.hideProgress()
+                    view.showArticle(it.toArticle())
+                },
+                onError = onError { view.showError(it) })
     }
 
     override fun resume() {
@@ -24,6 +34,7 @@ class ArticlePresenter(view: ArticlePresenter.View, errorHandler: ErrorHandler) 
 
 
     interface View : Presenter.View {
-        fun showArticle()
+        fun showArticle(article: Article)
+        fun getArticleUrl(): String
     }
 }

@@ -5,6 +5,7 @@ import com.alex.data.datasource.HMTLSource
 import com.alex.data.datasource.RealmSource
 import com.alex.data.repository.NewsRepository
 import com.alex.domain.executor.Executor
+import com.alex.domain.interactor.article.GetArticleUseCase
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.domain.repository.INewsRepository
 import com.alex.phom.error.AndroidErrorHandler
@@ -26,6 +27,7 @@ fun appModule(context: Context) = Kodein.Module {
 
 val domainModule = Kodein.Module {
     bind<GetNewsUseCase>() with singleton { GetNewsUseCase(repository = instance(), executor = instance()) }
+    bind<GetArticleUseCase>() with singleton { GetArticleUseCase(repository = instance(), executor = instance()) }
 }
 
 val dataModule = Kodein.Module {

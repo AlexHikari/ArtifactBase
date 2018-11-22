@@ -16,6 +16,7 @@ class NewsAdapter(onItemClickListener: (NewsCard) -> Unit) : RootAdapter<NewsCar
         override fun bind(model: NewsCard) {
             itemView.newsCardText.text = model.title
             itemView.newsCardImage.load(model.resourceIMG)
+
         }
     }
 }

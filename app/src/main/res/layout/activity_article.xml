@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:id="@+id/articleScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/articleImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/articleTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorTextColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/articleDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textColor="@color/colorTextColor"
+                android:textSize="16sp" />
+
+            <WebView
+                android:id="@+id/articleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/progressView"
+        layout="@layout/view_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center" />
+
+</RelativeLayout>

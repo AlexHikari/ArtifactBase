@@ -1,5 +1,6 @@
 package com.alex.domain.repository
 
+import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
 import io.reactivex.Single
 
@@ -12,7 +13,9 @@ interface RemoteSource {
      * Get all the news from the playArtifact site
      * @return MutableList<NewsCard> returns single object
      */
-    fun retrieveAllNews(): Single<MutableList<NewsOverview>>
+    fun retrieveAllNews(): Single<List<NewsOverview>>
+
+    fun retrieveArticleByUrl(url: String): Single<ArticleOverview>
 }
 
 /**
@@ -24,11 +27,11 @@ interface LocalSource {
      * Get all the news from the playArtifact site
      * @return MutableList<NewsCard> returns single object
      */
-    fun retrieveAllNews(): Single<MutableList<NewsOverview>>
+    fun retrieveAllNews(): Single<List<NewsOverview>>
 
     fun isNewsEmpty(): Boolean
 
-    fun setNews(response: MutableList<NewsOverview>)
+    fun setNews(news: List<NewsOverview>)
 }
 
 /**
@@ -40,6 +43,8 @@ interface INewsRepository {
      * Get all the news from The repositorySource
      * @return Single<MutableList<NewsOverview>>
      */
-    fun retrieveNews(): Single<MutableList<NewsOverview>>
+    fun retrieveNews(): Single<List<NewsOverview>>
+
+    fun retrieveArticle(url: String): Single<ArticleOverview>
 }
 

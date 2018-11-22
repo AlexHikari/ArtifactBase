@@ -1,6 +1,5 @@
 package com.alex.phom.presenter
 
-import android.util.Log
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.NewsCard
@@ -18,9 +17,8 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
                         elements.add(elem.toNewsCard())
 
                     }
-                    Log.e("", "Hey estoy añadiendo el elemento " + elements.size)
-                    view.showNews(elements)
                     view.hideProgress()
+                    view.showNews(elements)
                 },
                 onError = onError { view.showError(it) }
         )
@@ -38,12 +36,12 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     }
 
     fun onNewClicked(newsCard: NewsCard) {
-        view.navigateToArticle()
+        view.navigateToArticle(newsCard.resourceURL)
     }
 
 
     interface View : Presenter.View {
         fun showNews(newsList: List<NewsCard>)
-        fun navigateToArticle()
+        fun navigateToArticle(url: String)
     }
 }

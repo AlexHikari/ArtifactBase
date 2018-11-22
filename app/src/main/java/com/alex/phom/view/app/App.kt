@@ -34,7 +34,6 @@ class App : Application(), KodeinAware {
                 .deleteRealmIfMigrationNeeded()
                 .build()
         Realm.setDefaultConfiguration(realmConfiguration)
-        Realm.deleteRealm(realmConfiguration)
     }
 
 }

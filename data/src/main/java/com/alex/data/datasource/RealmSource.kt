@@ -1,8 +1,8 @@
 package com.alex.data.datasource
 
-import com.alex.data.entities.mapper.toNewsOverview
-import com.alex.data.entities.mapper.toRawNewsOverview
 import com.alex.data.models.RawNewsOverview
+import com.alex.data.models.mapper.toNewsOverview
+import com.alex.data.models.mapper.toRawNewsOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.LocalSource
 import io.reactivex.Single
@@ -23,16 +23,11 @@ class RealmSource : LocalSource {
     private var config = RealmConfiguration.Builder().build()
 
     /**
-     * Realm instance
-     */
-    private val realm: Realm = Realm.getInstance(config)
-
-    /**
      * Retrieves all news from DB
      * @return MutableList<NewsOverview>
      */
-    override fun retrieveAllNews(): Single<MutableList<NewsOverview>> {
-        val results: RealmResults<RawNewsOverview> = realm.where(RawNewsOverview::class.java).findAll()
+    override fun retrieveAllNews(): Single<List<NewsOverview>> {
+        val results: RealmResults<RawNewsOverview> = Realm.getInstance(config).where(RawNewsOverview::class.java).findAll()
         val returnedResponse: MutableList<NewsOverview> = mutableListOf()
         results.map {
             returnedResponse.add(it.toNewsOverview())
@@ -45,18 +40,18 @@ class RealmSource : LocalSource {
      * @return Boolean
      */
     override fun isNewsEmpty(): Boolean {
-        return realm.where(RawNewsOverview::class.java).findAll().isEmpty()
+        return Realm.getInstance(config).where(RawNewsOverview::class.java).findAll().isEmpty()
     }
 
     /**
      * Stores response( each news) onto the DB
      * @param news MutableList<NewsOverview>
      */
-    override fun setNews(news: MutableList<NewsOverview>) {
+    override fun setNews(news: List<NewsOverview>) {
         news.forEach { newsItem ->
-            realm.beginTransaction()
-            realm.insertOrUpdate(newsItem.toRawNewsOverview())
-            realm.commitTransaction()
+            Realm.getInstance(config).executeTransaction {
+                it.insertOrUpdate(newsItem.toRawNewsOverview())
+            }
         }
     }
 }

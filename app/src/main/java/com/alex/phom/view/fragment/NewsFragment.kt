@@ -1,14 +1,12 @@
 package com.alex.phom.view.fragment
 
-import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
 import com.alex.phom.models.NewsCard
+import com.alex.phom.navigator.navigateToArticle
 import com.alex.phom.presenter.NewsPresenter
-import com.alex.phom.view.activity.ArticleActivity
 import com.alex.phom.view.adapter.NewsAdapter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -52,13 +50,13 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
     override fun hideProgress() = progressView.hideMe()
 
     override fun showNews(newsList: List<NewsCard>) {
-        Log.e("", "HEY ESTOY PASANDO POR Show News y tengo " + newsList.size)
         newsAdapter.addAll(newsList.toMutableList())
     }
 
-    override fun navigateToArticle() {
-        val intent: Intent = Intent(context, ArticleActivity::class.java)
-        startActivity(intent)
+    override fun navigateToArticle(url: String) {
+        context?.let {
+            navigateToArticle(it, url)
+        }
     }
 
 }

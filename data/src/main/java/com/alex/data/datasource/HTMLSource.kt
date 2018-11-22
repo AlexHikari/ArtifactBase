@@ -1,7 +1,10 @@
 package com.alex.data.datasource
 
-import com.alex.data.entities.mapper.toNewsOverview
+import com.alex.data.models.RawArticleOverview
 import com.alex.data.models.RawNewsOverview
+import com.alex.data.models.mapper.toArticleOverview
+import com.alex.data.models.mapper.toNewsOverview
+import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.RemoteSource
 import io.reactivex.Single
@@ -28,32 +31,49 @@ class HMTLSource : RemoteSource {
      * Fetch all news from the homepage
      * @return MutableList<NewsOverview>
      */
-    override fun retrieveAllNews(): Single<MutableList<NewsOverview>> {
+    override fun retrieveAllNews(): Single<List<NewsOverview>> {
+        return Single.create { emitter ->
+            val returnedResponse = mutableListOf<NewsOverview>()
+            Jsoup.connect(PLAYARTIFACT_URL).get().run {
+                select(BLOG_LIST_HTML).select("a").forEachIndexed { _, element ->
 
-        val returnedResponse: MutableList<NewsOverview> = mutableListOf()
-        var singleNews: RawNewsOverview
-        Jsoup.connect(PLAYARTIFACT_URL).get().run {
-            select(BLOG_LIST_HTML).forEachIndexed { _, element ->
-                singleNews = RawNewsOverview(
-                        title = element.select("a")
-                                .select(SINGLE_NEWS_CONTAINER)
-                                .select(BLOGPOST_IMAGE)
-                                .select(BLOGPOST_IMAGE_FOOTER)
-                                .select(BLOGPOST_IMAGE_FOOTER_DARKEN)
-                                .select(BLOGPOST_TITLE)
-                                .html(),
-                        resourceIMG = element.select("a")
-                                .select(SINGLE_NEWS_CONTAINER)
-                                .select(BLOGPOST_IMAGE)
-                                .select("img")
-                                .attr("src"),
-                        resourceURL = element.select("a")
-                                .attr("href")
-                )
-                returnedResponse.add(singleNews.toNewsOverview())
+                    if (!element.hasClass("next")) {
+                        val singleNews = RawNewsOverview(
+                                title = element.select(SINGLE_NEWS_CONTAINER)
+                                        .select(BLOGPOST_IMAGE)
+                                        .select(BLOGPOST_IMAGE_FOOTER)
+                                        .select(BLOGPOST_IMAGE_FOOTER_DARKEN)
+                                        .select(BLOGPOST_TITLE)
+                                        .html(),
+                                resourceIMG = element.select(SINGLE_NEWS_CONTAINER)
+                                        .select(BLOGPOST_IMAGE)
+                                        .select("img")
+                                        .attr("src"),
+                                resourceURL = element.attr("href")
+                        )
+                        returnedResponse.add(singleNews.toNewsOverview())
+                    }
+                }
+            }
+            emitter.onSuccess(returnedResponse)
+        }
+    }
+
+    override fun retrieveArticleByUrl(url: String): Single<ArticleOverview> {
+        return Single.create { emitter ->
+            Jsoup.connect(url).get().run {
+                select("#news_post_container").forEachIndexed { _, element ->
+
+                    val article = RawArticleOverview(
+                            post_title = element.select(".blog_post_title").html(),
+                            post_date = element.select(".blog_post_date").html(),
+                            post_image = element.select(".news_blog_image").attr("src"),
+                            post_text = element.select("#news_blog_post_text").html()
+                    )
+                    emitter.onSuccess(article.toArticleOverview())
+                }
             }
         }
-        return Single.just(returnedResponse)
     }
 }
 

@@ -10,14 +10,14 @@ import com.alex.domain.repository.INewsRepository
  * @property repository INewsRepository
  * @constructor
  */
-class GetNewsUseCase(private val repository: INewsRepository, executor: Executor) : SingleInteractor<MutableList<NewsOverview>>(executor = executor) {
+class GetNewsUseCase(private val repository: INewsRepository, executor: Executor) : SingleInteractor<List<NewsOverview>>(executor = executor) {
 
     /**
      * Exec of the useCase with OnSuccess and orError being lambdas
      * @param onSuccess (MutableList<NewsOverview>) -> Unit
      * @param onError (Throwable) -> Unit
      */
-    fun execute(onSuccess: (MutableList<NewsOverview>) -> Unit, onError: (Throwable) -> Unit) {
+    fun execute(onSuccess: (List<NewsOverview>) -> Unit, onError: (Throwable) -> Unit) {
         super.execute(onSuccess = onSuccess, onError = onError, single = repository.retrieveNews())
     }
 }

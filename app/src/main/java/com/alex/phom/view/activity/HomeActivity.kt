@@ -42,7 +42,7 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
 
     override fun initializeBottomNavigationView(items: List<AHBottomNavigationItem>) {
         bottom_navigation.addItems(items)
-        bottom_navigation.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBackgroundDark))
+        bottom_navigation.defaultBackgroundColor = ContextCompat.getColor(this, R.color.colorPrimaryLight)
         bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
         bottom_navigation.currentItem = 0
     }
