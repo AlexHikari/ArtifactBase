@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
+import com.alex.phom.models.Article
 import com.alex.phom.models.NewsCard
 import com.alex.phom.navigator.navigateToArticle
 import com.alex.phom.presenter.NewsPresenter
@@ -15,6 +16,7 @@ import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
+
 
     companion object {
         fun newInstance(): NewsFragment = NewsFragment()
@@ -53,10 +55,9 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
         newsAdapter.addAll(newsList.toMutableList())
     }
 
-    override fun navigateToArticle(url: String) {
+    override fun navigateToArticle(articleList: ArrayList<Article>) {
         context?.let {
-            navigateToArticle(it, url)
+            navigateToArticle(it, articleList)
         }
     }
-
 }

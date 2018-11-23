@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.header_bar.view.*
 class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.View {
 
     companion object {
-        const val ARTICLE_URL = "ARTICLE_URL"
+        const val ARTICLE_BUNDLE = "ARTICLE_BUNDLE"
     }
 
     override val progress: View by lazy { progressView }
@@ -45,7 +45,7 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
                 super.onPageFinished(view, url)
                 articleText.loadUrl("javascript:(function() { " +
                         "document.body.style.setProperty(\"color\", \"white\");" +
-                        "Array.from(document.getElementsByTagName(\"IMG\")).forEach(function(item) { item.style.width = '0px'; });" +
+                        "Array.from(document.getElementsByTagName(\"IMG\")).forEach(function(item) { item.style.maxWidth = '100%'; item.style.height = 'auto' });" +
                         "})()"
                 )
             }
@@ -56,7 +56,13 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
 
     }
 
-    override fun showArticle(article: Article) {
+    override fun showArticle(article: Article, isLast: Boolean, isFist: Boolean) {
+        if (isLast) {
+            //show right arrow
+        }
+        if (isFist) {
+            // show leftArrow
+        }
         articleText.loadData(article.post_text, "text/html", "UTF-8")
         articleImage.load(article.post_image)
         articleTitle.text = article.post_title
@@ -64,8 +70,18 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
 
     }
 
-    override fun getArticleUrl(): String {
-        return intent.getStringExtra(ARTICLE_URL)
+    override fun getArticleUrl(articleList: ArrayList<Article>): String {
+        var returnedUrl = ""
+        articleList.forEach {
+            if (it.selected)
+                returnedUrl = it.post_url
+        }
+        return returnedUrl
+    }
+
+    override fun getArticleList(): ArrayList<Article> {
+
+        return intent.getParcelableArrayListExtra<Article>(ARTICLE_BUNDLE)
     }
 
 

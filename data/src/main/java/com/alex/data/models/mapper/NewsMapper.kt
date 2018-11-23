@@ -33,12 +33,16 @@ fun ArticleOverview.toRawArticleOverview(): RawArticleOverview = RawArticleOverv
         post_title = this.post_title,
         post_text = this.post_text,
         post_image = this.post_image,
-        post_date = this.post_date
+        post_date = this.post_date,
+        post_url = this.post_url,
+        selected = this.selected
 )
 
 fun RawArticleOverview.toArticleOverview(): ArticleOverview = ArticleOverview(
         post_title = this.post_title,
         post_text = this.post_text,
         post_image = this.post_image,
-        post_date = this.post_date
+        post_date = this.post_date,
+        post_url = this.post_url,
+        selected = this.selected
 )

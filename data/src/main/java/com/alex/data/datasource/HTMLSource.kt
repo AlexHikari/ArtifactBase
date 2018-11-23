@@ -68,7 +68,9 @@ class HMTLSource : RemoteSource {
                             post_title = element.select(".blog_post_title").html(),
                             post_date = element.select(".blog_post_date").html(),
                             post_image = element.select(".news_blog_image").attr("src"),
-                            post_text = element.select("#news_blog_post_text").html()
+                            post_text = element.select("#news_blog_post_text").html(),
+                            selected = true,
+                            post_url = url
                     )
                     emitter.onSuccess(article.toArticleOverview())
                 }

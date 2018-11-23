@@ -2,11 +2,14 @@ package com.alex.phom.presenter
 
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.phom.error.ErrorHandler
+import com.alex.phom.models.Article
 import com.alex.phom.models.NewsCard
+import com.alex.phom.models.mappers.toArticle
 import com.alex.phom.models.mappers.toNewsCard
 
 class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresenter.View, errorHandler: ErrorHandler) : Presenter<NewsPresenter.View>(view = view, errorHandler = errorHandler) {
 
+    private val newsList: MutableList<NewsCard> = mutableListOf()
 
     override fun initialize() {
         view.showProgress()
@@ -15,6 +18,7 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
                     val elements: MutableList<NewsCard> = mutableListOf()
                     it.forEach { elem ->
                         elements.add(elem.toNewsCard())
+                        newsList.add(elem.toNewsCard())
 
                     }
                     view.hideProgress()
@@ -35,13 +39,21 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     override fun destroy() {
     }
 
-    fun onNewClicked(newsCard: NewsCard) {
-        view.navigateToArticle(newsCard.resourceURL)
+    fun onNewClicked(selected: NewsCard) {
+        val articleArray: ArrayList<Article> = arrayListOf()
+        newsList.forEachIndexed { index, elem ->
+            if (elem == selected) {
+                articleArray.add(index, elem.toArticle(selected = true))
+            } else {
+                articleArray.add(index, elem.toArticle(selected = false))
+            }
+        }
+        view.navigateToArticle(articleArray)
     }
 
 
     interface View : Presenter.View {
         fun showNews(newsList: List<NewsCard>)
-        fun navigateToArticle(url: String)
+        fun navigateToArticle(articleList: ArrayList<Article>)
     }
 }

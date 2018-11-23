@@ -28,8 +28,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -40,8 +40,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/artifactbaseicon"
-            tools:srcCompat="@drawable/artifactbaseicon" />
+            app:srcCompat="@drawable/artifacticon"
+            tools:srcCompat="@drawable/artifacticon" />
 
     </android.support.constraint.ConstraintLayout>
 

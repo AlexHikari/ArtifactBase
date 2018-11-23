@@ -8,14 +8,15 @@ import com.alex.phom.models.mappers.toArticle
 class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: ArticlePresenter.View, errorHandler: ErrorHandler) :
         Presenter<ArticlePresenter.View>(view = view, errorHandler = errorHandler) {
 
-
+    private var articleList = arrayListOf<Article>()
     override fun initialize() {
         view.showProgress()
+        articleList = view.getArticleList()
         getArticleUseCase.execute(
-                url = view.getArticleUrl(),
+                url = view.getArticleUrl(articleList),
                 onSuccess = {
                     view.hideProgress()
-                    view.showArticle(it.toArticle())
+                    view.showArticle(article = it.toArticle(), isLast = false, isFist = false)
                 },
                 onError = onError { view.showError(it) })
     }
@@ -34,7 +35,8 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
 
 
     interface View : Presenter.View {
-        fun showArticle(article: Article)
-        fun getArticleUrl(): String
+        fun showArticle(article: Article, isLast: Boolean, isFist: Boolean)
+        fun getArticleList(): ArrayList<Article>
+        fun getArticleUrl(articleList: ArrayList<Article>): String
     }
 }
