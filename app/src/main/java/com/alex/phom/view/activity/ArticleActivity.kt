@@ -14,6 +14,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.activity_article.*
+import kotlinx.android.synthetic.main.header_bar.view.*
 
 class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.View {
 
@@ -36,12 +37,16 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun initializeUI() {
+        home_header.button_back.visibility = View.VISIBLE
         articleText.setBackgroundColor(Color.TRANSPARENT)
         articleText.settings.javaScriptEnabled = true
         articleText.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                articleText.loadUrl("javascript:document.body.style.setProperty(\"color\", \"white\");"
+                articleText.loadUrl("javascript:(function() { " +
+                        "document.body.style.setProperty(\"color\", \"white\");" +
+                        "Array.from(document.getElementsByTagName(\"IMG\")).forEach(function(item) { item.style.width = '0px'; });" +
+                        "})()"
                 )
             }
         }
