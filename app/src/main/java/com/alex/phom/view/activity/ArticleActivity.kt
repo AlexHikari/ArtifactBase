@@ -3,6 +3,7 @@ package com.alex.phom.view.activity
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.View
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.alex.phom.R
@@ -40,20 +41,27 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
         home_header.button_back.visibility = View.VISIBLE
         articleText.setBackgroundColor(Color.TRANSPARENT)
         articleText.settings.javaScriptEnabled = true
+        articleText.settings.defaultFontSize = 14
         articleText.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 articleText.loadUrl("javascript:(function() { " +
                         "document.body.style.setProperty(\"color\", \"white\");" +
                         "Array.from(document.getElementsByTagName(\"IMG\")).forEach(function(item) { item.style.maxWidth = '100%'; item.style.height = 'auto' });" +
+                        "Array.from(document.getElementsByTagName(\"A\")).forEach(function(item) { item.style.color = 'white' });" +
                         "})()"
                 )
             }
+
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                return true
+            }
+
         }
     }
 
     override fun registerListeners() {
-
+        home_header.button_back.setOnClickListener { presenter.onBackButtonClicked() }
     }
 
     override fun showArticle(article: Article, isLast: Boolean, isFist: Boolean) {
@@ -84,5 +92,7 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
         return intent.getParcelableArrayListExtra<Article>(ARTICLE_BUNDLE)
     }
 
-
+    override fun finishActivity() {
+        onBackPressed()
+    }
 }

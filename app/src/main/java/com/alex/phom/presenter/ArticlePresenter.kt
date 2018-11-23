@@ -16,9 +16,21 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
                 url = view.getArticleUrl(articleList),
                 onSuccess = {
                     view.hideProgress()
-                    view.showArticle(article = it.toArticle(), isLast = false, isFist = false)
+                    val article = it.toArticle()
+                    if (article.post_image.isEmpty()) {
+                        articleList.forEach { elem ->
+                            if (article.post_url == elem.post_url) {
+                                article.post_image = elem.post_image
+                            }
+                        }
+                    }
+                    view.showArticle(article = article, isLast = false, isFist = false)
                 },
                 onError = onError { view.showError(it) })
+    }
+
+    fun onBackButtonClicked() {
+        view.finishActivity()
     }
 
     override fun resume() {
@@ -38,5 +50,6 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
         fun showArticle(article: Article, isLast: Boolean, isFist: Boolean)
         fun getArticleList(): ArrayList<Article>
         fun getArticleUrl(articleList: ArrayList<Article>): String
+        fun finishActivity()
     }
 }

@@ -33,25 +33,36 @@ class HMTLSource : RemoteSource {
      */
     override fun retrieveAllNews(): Single<List<NewsOverview>> {
         return Single.create { emitter ->
+            var hasNext = true
+            var index = 1
+            var url = PLAYARTIFACT_URL
             val returnedResponse = mutableListOf<NewsOverview>()
-            Jsoup.connect(PLAYARTIFACT_URL).get().run {
-                select(BLOG_LIST_HTML).select("a").forEachIndexed { _, element ->
-
-                    if (!element.hasClass("next")) {
-                        val singleNews = RawNewsOverview(
-                                title = element.select(SINGLE_NEWS_CONTAINER)
-                                        .select(BLOGPOST_IMAGE)
-                                        .select(BLOGPOST_IMAGE_FOOTER)
-                                        .select(BLOGPOST_IMAGE_FOOTER_DARKEN)
-                                        .select(BLOGPOST_TITLE)
-                                        .html(),
-                                resourceIMG = element.select(SINGLE_NEWS_CONTAINER)
-                                        .select(BLOGPOST_IMAGE)
-                                        .select("img")
-                                        .attr("src"),
-                                resourceURL = element.attr("href")
-                        )
-                        returnedResponse.add(singleNews.toNewsOverview())
+            while (hasNext) {
+                Jsoup.connect(url).get().run {
+                    select(BLOG_LIST_HTML).select("a").forEachIndexed { _, element ->
+                        if (element.hasClass("next")) {
+                            hasNext = true
+                            index++
+                            url = PLAYARTIFACT_URL + "archive/$index"
+                        } else {
+                            if (!element.hasClass("previous")) {
+                                val singleNews = RawNewsOverview(
+                                        title = element.select(SINGLE_NEWS_CONTAINER)
+                                                .select(BLOGPOST_IMAGE)
+                                                .select(BLOGPOST_IMAGE_FOOTER)
+                                                .select(BLOGPOST_IMAGE_FOOTER_DARKEN)
+                                                .select(BLOGPOST_TITLE)
+                                                .html(),
+                                        resourceIMG = element.select(SINGLE_NEWS_CONTAINER)
+                                                .select(BLOGPOST_IMAGE)
+                                                .select("img")
+                                                .attr("src"),
+                                        resourceURL = element.attr("href")
+                                )
+                                returnedResponse.add(singleNews.toNewsOverview())
+                                hasNext = false
+                            }
+                        }
                     }
                 }
             }
