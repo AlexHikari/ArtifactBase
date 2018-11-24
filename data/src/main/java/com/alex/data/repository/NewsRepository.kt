@@ -9,18 +9,29 @@ import io.reactivex.Single
 
 class NewsRepository(private val remoteSource: HMTLSource, private val localSource: RealmSource) : INewsRepository {
 
-    override fun retrieveNews(): Single<List<NewsOverview>> =
-            localSource.retrieveAllNews().flatMap {
-                if (it.isEmpty()) {
-                    remoteSource.retrieveAllNews().map { news ->
-                        localSource.setNews(news)
-                        return@map news
-                    }
-                } else {
-                    return@flatMap Single.just(it)
-                }
-            }
 
-    override fun retrieveArticle(url: String): Single<ArticleOverview> = remoteSource.retrieveArticleByUrl(url)
+    override fun retrieveNews(networkInfo: Boolean): Single<List<NewsOverview>> {
+
+        if (networkInfo) {
+            return remoteSource.retrieveAllNews().map { news ->
+                localSource.setNews(news = news)
+                return@map news
+            }
+        } else {
+            return localSource.retrieveAllNews()
+        }
+    }
+
+    override fun retrieveArticle(url: String): Single<ArticleOverview> {
+        if (localSource.isArticleEmpty(url)) {
+            return remoteSource.retrieveArticleByUrl(url = url).map {
+                localSource.setArticle(it)
+                return@map it
+            }
+        } else {
+            return localSource.retrieveArticle(url = url)
+        }
+
+    }
 
 }

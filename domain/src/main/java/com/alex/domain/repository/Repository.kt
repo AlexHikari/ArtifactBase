@@ -32,6 +32,12 @@ interface LocalSource {
     fun isNewsEmpty(): Boolean
 
     fun setNews(news: List<NewsOverview>)
+
+    fun retrieveArticle(url: String): Single<ArticleOverview>
+
+    fun setArticle(article: ArticleOverview)
+
+    fun isArticleEmpty(url: String): Boolean
 }
 
 /**
@@ -43,7 +49,7 @@ interface INewsRepository {
      * Get all the news from The repositorySource
      * @return Single<MutableList<NewsOverview>>
      */
-    fun retrieveNews(): Single<List<NewsOverview>>
+    fun retrieveNews(networkInfo: Boolean): Single<List<NewsOverview>>
 
     fun retrieveArticle(url: String): Single<ArticleOverview>
 }

@@ -1,5 +1,7 @@
 package com.alex.phom.view.fragment
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.support.v7.widget.LinearLayoutManager
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
@@ -16,7 +18,6 @@ import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
-
 
     companion object {
         fun newInstance(): NewsFragment = NewsFragment()
@@ -59,5 +60,22 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
         context?.let {
             navigateToArticle(it, articleList)
         }
+    }
+
+    override fun getNetworkInfo(): Boolean {
+        val cm: ConnectivityManager
+        context?.let {
+            cm = it.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = cm.activeNetworkInfo
+            if (networkInfo != null && networkInfo.isConnected) {
+                if (networkInfo.type == ConnectivityManager.TYPE_WIFI) {
+                    return true
+                }
+                if (networkInfo.type == ConnectivityManager.TYPE_MOBILE) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

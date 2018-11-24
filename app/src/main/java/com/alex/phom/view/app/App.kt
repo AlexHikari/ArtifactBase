@@ -33,6 +33,7 @@ class App : Application(), KodeinAware {
                 .name(Realm.DEFAULT_REALM_NAME)
                 .deleteRealmIfMigrationNeeded()
                 .build()
+        Realm.deleteRealm(realmConfiguration)
         Realm.setDefaultConfiguration(realmConfiguration)
     }
 

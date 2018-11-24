@@ -24,7 +24,8 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
                     view.hideProgress()
                     view.showNews(elements)
                 },
-                onError = onError { view.showError(it) }
+                onError = onError { view.showError(it) },
+                networkInfo = view.getNetworkInfo()
         )
     }
 
@@ -55,5 +56,6 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     interface View : Presenter.View {
         fun showNews(newsList: List<NewsCard>)
         fun navigateToArticle(articleList: ArrayList<Article>)
+        fun getNetworkInfo(): Boolean
     }
 }

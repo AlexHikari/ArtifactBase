@@ -17,7 +17,7 @@ class GetNewsUseCase(private val repository: INewsRepository, executor: Executor
      * @param onSuccess (MutableList<NewsOverview>) -> Unit
      * @param onError (Throwable) -> Unit
      */
-    fun execute(onSuccess: (List<NewsOverview>) -> Unit, onError: (Throwable) -> Unit) {
-        super.execute(onSuccess = onSuccess, onError = onError, single = repository.retrieveNews())
+    fun execute(onSuccess: (List<NewsOverview>) -> Unit, onError: (Throwable) -> Unit, networkInfo: Boolean) {
+        super.execute(onSuccess = onSuccess, onError = onError, single = repository.retrieveNews(networkInfo))
     }
 }

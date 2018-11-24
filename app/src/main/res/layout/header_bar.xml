@@ -19,9 +19,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/colorPrimary"
             android:text="back"
+            android:textAllCaps="true"
+            android:textColor="@color/colorTextColor"
             android:textSize="10sp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

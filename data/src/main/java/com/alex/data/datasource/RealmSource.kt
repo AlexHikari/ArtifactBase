@@ -1,8 +1,12 @@
 package com.alex.data.datasource
 
+import com.alex.data.models.RawArticleOverview
 import com.alex.data.models.RawNewsOverview
+import com.alex.data.models.mapper.toArticleOverview
 import com.alex.data.models.mapper.toNewsOverview
+import com.alex.data.models.mapper.toRawArticleOverview
 import com.alex.data.models.mapper.toRawNewsOverview
+import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.LocalSource
 import io.reactivex.Single
@@ -16,6 +20,7 @@ import io.realm.RealmResults
  * @property realm Realm
  */
 class RealmSource : LocalSource {
+
 
     /**
      * Actual configuration of realm
@@ -53,5 +58,19 @@ class RealmSource : LocalSource {
                 it.insertOrUpdate(newsItem.toRawNewsOverview())
             }
         }
+    }
+
+    override fun retrieveArticle(url: String): Single<ArticleOverview> {
+        return Single.just(Realm.getInstance(config).where(RawArticleOverview::class.java).contains("post_url", url).findFirst()?.let { it.toArticleOverview() })
+    }
+
+    override fun setArticle(article: ArticleOverview) {
+        Realm.getInstance(config).executeTransaction {
+            it.insertOrUpdate(article.toRawArticleOverview())
+        }
+    }
+
+    override fun isArticleEmpty(url: String): Boolean {
+        return Realm.getInstance(config).where(RawArticleOverview::class.java).contains("post_url", url).findAll().isEmpty()
     }
 }
