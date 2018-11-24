@@ -19,7 +19,7 @@ import io.realm.RealmResults
  * @property config (io.realm.RealmConfiguration..io.realm.RealmConfiguration?)
  * @property realm Realm
  */
-class RealmSource : NewsLocalSource {
+class NewsRealmSource : NewsLocalSource {
 
 
     /**

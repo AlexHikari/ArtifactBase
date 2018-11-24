@@ -1,8 +1,8 @@
 package com.alex.phom.di
 
 import android.content.Context
-import com.alex.data.datasource.news.HMTLSource
-import com.alex.data.datasource.news.RealmSource
+import com.alex.data.datasource.news.NewsHTMLSource
+import com.alex.data.datasource.news.NewsRealmSource
 import com.alex.data.repository.NewsRepository
 import com.alex.domain.executor.Executor
 import com.alex.domain.interactor.article.GetArticleUseCase
@@ -33,8 +33,8 @@ val domainModule = Kodein.Module {
 val dataModule = Kodein.Module {
 
     //DataSources
-    bind<HMTLSource>() with singleton { HMTLSource() }
-    bind<RealmSource>() with singleton { RealmSource() }
+    bind<NewsHTMLSource>() with singleton { NewsHTMLSource() }
+    bind<NewsRealmSource>() with singleton { NewsRealmSource() }
 
     //Repositories
 

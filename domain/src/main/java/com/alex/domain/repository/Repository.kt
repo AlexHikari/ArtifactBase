@@ -7,7 +7,11 @@ import com.alex.domain.models.NewsOverview
 import io.reactivex.Single
 
 interface CardSetRemoteSource {
-    fun retrieveEndPoints()
+    fun retrieveEndPoints(): List<String>
+    fun retrieveCards()
+}
+
+interface CardSetLocalSource {
     fun retrieveCards()
 }
 

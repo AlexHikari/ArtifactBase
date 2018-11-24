@@ -43,6 +43,7 @@ dependencies {
     implementation dataDependencies.jsoup
     implementation dataDependencies.anko
     implementation dataDependencies.moshi
+    implementation dataDependencies.moshiConverter
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxJavaCallAdapter

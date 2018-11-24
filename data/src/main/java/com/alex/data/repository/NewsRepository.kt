@@ -1,13 +1,13 @@
 package com.alex.data.repository
 
-import com.alex.data.datasource.news.HMTLSource
-import com.alex.data.datasource.news.RealmSource
+import com.alex.data.datasource.news.NewsHTMLSource
+import com.alex.data.datasource.news.NewsRealmSource
 import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.INewsRepository
 import io.reactivex.Single
 
-class NewsRepository(private val remoteSource: HMTLSource, private val localSource: RealmSource) : INewsRepository {
+class NewsRepository(private val remoteSource: NewsHTMLSource, private val localSource: NewsRealmSource) : INewsRepository {
 
 
     override fun retrieveNews(networkInfo: Boolean): Single<List<NewsOverview>> {

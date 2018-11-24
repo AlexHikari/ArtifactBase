@@ -25,7 +25,7 @@ private const val BLOGPOST_TITLE: String = ".blog_post_title"
 /**
  * Retrieves all things related to HTML
  */
-class HMTLSource : NewsRemoteSource {
+class NewsHTMLSource : NewsRemoteSource {
 
     /**
      * Fetch all news from the homepage
