@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -38,9 +40,12 @@ dependencies {
     implementation dataDependencies.retrofitGson
     implementation dataDependencies.okthttp
     implementation dataDependencies.loggingInterceptor
+    implementation dataDependencies.jsoup
+    implementation dataDependencies.anko
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxJavaCallAdapter
+
 
     testImplementation dataTestDependencies.jUnit
     testImplementation dataTestDependencies.mockito

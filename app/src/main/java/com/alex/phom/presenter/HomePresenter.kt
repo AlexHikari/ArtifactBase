@@ -1,16 +1,19 @@
 package com.alex.phom.presenter
 
-import com.alex.data.utils.encodeDeck
-import com.alex.domain.constants.Constants.Companion.DEFAULT_INT
+import com.alex.phom.R
 import com.alex.phom.error.ErrorHandler
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 
 class HomePresenter(view: HomePresenter.View, errorHandler: ErrorHandler) :
         Presenter<HomePresenter.View>(view = view, errorHandler = errorHandler) {
 
-    var count = DEFAULT_INT
-
     override fun initialize() {
-        view.showProgress()
+        val listItems: List<AHBottomNavigationItem> = listOf(
+                AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_launcher_foreground, R.color.colorBlueSource),
+                AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_launcher_foreground, R.color.colorRedSource),
+                AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_launcher_foreground, R.color.colorGreenSource))
+        view.initializeBottomNavigationView(listItems)
+        view.showNewsScreen()
     }
 
     override fun resume() {
@@ -25,13 +28,8 @@ class HomePresenter(view: HomePresenter.View, errorHandler: ErrorHandler) :
 
     }
 
-    fun onClickClicked() {
-        view.hideProgress()
-        count++
-        view.showText("Count $count")
-    }
-
     interface View : Presenter.View {
-        fun showText(text: String)
+        fun initializeBottomNavigationView(items: List<AHBottomNavigationItem>)
+        fun showNewsScreen()
     }
 }
