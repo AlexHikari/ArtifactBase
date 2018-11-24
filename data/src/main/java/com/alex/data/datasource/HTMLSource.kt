@@ -6,7 +6,7 @@ import com.alex.data.models.mapper.toArticleOverview
 import com.alex.data.models.mapper.toNewsOverview
 import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
-import com.alex.domain.repository.RemoteSource
+import com.alex.domain.repository.NewsRemoteSource
 import io.reactivex.Single
 import org.jsoup.Jsoup
 
@@ -25,7 +25,7 @@ private const val BLOGPOST_TITLE: String = ".blog_post_title"
 /**
  * Retrieves all things related to HTML
  */
-class HMTLSource : RemoteSource {
+class HMTLSource : NewsRemoteSource {
 
     /**
      * Fetch all news from the homepage

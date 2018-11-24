@@ -8,7 +8,7 @@ import com.alex.data.models.mapper.toRawArticleOverview
 import com.alex.data.models.mapper.toRawNewsOverview
 import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
-import com.alex.domain.repository.LocalSource
+import com.alex.domain.repository.NewsLocalSource
 import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -19,7 +19,7 @@ import io.realm.RealmResults
  * @property config (io.realm.RealmConfiguration..io.realm.RealmConfiguration?)
  * @property realm Realm
  */
-class RealmSource : LocalSource {
+class RealmSource : NewsLocalSource {
 
 
     /**

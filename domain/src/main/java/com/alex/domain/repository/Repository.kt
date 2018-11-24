@@ -7,7 +7,7 @@ import io.reactivex.Single
 /**
  * Interface to be implemented by remoteSource
  */
-interface RemoteSource {
+interface NewsRemoteSource {
 
     /**
      * Get all the news from the playArtifact site
@@ -21,7 +21,7 @@ interface RemoteSource {
 /**
  * Interface to be implemented by RealmSource
  */
-interface LocalSource {
+interface NewsLocalSource {
 
     /**
      * Get all the news from the playArtifact site
