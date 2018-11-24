@@ -1,7 +1,7 @@
 package com.alex.data.repository
 
-import com.alex.data.datasource.HMTLSource
-import com.alex.data.datasource.RealmSource
+import com.alex.data.datasource.news.HMTLSource
+import com.alex.data.datasource.news.RealmSource
 import com.alex.domain.models.ArticleOverview
 import com.alex.domain.models.NewsOverview
 import com.alex.domain.repository.INewsRepository

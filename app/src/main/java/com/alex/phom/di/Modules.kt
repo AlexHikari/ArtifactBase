@@ -1,8 +1,8 @@
 package com.alex.phom.di
 
 import android.content.Context
-import com.alex.data.datasource.HMTLSource
-import com.alex.data.datasource.RealmSource
+import com.alex.data.datasource.news.HMTLSource
+import com.alex.data.datasource.news.RealmSource
 import com.alex.data.repository.NewsRepository
 import com.alex.domain.executor.Executor
 import com.alex.domain.interactor.article.GetArticleUseCase

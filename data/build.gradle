@@ -42,6 +42,7 @@ dependencies {
     implementation dataDependencies.loggingInterceptor
     implementation dataDependencies.jsoup
     implementation dataDependencies.anko
+    implementation dataDependencies.moshi
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxJavaCallAdapter

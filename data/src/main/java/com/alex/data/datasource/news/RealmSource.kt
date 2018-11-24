@@ -1,4 +1,4 @@
-package com.alex.data.datasource
+package com.alex.data.datasource.news
 
 import com.alex.data.models.RawArticleOverview
 import com.alex.data.models.RawNewsOverview

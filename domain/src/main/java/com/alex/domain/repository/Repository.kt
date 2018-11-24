@@ -1,8 +1,15 @@
 package com.alex.domain.repository
 
 import com.alex.domain.models.ArticleOverview
+import com.alex.domain.models.CardList
+import com.alex.domain.models.CardSetOverview
 import com.alex.domain.models.NewsOverview
 import io.reactivex.Single
+
+interface CardSetRemoteSource {
+    fun retrieveEndPoints()
+    fun retrieveCards()
+}
 
 /**
  * Interface to be implemented by remoteSource
@@ -52,5 +59,12 @@ interface INewsRepository {
     fun retrieveNews(networkInfo: Boolean): Single<List<NewsOverview>>
 
     fun retrieveArticle(url: String): Single<ArticleOverview>
+}
+
+
+interface ICardSetRepository {
+
+    fun retrieveAllCards(): Single<List<CardSetOverview>>
+    fun retrieveSingleCard(cardId: Long): Single<CardList>
 }
 
