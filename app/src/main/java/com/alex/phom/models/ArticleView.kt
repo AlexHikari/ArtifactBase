@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 
-data class Article(
+data class ArticleView(
         val post_url: String,
         val post_title: String,
         val post_date: String,
@@ -33,12 +33,12 @@ data class Article(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Article> {
-        override fun createFromParcel(parcel: Parcel): Article {
-            return Article(parcel)
+    companion object CREATOR : Parcelable.Creator<ArticleView> {
+        override fun createFromParcel(parcel: Parcel): ArticleView {
+            return ArticleView(parcel)
         }
 
-        override fun newArray(size: Int): Array<Article?> {
+        override fun newArray(size: Int): Array<ArticleView?> {
             return arrayOfNulls(size)
         }
     }

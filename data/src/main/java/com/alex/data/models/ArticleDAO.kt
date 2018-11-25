@@ -3,7 +3,7 @@ package com.alex.data.models
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-open class RawArticleOverview(
+open class ArticleDAO(
         @PrimaryKey var post_url: String = "",
         var post_title: String = "",
         var post_date: String = "",

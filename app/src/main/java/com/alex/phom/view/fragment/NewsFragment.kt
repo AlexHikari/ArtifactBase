@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
-import com.alex.phom.models.Article
-import com.alex.phom.models.NewsCard
+import com.alex.phom.models.ArticleView
+import com.alex.phom.models.NewsCardView
 import com.alex.phom.navigator.navigateToArticle
 import com.alex.phom.presenter.NewsPresenter
 import com.alex.phom.view.adapter.NewsAdapter
@@ -52,13 +52,13 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
 
     override fun hideProgress() = progressView.hideMe()
 
-    override fun showNews(newsList: List<NewsCard>) {
-        newsAdapter.addAll(newsList.toMutableList())
+    override fun showNews(newsListView: List<NewsCardView>) {
+        newsAdapter.addAll(newsListView.toMutableList())
     }
 
-    override fun navigateToArticle(articleList: ArrayList<Article>) {
+    override fun navigateToArticle(articleViewList: ArrayList<ArticleView>) {
         context?.let {
-            navigateToArticle(it, articleList)
+            navigateToArticle(it, articleViewList)
         }
     }
 

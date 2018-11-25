@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey
  * @property resourceIMG String Image to display in the card
  * @constructor
  */
-open class RawNewsOverview(
+open class NewsDAO(
         var title: String = "",
         @PrimaryKey var resourceURL: String = "",
         var resourceIMG: String = ""

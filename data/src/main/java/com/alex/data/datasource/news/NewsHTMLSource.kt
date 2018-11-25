@@ -1,11 +1,11 @@
 package com.alex.data.datasource.news
 
-import com.alex.data.models.RawArticleOverview
-import com.alex.data.models.RawNewsOverview
-import com.alex.data.models.mapper.toArticleOverview
-import com.alex.data.models.mapper.toNewsOverview
-import com.alex.domain.models.ArticleOverview
-import com.alex.domain.models.NewsOverview
+import com.alex.data.models.ArticleDAO
+import com.alex.data.models.NewsDAO
+import com.alex.data.models.mapper.toArticle
+import com.alex.data.models.mapper.toNews
+import com.alex.domain.models.Article
+import com.alex.domain.models.News
 import com.alex.domain.repository.NewsRemoteSource
 import io.reactivex.Single
 import org.jsoup.Jsoup
@@ -29,14 +29,14 @@ class NewsHTMLSource : NewsRemoteSource {
 
     /**
      * Fetch all news from the homepage
-     * @return MutableList<NewsOverview>
+     * @return MutableList<News>
      */
-    override fun retrieveAllNews(): Single<List<NewsOverview>> {
+    override fun retrieveAllNews(): Single<List<News>> {
         return Single.create { emitter ->
             var hasNext = true
             var index = 1
             var url = PLAYARTIFACT_URL
-            val returnedResponse = mutableListOf<NewsOverview>()
+            val returnedResponse = mutableListOf<News>()
             while (hasNext) {
                 Jsoup.connect(url).get().run {
                     select(BLOG_LIST_HTML).select("a").forEachIndexed { _, element ->
@@ -46,7 +46,7 @@ class NewsHTMLSource : NewsRemoteSource {
                             url = PLAYARTIFACT_URL + "archive/$index"
                         } else {
                             if (!element.hasClass("previous")) {
-                                val singleNews = RawNewsOverview(
+                                val singleNews = NewsDAO(
                                         title = element.select(SINGLE_NEWS_CONTAINER)
                                                 .select(BLOGPOST_IMAGE)
                                                 .select(BLOGPOST_IMAGE_FOOTER)
@@ -59,7 +59,7 @@ class NewsHTMLSource : NewsRemoteSource {
                                                 .attr("src"),
                                         resourceURL = element.attr("href")
                                 )
-                                returnedResponse.add(singleNews.toNewsOverview())
+                                returnedResponse.add(singleNews.toNews())
                                 hasNext = false
                             }
                         }
@@ -70,12 +70,12 @@ class NewsHTMLSource : NewsRemoteSource {
         }
     }
 
-    override fun retrieveArticleByUrl(url: String): Single<ArticleOverview> {
+    override fun retrieveArticleByUrl(url: String): Single<Article> {
         return Single.create { emitter ->
             Jsoup.connect(url).get().run {
                 select("#news_post_container").forEachIndexed { _, element ->
 
-                    val article = RawArticleOverview(
+                    val article = ArticleDAO(
                             post_title = element.select(".blog_post_title").html(),
                             post_date = element.select(".blog_post_date").html(),
                             post_image = element.select(".news_blog_image").attr("src"),
@@ -83,7 +83,7 @@ class NewsHTMLSource : NewsRemoteSource {
                             selected = true,
                             post_url = url
                     )
-                    emitter.onSuccess(article.toArticleOverview())
+                    emitter.onSuccess(article.toArticle())
                 }
             }
         }

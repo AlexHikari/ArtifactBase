@@ -4,30 +4,30 @@ import com.squareup.moshi.Json
 import io.realm.annotations.PrimaryKey
 
 
-data class RawCardSetOverview(
+data class CardSetDAO(
         @Json(name = "card_set")
-        var cardSet: CardSet = CardSet()
+        var cardSet: CardSetInfoDAO = CardSetInfoDAO()
 )
 
-data class CardSet(
+data class CardSetInfoDAO(
         @Json(name = "card_list")
-        var cardList: List<Card> = listOf(),
+        var cardList: List<CardDAO> = listOf(),
         @Json(name = "set_info")
-        var setInfo: SetInfo = SetInfo(),
+        var setInfo: SetInfoDAO = SetInfoDAO(),
         @Json(name = "version")
         var version: Long = 0
 )
 
-data class SetInfo(
+data class SetInfoDAO(
         @Json(name = "name")
-        var name: Name = Name(),
+        var name: NameDAO = NameDAO(),
         @Json(name = "pack_item_def")
         var packItemDef: Long = 0,
         @Json(name = "set_id")
         var setID: Long = 0
 )
 
-data class Name(
+data class NameDAO(
         @Json(name = "brazilian")
         var brazilian: String = "",
         @Json(name = "bulgarian")
@@ -86,7 +86,7 @@ data class Name(
         var vietnamese: String = ""
 )
 
-data class Card(
+data class CardDAO(
         @Json(name = "armor")
         var armor: Long = 0,
         @Json(name = "attack")
@@ -97,9 +97,9 @@ data class Card(
         @Json(name = "card_id")
         var cardId: Long = 0,
         @Json(name = "card_name")
-        var cardName: CardName = CardName(),
+        var cardName: CardNameDAO = CardNameDAO(),
         @Json(name = "card_text")
-        var cardText: CardText = CardText(),
+        var cardText: CardTextDAO = CardTextDAO(),
         @Json(name = "card_type")
         var cardType: String = "",
         @Json(name = "charges")
@@ -111,7 +111,7 @@ data class Card(
         @Json(name = "illustrator")
         var illustrator: String = "",
         @Json(name = "ingame_image")
-        var heroIngameImage: MiniImage = MiniImage(),
+        var heroIngameImage: MiniImageDAO = MiniImageDAO(),
         @Json(name = "is_black")
         var isBlack: Boolean = false,
         @Json(name = "is_blue")
@@ -127,11 +127,11 @@ data class Card(
         @Json(name = "item_def")
         var itemDef: Long = 0,
         @Json(name = "large_image")
-        var largeImage: LargeImage = LargeImage(),
+        var largeImage: LargeImageDAO = LargeImageDAO(),
         @Json(name = "mana_cost")
         var manaCost: Long = 0,
         @Json(name = "mini_image")
-        var miniImage: MiniImage = MiniImage(),
+        var miniImage: MiniImageDAO = MiniImageDAO(),
         @Json(name = "rarity")
         var rarity: String = "",
         @Json(name = "references")
@@ -141,12 +141,12 @@ data class Card(
 )
 
 
-data class MiniImage(
+data class MiniImageDAO(
         @Json(name = "default")
         var default: String = ""
 )
 
-data class LargeImage(
+data class LargeImageDAO(
         @Json(name = "brazilian")
         var brazilian: String = "",
         @Json(name = "default")
@@ -173,7 +173,7 @@ data class LargeImage(
         var tchinese: String = ""
 )
 
-data class CardName(
+data class CardNameDAO(
         @Json(name = "brazilian")
         var brazilian: String = "",
         @Json(name = "bulgarian")
@@ -232,7 +232,7 @@ data class CardName(
         var vietnamese: String = ""
 )
 
-data class CardText(
+data class CardTextDAO(
         @Json(name = "brazilian")
         var brazilian: String = "",
         @Json(name = "bulgarian")

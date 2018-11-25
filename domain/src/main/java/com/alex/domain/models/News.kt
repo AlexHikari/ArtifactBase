@@ -7,7 +7,7 @@ package com.alex.domain.models
  * @property resourceIMG String
  * @constructor
  */
-data class NewsOverview(
+data class News(
         val title: String,
         val resourceURL: String,
         val resourceIMG: String

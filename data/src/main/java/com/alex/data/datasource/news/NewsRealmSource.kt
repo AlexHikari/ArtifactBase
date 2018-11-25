@@ -1,13 +1,13 @@
 package com.alex.data.datasource.news
 
-import com.alex.data.models.RawArticleOverview
-import com.alex.data.models.RawNewsOverview
-import com.alex.data.models.mapper.toArticleOverview
-import com.alex.data.models.mapper.toNewsOverview
-import com.alex.data.models.mapper.toRawArticleOverview
-import com.alex.data.models.mapper.toRawNewsOverview
-import com.alex.domain.models.ArticleOverview
-import com.alex.domain.models.NewsOverview
+import com.alex.data.models.ArticleDAO
+import com.alex.data.models.NewsDAO
+import com.alex.data.models.mapper.toArticle
+import com.alex.data.models.mapper.toArticleDAO
+import com.alex.data.models.mapper.toNews
+import com.alex.data.models.mapper.toNewsDAO
+import com.alex.domain.models.Article
+import com.alex.domain.models.News
 import com.alex.domain.repository.NewsLocalSource
 import io.reactivex.Single
 import io.realm.Realm
@@ -29,13 +29,13 @@ class NewsRealmSource : NewsLocalSource {
 
     /**
      * Retrieves all news from DB
-     * @return MutableList<NewsOverview>
+     * @return MutableList<News>
      */
-    override fun retrieveAllNews(): Single<List<NewsOverview>> {
-        val results: RealmResults<RawNewsOverview> = Realm.getInstance(config).where(RawNewsOverview::class.java).findAll()
-        val returnedResponse: MutableList<NewsOverview> = mutableListOf()
+    override fun retrieveAllNews(): Single<List<News>> {
+        val results: RealmResults<NewsDAO> = Realm.getInstance(config).where(NewsDAO::class.java).findAll()
+        val returnedResponse: MutableList<News> = mutableListOf()
         results.map {
-            returnedResponse.add(it.toNewsOverview())
+            returnedResponse.add(it.toNews())
         }
         return Single.just(returnedResponse)
     }
@@ -45,32 +45,32 @@ class NewsRealmSource : NewsLocalSource {
      * @return Boolean
      */
     override fun isNewsEmpty(): Boolean {
-        return Realm.getInstance(config).where(RawNewsOverview::class.java).findAll().isEmpty()
+        return Realm.getInstance(config).where(NewsDAO::class.java).findAll().isEmpty()
     }
 
     /**
      * Stores response( each news) onto the DB
-     * @param news MutableList<NewsOverview>
+     * @param news MutableList<News>
      */
-    override fun setNews(news: List<NewsOverview>) {
+    override fun setNews(news: List<News>) {
         news.forEach { newsItem ->
             Realm.getInstance(config).executeTransaction {
-                it.insertOrUpdate(newsItem.toRawNewsOverview())
+                it.insertOrUpdate(newsItem.toNewsDAO())
             }
         }
     }
 
-    override fun retrieveArticle(url: String): Single<ArticleOverview> {
-        return Single.just(Realm.getInstance(config).where(RawArticleOverview::class.java).contains("post_url", url).findFirst()?.let { it.toArticleOverview() })
+    override fun retrieveArticle(url: String): Single<Article> {
+        return Single.just(Realm.getInstance(config).where(ArticleDAO::class.java).contains("post_url", url).findFirst()?.let { it.toArticle() })
     }
 
-    override fun setArticle(article: ArticleOverview) {
+    override fun setArticle(article: Article) {
         Realm.getInstance(config).executeTransaction {
-            it.insertOrUpdate(article.toRawArticleOverview())
+            it.insertOrUpdate(article.toArticleDAO())
         }
     }
 
     override fun isArticleEmpty(url: String): Boolean {
-        return Realm.getInstance(config).where(RawArticleOverview::class.java).contains("post_url", url).findAll().isEmpty()
+        return Realm.getInstance(config).where(ArticleDAO::class.java).contains("post_url", url).findAll().isEmpty()
     }
 }

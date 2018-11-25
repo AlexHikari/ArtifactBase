@@ -1,14 +1,12 @@
 package com.alex.domain.repository
 
-import com.alex.domain.models.ArticleOverview
-import com.alex.domain.models.CardList
-import com.alex.domain.models.CardSetOverview
-import com.alex.domain.models.NewsOverview
+import com.alex.domain.models.*
 import io.reactivex.Single
 
+
 interface CardSetRemoteSource {
-    fun retrieveEndPoints(): List<String>
-    fun retrieveCards()
+    fun retrieveEndPoint(url: String): Single<EndPoint>
+    fun retrieveCards(firstEndpoint: String, secondEndpoint: String): Single<List<CardSet>>
 }
 
 interface CardSetLocalSource {
@@ -24,9 +22,9 @@ interface NewsRemoteSource {
      * Get all the news from the playArtifact site
      * @return MutableList<NewsCard> returns single object
      */
-    fun retrieveAllNews(): Single<List<NewsOverview>>
+    fun retrieveAllNews(): Single<List<News>>
 
-    fun retrieveArticleByUrl(url: String): Single<ArticleOverview>
+    fun retrieveArticleByUrl(url: String): Single<Article>
 }
 
 /**
@@ -38,15 +36,15 @@ interface NewsLocalSource {
      * Get all the news from the playArtifact site
      * @return MutableList<NewsCard> returns single object
      */
-    fun retrieveAllNews(): Single<List<NewsOverview>>
+    fun retrieveAllNews(): Single<List<News>>
 
     fun isNewsEmpty(): Boolean
 
-    fun setNews(news: List<NewsOverview>)
+    fun setNews(news: List<News>)
 
-    fun retrieveArticle(url: String): Single<ArticleOverview>
+    fun retrieveArticle(url: String): Single<Article>
 
-    fun setArticle(article: ArticleOverview)
+    fun setArticle(article: Article)
 
     fun isArticleEmpty(url: String): Boolean
 }
@@ -58,11 +56,11 @@ interface INewsRepository {
 
     /**
      * Get all the news from The repositorySource
-     * @return Single<MutableList<NewsOverview>>
+     * @return Single<MutableList<News>>
      */
-    fun retrieveNews(networkInfo: Boolean): Single<List<NewsOverview>>
+    fun retrieveNews(networkInfo: Boolean): Single<List<News>>
 
-    fun retrieveArticle(url: String): Single<ArticleOverview>
+    fun retrieveArticle(url: String): Single<Article>
 }
 
 

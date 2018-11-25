@@ -2,13 +2,13 @@ package com.alex.phom.presenter
 
 import com.alex.domain.interactor.article.GetArticleUseCase
 import com.alex.phom.error.ErrorHandler
-import com.alex.phom.models.Article
-import com.alex.phom.models.mappers.toArticle
+import com.alex.phom.models.ArticleView
+import com.alex.phom.models.mappers.toArticleView
 
 class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: ArticlePresenter.View, errorHandler: ErrorHandler) :
         Presenter<ArticlePresenter.View>(view = view, errorHandler = errorHandler) {
 
-    private var articleList = arrayListOf<Article>()
+    private var articleList = arrayListOf<ArticleView>()
     override fun initialize() {
         view.showProgress()
         articleList = view.getArticleList()
@@ -16,7 +16,7 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
                 url = view.getArticleUrl(articleList),
                 onSuccess = {
                     view.hideProgress()
-                    val article = it.toArticle()
+                    val article = it.toArticleView()
                     if (article.post_image.isEmpty()) {
                         articleList.forEach { elem ->
                             if (article.post_url == elem.post_url) {
@@ -24,7 +24,7 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
                             }
                         }
                     }
-                    view.showArticle(article = article, isLast = false, isFist = false)
+                    view.showArticle(articleView = article, isLast = false, isFist = false)
                 },
                 onError = onError { view.showError(it) })
     }
@@ -47,9 +47,9 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
 
 
     interface View : Presenter.View {
-        fun showArticle(article: Article, isLast: Boolean, isFist: Boolean)
-        fun getArticleList(): ArrayList<Article>
-        fun getArticleUrl(articleList: ArrayList<Article>): String
+        fun showArticle(articleView: ArticleView, isLast: Boolean, isFist: Boolean)
+        fun getArticleList(): ArrayList<ArticleView>
+        fun getArticleUrl(articleViewList: ArrayList<ArticleView>): String
         fun finishActivity()
     }
 }

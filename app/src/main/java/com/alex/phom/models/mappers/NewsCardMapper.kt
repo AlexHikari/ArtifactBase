@@ -1,17 +1,17 @@
 package com.alex.phom.models.mappers
 
-import com.alex.domain.models.ArticleOverview
-import com.alex.domain.models.NewsOverview
-import com.alex.phom.models.Article
-import com.alex.phom.models.NewsCard
+import com.alex.domain.models.Article
+import com.alex.domain.models.News
+import com.alex.phom.models.ArticleView
+import com.alex.phom.models.NewsCardView
 
-fun NewsOverview.toNewsCard(): NewsCard = NewsCard(
+fun News.toNewsCardView(): NewsCardView = NewsCardView(
         title = this.title,
         resourceIMG = this.resourceIMG,
         resourceURL = this.resourceURL
 )
 
-fun ArticleOverview.toArticle(): Article = Article(
+fun Article.toArticleView(): ArticleView = ArticleView(
         post_title = this.post_title,
         post_text = this.post_text,
         post_image = this.post_image,
@@ -20,7 +20,7 @@ fun ArticleOverview.toArticle(): Article = Article(
         post_url = this.post_url
 )
 
-fun NewsCard.toArticle(selected: Boolean): Article = Article(
+fun NewsCardView.toArticleView(selected: Boolean): ArticleView = ArticleView(
         post_url = this.resourceURL,
         post_date = "",
         post_image = this.resourceIMG,

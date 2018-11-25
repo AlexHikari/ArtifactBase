@@ -7,7 +7,7 @@ package com.alex.phom.models
  * @property resourceIMG String
  * @constructor
  */
-data class NewsCard(
+data class NewsCardView(
         val title: String,
         val resourceURL: String,
         val resourceIMG: String

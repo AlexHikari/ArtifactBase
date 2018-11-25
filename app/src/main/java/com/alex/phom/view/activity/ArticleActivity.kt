@@ -8,7 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.alex.phom.R
 import com.alex.phom.extension.load
-import com.alex.phom.models.Article
+import com.alex.phom.models.ArticleView
 import com.alex.phom.presenter.ArticlePresenter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -64,32 +64,32 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
         home_header.button_back.setOnClickListener { presenter.onBackButtonClicked() }
     }
 
-    override fun showArticle(article: Article, isLast: Boolean, isFist: Boolean) {
+    override fun showArticle(articleView: ArticleView, isLast: Boolean, isFist: Boolean) {
         if (isLast) {
             //show right arrow
         }
         if (isFist) {
             // show leftArrow
         }
-        articleText.loadData(article.post_text, "text/html", "UTF-8")
-        articleImage.load(article.post_image)
-        articleTitle.text = article.post_title
-        articleDate.text = article.post_date
+        articleText.loadData(articleView.post_text, "text/html", "UTF-8")
+        articleImage.load(articleView.post_image)
+        articleTitle.text = articleView.post_title
+        articleDate.text = articleView.post_date
 
     }
 
-    override fun getArticleUrl(articleList: ArrayList<Article>): String {
+    override fun getArticleUrl(articleViewList: ArrayList<ArticleView>): String {
         var returnedUrl = ""
-        articleList.forEach {
+        articleViewList.forEach {
             if (it.selected)
                 returnedUrl = it.post_url
         }
         return returnedUrl
     }
 
-    override fun getArticleList(): ArrayList<Article> {
+    override fun getArticleList(): ArrayList<ArticleView> {
 
-        return intent.getParcelableArrayListExtra<Article>(ARTICLE_BUNDLE)
+        return intent.getParcelableArrayListExtra<ArticleView>(ARTICLE_BUNDLE)
     }
 
     override fun finishActivity() {

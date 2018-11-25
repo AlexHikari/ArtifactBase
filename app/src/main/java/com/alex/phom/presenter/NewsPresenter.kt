@@ -2,23 +2,23 @@ package com.alex.phom.presenter
 
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.phom.error.ErrorHandler
-import com.alex.phom.models.Article
-import com.alex.phom.models.NewsCard
-import com.alex.phom.models.mappers.toArticle
-import com.alex.phom.models.mappers.toNewsCard
+import com.alex.phom.models.ArticleView
+import com.alex.phom.models.NewsCardView
+import com.alex.phom.models.mappers.toArticleView
+import com.alex.phom.models.mappers.toNewsCardView
 
 class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresenter.View, errorHandler: ErrorHandler) : Presenter<NewsPresenter.View>(view = view, errorHandler = errorHandler) {
 
-    private val newsList: MutableList<NewsCard> = mutableListOf()
+    private val newsListView: MutableList<NewsCardView> = mutableListOf()
 
     override fun initialize() {
         view.showProgress()
         getNewsUseCase.execute(
                 onSuccess = {
-                    val elements: MutableList<NewsCard> = mutableListOf()
+                    val elements: MutableList<NewsCardView> = mutableListOf()
                     it.forEach { elem ->
-                        elements.add(elem.toNewsCard())
-                        newsList.add(elem.toNewsCard())
+                        elements.add(elem.toNewsCardView())
+                        newsListView.add(elem.toNewsCardView())
 
                     }
                     view.hideProgress()
@@ -40,22 +40,22 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     override fun destroy() {
     }
 
-    fun onNewClicked(selected: NewsCard) {
-        val articleArray: ArrayList<Article> = arrayListOf()
-        newsList.forEachIndexed { index, elem ->
+    fun onNewClicked(selected: NewsCardView) {
+        val articleViewArray: ArrayList<ArticleView> = arrayListOf()
+        newsListView.forEachIndexed { index, elem ->
             if (elem == selected) {
-                articleArray.add(index, elem.toArticle(selected = true))
+                articleViewArray.add(index, elem.toArticleView(selected = true))
             } else {
-                articleArray.add(index, elem.toArticle(selected = false))
+                articleViewArray.add(index, elem.toArticleView(selected = false))
             }
         }
-        view.navigateToArticle(articleArray)
+        view.navigateToArticle(articleViewArray)
     }
 
 
     interface View : Presenter.View {
-        fun showNews(newsList: List<NewsCard>)
-        fun navigateToArticle(articleList: ArrayList<Article>)
+        fun showNews(newsListView: List<NewsCardView>)
+        fun navigateToArticle(articleViewList: ArrayList<ArticleView>)
         fun getNetworkInfo(): Boolean
     }
 }

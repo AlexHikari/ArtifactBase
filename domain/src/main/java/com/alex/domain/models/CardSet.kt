@@ -1,12 +1,12 @@
 package com.alex.domain.models
 
-data class CardSetOverview(
-        val cardList: List<CardList>,
+data class CardSet(
+        val cardList: List<Card>,
         val setInfo: SetInfo,
         val version: Long
 )
 
-data class CardList(
+data class Card(
         val cardID: Long,
         val baseCardID: Long,
         val cardType: CardType,
@@ -21,7 +21,7 @@ data class CardList(
         val itemDef: Long? = null,
         val attack: Long? = null,
         val hitPoints: Long? = null,
-        val references: List<Reference>,
+        val references: List<Any>,
         val manaCost: Long? = null,
         val isCrosslane: Boolean? = null,
         val charges: Long? = null,
@@ -66,7 +66,8 @@ enum class CardColor {
     BLACK,
     GREEN,
     BLUE,
-    RED
+    RED,
+    UNKNOWN
 }
 
 enum class CardType {
@@ -76,7 +77,8 @@ enum class CardType {
     IMPROVEMENT,
     ITEM,
     PASSIVE_ABILITY,
-    SPELL
+    SPELL,
+    UNKNOWN
 }
 
 data class Image(
@@ -101,28 +103,18 @@ data class LargeImage(
 enum class Rarity {
     COMMON,
     RARE,
-    UNCOMMON
+    UNCOMMON,
+    UNKNOWN
 }
 
-data class Reference(
-        val cardID: Long,
-        val refType: RefType,
-        val count: Long? = null
-)
-
-enum class RefType {
-    ACTIVE_ABILITY,
-    INCLUDES,
-    PASSIVE_ABILITY,
-    REFERENCES
-}
 
 enum class SubType {
     ACCESSORY,
     ARMOR,
     CONSUMABLE,
     DEED,
-    WEAPON
+    WEAPON,
+    UNKNOWN
 }
 
 data class SetInfo(
