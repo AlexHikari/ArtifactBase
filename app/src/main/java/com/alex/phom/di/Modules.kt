@@ -47,5 +47,5 @@ val dataModule = Kodein.Module {
     //Repositories
 
     bind<INewsRepository>() with singleton { NewsRepository(localSource = instance(), remoteSource = instance()) }
-    bind<ICardSetRepository>() with singleton { CardSetRepository(localSource = instance(), remoteSource = instance()) }
+    bind<ICardSetRepository>() with singleton { CardSetRepository(remoteSource = instance()) }
 }

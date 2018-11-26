@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:elevation="8dp"
     android:orientation="vertical"
     android:theme="@style/ArtifactTheme">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/headerbg">
 
         <Button
             android:id="@+id/button_back"
@@ -43,8 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/artifacticon"
-            tools:srcCompat="@drawable/artifacticon" />
+            app:srcCompat="@drawable/icon72"
+            tools:srcCompat="@drawable/icon72" />
 
     </android.support.constraint.ConstraintLayout>
 

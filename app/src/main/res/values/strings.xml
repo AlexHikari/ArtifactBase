@@ -5,7 +5,8 @@
     <string name="click_me">Click me</string>
     <string name="ImgDescriptionIco">Logo</string>
     <string name="tab_1">News</string>
-    <string name="tab_2">Cards</string>
+    <string name="tab_2">Gallery</string>
     <string name="tab_3">Deck Builder</string>
     <string name="articleActivity">ArticleActivity</string>
+    <string name="tab_4">NoIdea</string>
 </resources>

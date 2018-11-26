@@ -1,14 +1,13 @@
 package com.alex.data.repository
 
 import com.alex.data.datasource.cardset.CardSetApiSource
-import com.alex.data.datasource.cardset.CardSetRealmSource
 import com.alex.domain.models.Card
 import com.alex.domain.models.CardSet
 import com.alex.domain.repository.ICardSetRepository
 import io.reactivex.Flowable
 import io.reactivex.Single
 
-class CardSetRepository(private val localSource: CardSetRealmSource, private val remoteSource: CardSetApiSource) : ICardSetRepository {
+class CardSetRepository(private val remoteSource: CardSetApiSource) : ICardSetRepository {
 
     override fun retrieveAllCards(): Flowable<CardSet> {
         return remoteSource.retrieveEndPoint(url = "https://playartifact.com/cardset/00").flatMapPublisher { endpointOne ->

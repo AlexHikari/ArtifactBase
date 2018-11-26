@@ -29,7 +29,6 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
     override fun initializeUI() {
         cards_recycler_view.apply {
             layoutManager = GridLayoutManager(context, 3)
-            adapter = CardAdapter
         }
     }
 
