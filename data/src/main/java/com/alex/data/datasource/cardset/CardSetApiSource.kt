@@ -27,7 +27,7 @@ class CardSetApiSource : CardSetRemoteSource {
         return api.retrieveEndPoint(targetUrl = url).map { return@map it.toEndPoint() }
     }
 
-    override fun retrieveCards(firstEndpoint: String, secondEndpoint: String): Flowable<List<CardSet>> {
+    override fun retrieveCards(firstEndpoint: String, secondEndpoint: String): Flowable<CardSet> {
         return api.retrieveCardSet(firstEndpoint).map { it.toCardSet() }.mergeWith(api.retrieveCardSet(secondEndpoint).map { it.toCardSet() })
     }
 }

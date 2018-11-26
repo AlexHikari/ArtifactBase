@@ -9,7 +9,7 @@ import com.alex.phom.models.mappers.toNewsCardView
 
 class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresenter.View, errorHandler: ErrorHandler) : Presenter<NewsPresenter.View>(view = view, errorHandler = errorHandler) {
 
-    private val newsListView: MutableList<NewsCardView> = mutableListOf()
+    private val newsListView = mutableListOf<NewsCardView>()
 
     override fun initialize() {
         view.showProgress()
