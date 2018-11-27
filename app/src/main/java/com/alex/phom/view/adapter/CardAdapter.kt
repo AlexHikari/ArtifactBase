@@ -13,6 +13,8 @@ class CardAdapter(onItemClickListener: (Cardview) -> Unit) : RootAdapter<Cardvie
 
     class ViewHolder(view: View) : RootViewHolder<Cardview>(itemView = view) {
         override fun bind(model: Cardview) {
+
+            
             if (model.attack != null && model.attack > 0) {
                 itemView.cardAttack.text = model.attack.toString()
             } else {
