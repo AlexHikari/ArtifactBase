@@ -38,6 +38,7 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     }
 
     override fun destroy() {
+        getNewsUseCase.clear()
     }
 
     fun onNewClicked(selected: NewsCardView) {

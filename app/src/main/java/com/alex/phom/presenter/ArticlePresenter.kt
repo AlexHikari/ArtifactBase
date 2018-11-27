@@ -42,7 +42,7 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
     }
 
     override fun destroy() {
-
+        getArticleUseCase.clear()
     }
 
 

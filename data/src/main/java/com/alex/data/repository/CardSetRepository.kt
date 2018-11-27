@@ -12,7 +12,7 @@ class CardSetRepository(private val remoteSource: CardSetApiSource) : ICardSetRe
     override fun retrieveAllCards(): Flowable<CardSet> {
         return remoteSource.retrieveEndPoint(url = "https://playartifact.com/cardset/00").flatMapPublisher { endpointOne ->
             return@flatMapPublisher remoteSource.retrieveEndPoint(url = "https://playartifact.com/cardset/01").flatMapPublisher { endpointTwo ->
-                return@flatMapPublisher remoteSource.retrieveCards(endpointOne.cdnRoot + endpointOne.url, endpointTwo.cdnRoot + endpointTwo.cdnRoot)
+                return@flatMapPublisher remoteSource.retrieveCards(endpointOne.cdnRoot + endpointOne.url.drop(1), endpointTwo.cdnRoot + endpointTwo.url.drop(1))
             }
         }
     }

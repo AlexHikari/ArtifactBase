@@ -3,6 +3,7 @@ package com.alex.phom.presenter
 import com.alex.domain.interactor.cards.GetCardSetsUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.CardSetView
+import com.alex.phom.models.Cardview
 import com.alex.phom.models.mappers.toCardSetView
 
 class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view: CardSetsPresenter.View, errorHandler: ErrorHandler) : Presenter<CardSetsPresenter.View>(view = view, errorHandler = errorHandler) {
@@ -23,16 +24,19 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
         )
     }
 
+    fun onCardClicked(card: Cardview) {
+    }
+
     override fun resume() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun stop() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun destroy() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getCardSetsUseCase.clear()
     }
 
     interface View : Presenter.View {

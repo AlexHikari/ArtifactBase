@@ -19,6 +19,7 @@ fun List<Card>.toCardListView(): List<Cardview> {
 
 fun Card.toCardView(): Cardview = Cardview(
         baseCardID = this.baseCardID,
+        cardText = this.cardText.toNameView(),
         armor = this.armor,
         attack = this.attack,
         cardColor = this.cardColor.toCardColorView(),

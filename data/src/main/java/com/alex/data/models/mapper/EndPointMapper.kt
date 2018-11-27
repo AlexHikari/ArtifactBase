@@ -4,7 +4,7 @@ import com.alex.data.models.EndPointDAO
 import com.alex.domain.models.EndPoint
 
 fun EndPointDAO.toEndPoint(): EndPoint = EndPoint(
-        cdnRoot = this.cdnRoot,
+        cdnRoot = this.cdn_root,
         url = this.url,
-        expireTime = this.expireTime
+        expireTime = this.expire_time
 )

@@ -13,5 +13,7 @@
     <color name="colorBackgroundDark">#060808</color>
     <color name="colorAccent">#201240</color>
     <color name="colorTextColor">#ccccc6</color>
-    <color name="TextBackground">#c83d3d3d</color>
+    <color name="TextBackground">#c82d2d2d</color>
+    <color name="TextBackgroundCard">#e71b1b1b</color>
+    <color name="TextBackgroundCardDark">#e7000000</color>
 </resources>

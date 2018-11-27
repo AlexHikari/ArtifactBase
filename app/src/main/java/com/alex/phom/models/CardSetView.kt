@@ -8,6 +8,7 @@ data class CardSetView(
 
 data class Cardview(
         val cardID: Long,
+        val cardText: NameView,
         val baseCardID: Long,
         val CardType: CardTypeView,
         val cardName: NameView,

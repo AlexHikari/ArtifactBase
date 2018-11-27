@@ -4,6 +4,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.alex.phom.R
 import com.alex.phom.presenter.HomePresenter
+import com.alex.phom.view.fragment.CardSetsFragment
 import com.alex.phom.view.fragment.NewsFragment
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
@@ -37,7 +38,27 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
     }
 
     override fun registerListeners() {
-        // Nothing to do yet
+        bottom_navigation.setOnTabSelectedListener { position, wasSelected ->
+            when (position) {
+                0 -> {
+                    if (!wasSelected) {
+                        supportFragmentManager.beginTransaction().replace(R.id.contentView, NewsFragment.newInstance()).commit()
+                        true
+                    } else {
+                        false
+                    }
+                }
+                1 -> {
+                    if (!wasSelected) {
+                        supportFragmentManager.beginTransaction().replace(R.id.contentView, CardSetsFragment.newInstance()).commit()
+                        true
+                    } else {
+                        false
+                    }
+                }
+                else -> false
+            }
+        }
     }
 
     override fun initializeBottomNavigationView(items: List<AHBottomNavigationItem>) {

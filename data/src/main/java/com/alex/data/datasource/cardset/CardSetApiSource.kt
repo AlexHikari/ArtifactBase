@@ -9,7 +9,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CardSetApiSource : CardSetRemoteSource {
     private var api: CardSetApi
@@ -17,7 +17,8 @@ class CardSetApiSource : CardSetRemoteSource {
     init {
         val retrofitforDataSet = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://playartifact.com/")
                 .build()
 
         api = retrofitforDataSet.create(CardSetApi::class.java)
@@ -28,6 +29,10 @@ class CardSetApiSource : CardSetRemoteSource {
     }
 
     override fun retrieveCards(firstEndpoint: String, secondEndpoint: String): Flowable<CardSet> {
-        return api.retrieveCardSet(firstEndpoint).map { it.toCardSet() }.mergeWith(api.retrieveCardSet(secondEndpoint).map { it.toCardSet() })
+        return api.retrieveCardSet(firstEndpoint).map {
+            return@map it.toCardSet()
+        }.mergeWith(api.retrieveCardSet(secondEndpoint).map {
+            return@map it.toCardSet()
+        })
     }
 }

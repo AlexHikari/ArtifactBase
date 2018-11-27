@@ -4,9 +4,9 @@ import com.alex.data.models.*
 import com.alex.domain.models.*
 
 fun CardSetDAO.toCardSet(): CardSet = CardSet(
-        cardList = this.cardSet.cardList.toCards(),
-        setInfo = this.cardSet.setInfo.toCardSetInfo(),
-        version = this.cardSet.version
+        cardList = this.card_set.card_list.toCards(),
+        setInfo = this.card_set.set_info.toCardSetInfo(),
+        version = this.card_set.version
 )
 
 fun List<CardDAO>.toCards(): List<Card> {
@@ -18,9 +18,9 @@ fun List<CardDAO>.toCards(): List<Card> {
 }
 
 fun SetInfoDAO.toCardSetInfo(): SetInfo = SetInfo(
-        setID = this.setID,
+        setID = this.set_id,
         name = this.name.toName(),
-        packItemDef = this.packItemDef
+        packItemDef = this.pack_item_def
 )
 
 fun NameDAO.toName(): Name = Name(
@@ -55,28 +55,28 @@ fun NameDAO.toName(): Name = Name(
 )
 
 fun CardDAO.toCard(): Card = Card(
-        cardID = this.cardId,
-        baseCardID = this.baseCardId,
-        cardType = this.cardType.toCardType(),
+        cardID = this.card_id,
+        baseCardID = this.base_card_id,
+        cardType = this.card_type.toCardType(),
         armor = this.armor,
         attack = this.attack,
         cardColor = this.toCardColor(),
-        cardName = this.cardName.toCardName(),
-        cardText = this.cardText.toCardText(),
+        cardName = this.card_name.toCardName(),
+        cardText = this.card_text.toCardText(),
         charges = this.charges,
-        goldCost = this.goldCost,
-        heroIngameImage = this.heroIngameImage.toImage(),
-        hitPoints = this.hitPoints,
+        goldCost = this.gold_cost,
+        heroIngameImage = this.ingame_image.toImage(),
+        hitPoints = this.hit_points,
         illustrator = this.illustrator,
-        isCrosslane = this.isCrosslane,
-        isQuick = this.isQuick,
-        itemDef = this.itemDef,
-        largeImage = this.largeImage.toLargeImage(),
-        manaCost = this.manaCost,
-        miniImage = this.miniImage.toImage(),
-        rarity = this.rarity.toRarity(),
+        isCrosslane = this.is_crosslane,
+        isQuick = this.is_quick,
+        itemDef = this.item_def,
+        largeImage = this.large_image.toLargeImage(),
+        manaCost = this.mana_cost,
+        miniImage = this.mini_image.toImage(),
+        rarity = this.rarity?.toRarity(),
         references = this.references,
-        subType = this.subType.toSubType()
+        subType = this.sub_type?.toSubType()
 
 
 )
@@ -165,13 +165,13 @@ fun CardNameDAO.toCardName(): Name = Name(
 fun CardDAO.toCardColor(): CardColor {
 
     var color: CardColor = CardColor.UNKNOWN
-    if (isBlack)
+    if (is_black != null)
         color = CardColor.BLACK
-    if (isBlue)
+    if (is_blue != null)
         color = CardColor.BLUE
-    if (isGreen)
+    if (is_green != null)
         color = CardColor.GREEN
-    if (isRed)
+    if (is_red != null)
         color = CardColor.RED
     return color
 }

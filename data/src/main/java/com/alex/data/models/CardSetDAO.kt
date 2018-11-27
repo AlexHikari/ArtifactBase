@@ -1,292 +1,288 @@
 package com.alex.data.models
 
-import com.squareup.moshi.Json
-import io.realm.annotations.PrimaryKey
-
-
 data class CardSetDAO(
-        @Json(name = "card_set")
-        var cardSet: CardSetInfoDAO = CardSetInfoDAO()
+
+        var card_set: CardSetInfoDAO = CardSetInfoDAO()
 )
 
 data class CardSetInfoDAO(
-        @Json(name = "card_list")
-        var cardList: List<CardDAO> = listOf(),
-        @Json(name = "set_info")
-        var setInfo: SetInfoDAO = SetInfoDAO(),
-        @Json(name = "version")
+
+        var card_list: List<CardDAO> = listOf(),
+
+        var set_info: SetInfoDAO = SetInfoDAO(),
+
         var version: Long = 0
 )
 
 data class SetInfoDAO(
-        @Json(name = "name")
+
         var name: NameDAO = NameDAO(),
-        @Json(name = "pack_item_def")
-        var packItemDef: Long = 0,
-        @Json(name = "set_id")
-        var setID: Long = 0
+
+        var pack_item_def: Long = 0,
+
+        var set_id: Long = 0
 )
 
 data class NameDAO(
-        @Json(name = "brazilian")
-        var brazilian: String = "",
-        @Json(name = "bulgarian")
-        var bulgarian: String = "",
-        @Json(name = "czech")
-        var czech: String = "",
-        @Json(name = "danish")
-        var danish: String = "",
-        @Json(name = "dutch")
-        var dutch: String = "",
-        @Json(name = "english")
-        var english: String = "",
-        @Json(name = "finnish")
-        var finnish: String = "",
-        @Json(name = "french")
-        var french: String = "",
-        @Json(name = "german")
-        var german: String = "",
-        @Json(name = "greek")
-        var greek: String = "",
-        @Json(name = "hungarian")
-        var hungarian: String = "",
-        @Json(name = "italian")
-        var italian: String = "",
-        @Json(name = "japanese")
-        var japanese: String = "",
-        @Json(name = "koreana")
-        var koreana: String = "",
-        @Json(name = "latam")
-        var latam: String = "",
-        @Json(name = "norwegian")
-        var norwegian: String = "",
-        @Json(name = "polish")
-        var polish: String = "",
-        @Json(name = "portuguese")
-        var portuguese: String = "",
-        @Json(name = "romanian")
-        var romanian: String = "",
-        @Json(name = "russian")
-        var russian: String = "",
-        @Json(name = "schinese")
-        var schinese: String = "",
-        @Json(name = "spanish")
-        var spanish: String = "",
-        @Json(name = "swedish")
-        var swedish: String = "",
-        @Json(name = "tchinese")
-        var tchinese: String = "",
-        @Json(name = "thai")
-        var thai: String = "",
-        @Json(name = "turkish")
-        var turkish: String = "",
-        @Json(name = "ukrainian")
-        var ukrainian: String = "",
-        @Json(name = "vietnamese")
-        var vietnamese: String = ""
+
+        var brazilian: String? = "",
+
+        var bulgarian: String? = "",
+
+        var czech: String? = "",
+
+        var danish: String? = "",
+
+        var dutch: String? = "",
+
+        var english: String? = "",
+
+        var finnish: String? = "",
+
+        var french: String? = "",
+
+        var german: String? = "",
+
+        var greek: String? = "",
+
+        var hungarian: String? = "",
+
+        var italian: String? = "",
+
+        var japanese: String? = "",
+
+        var koreana: String? = "",
+
+        var latam: String? = "",
+
+        var norwegian: String? = "",
+
+        var polish: String? = "",
+
+        var portuguese: String? = "",
+
+        var romanian: String? = "",
+
+        var russian: String? = "",
+
+        var schinese: String? = "",
+
+        var spanish: String? = "",
+
+        var swedish: String? = "",
+
+        var tchinese: String? = "",
+
+        var thai: String? = "",
+
+        var turkish: String? = "",
+
+        var ukrainian: String? = "",
+
+        var vietnamese: String? = ""
 )
 
 data class CardDAO(
-        @Json(name = "armor")
+
         var armor: Long = 0,
-        @Json(name = "attack")
-        var attack: Long = 0,
-        @Json(name = "base_card_id")
-        @PrimaryKey
-        var baseCardId: Long = 0,
-        @Json(name = "card_id")
-        var cardId: Long = 0,
-        @Json(name = "card_name")
-        var cardName: CardNameDAO = CardNameDAO(),
-        @Json(name = "card_text")
-        var cardText: CardTextDAO = CardTextDAO(),
-        @Json(name = "card_type")
-        var cardType: String = "",
-        @Json(name = "charges")
+
+        var attack: Long? = 0,
+
+        var base_card_id: Long = 0,
+
+        var card_id: Long = 0,
+
+        var card_name: CardNameDAO = CardNameDAO(),
+
+        var card_text: CardTextDAO = CardTextDAO(),
+
+        var card_type: String = "",
+
         var charges: Long = 0,
-        @Json(name = "gold_cost")
-        var goldCost: Long = 0,
-        @Json(name = "hit_poLongs")
-        var hitPoints: Long = 0,
-        @Json(name = "illustrator")
-        var illustrator: String = "",
-        @Json(name = "ingame_image")
-        var heroIngameImage: MiniImageDAO = MiniImageDAO(),
-        @Json(name = "is_black")
-        var isBlack: Boolean = false,
-        @Json(name = "is_blue")
-        var isBlue: Boolean = false,
-        @Json(name = "is_crosslane")
-        var isCrosslane: Boolean = false,
-        @Json(name = "is_green")
-        var isGreen: Boolean = false,
-        @Json(name = "is_quick")
-        var isQuick: Boolean = false,
-        @Json(name = "is_red")
-        var isRed: Boolean = false,
-        @Json(name = "item_def")
-        var itemDef: Long = 0,
-        @Json(name = "large_image")
-        var largeImage: LargeImageDAO = LargeImageDAO(),
-        @Json(name = "mana_cost")
-        var manaCost: Long = 0,
-        @Json(name = "mini_image")
-        var miniImage: MiniImageDAO = MiniImageDAO(),
-        @Json(name = "rarity")
-        var rarity: String = "",
-        @Json(name = "references")
+
+        var gold_cost: Long = 0,
+
+        var hit_points: Long? = 0,
+
+        var illustrator: String? = "",
+
+        var ingame_image: MiniImageDAO = MiniImageDAO(),
+
+        var is_black: Boolean? = false,
+
+        var is_blue: Boolean? = false,
+
+        var is_crosslane: Boolean? = false,
+
+        var is_green: Boolean? = false,
+
+        var is_quick: Boolean? = false,
+
+        var is_red: Boolean? = false,
+
+        var item_def: Long? = 0,
+
+        var large_image: LargeImageDAO = LargeImageDAO(),
+
+        var mana_cost: Long? = 0,
+
+        var mini_image: MiniImageDAO = MiniImageDAO(),
+
+        var rarity: String? = "",
+
         var references: List<Any> = listOf(),
-        @Json(name = "sub_type")
-        var subType: String = ""
+
+        var sub_type: String? = ""
 )
 
 
 data class MiniImageDAO(
-        @Json(name = "default")
-        var default: String = ""
+
+        var default: String? = ""
 )
 
 data class LargeImageDAO(
-        @Json(name = "brazilian")
-        var brazilian: String = "",
-        @Json(name = "default")
-        var default: String = "",
-        @Json(name = "french")
-        var french: String = "",
-        @Json(name = "german")
-        var german: String = "",
-        @Json(name = "italian")
-        var italian: String = "",
-        @Json(name = "japanese")
-        var japanese: String = "",
-        @Json(name = "koreana")
-        var koreana: String = "",
-        @Json(name = "latam")
-        var latam: String = "",
-        @Json(name = "russian")
-        var russian: String = "",
-        @Json(name = "schinese")
-        var schinese: String = "",
-        @Json(name = "spanish")
-        var spanish: String = "",
-        @Json(name = "tchinese")
-        var tchinese: String = ""
+
+        var brazilian: String? = "",
+
+        var default: String? = "",
+
+        var french: String? = "",
+
+        var german: String? = "",
+
+        var italian: String? = "",
+
+        var japanese: String? = "",
+
+        var koreana: String? = "",
+
+        var latam: String? = "",
+
+        var russian: String? = "",
+
+        var schinese: String? = "",
+
+        var spanish: String? = "",
+
+        var tchinese: String? = ""
 )
 
 data class CardNameDAO(
-        @Json(name = "brazilian")
-        var brazilian: String = "",
-        @Json(name = "bulgarian")
-        var bulgarian: String = "",
-        @Json(name = "czech")
-        var czech: String = "",
-        @Json(name = "danish")
-        var danish: String = "",
-        @Json(name = "dutch")
-        var dutch: String = "",
-        @Json(name = "english")
-        var english: String = "",
-        @Json(name = "finnish")
-        var finnish: String = "",
-        @Json(name = "french")
-        var french: String = "",
-        @Json(name = "german")
-        var german: String = "",
-        @Json(name = "greek")
-        var greek: String = "",
-        @Json(name = "hungarian")
-        var hungarian: String = "",
-        @Json(name = "italian")
-        var italian: String = "",
-        @Json(name = "japanese")
-        var japanese: String = "",
-        @Json(name = "koreana")
-        var koreana: String = "",
-        @Json(name = "latam")
-        var latam: String = "",
-        @Json(name = "norwegian")
-        var norwegian: String = "",
-        @Json(name = "polish")
-        var polish: String = "",
-        @Json(name = "portuguese")
-        var portuguese: String = "",
-        @Json(name = "romanian")
-        var romanian: String = "",
-        @Json(name = "russian")
-        var russian: String = "",
-        @Json(name = "schinese")
-        var schinese: String = "",
-        @Json(name = "spanish")
-        var spanish: String = "",
-        @Json(name = "swedish")
-        var swedish: String = "",
-        @Json(name = "tchinese")
-        var tchinese: String = "",
-        @Json(name = "thai")
-        var thai: String = "",
-        @Json(name = "turkish")
-        var turkish: String = "",
-        @Json(name = "ukrainian")
-        var ukrainian: String = "",
-        @Json(name = "vietnamese")
-        var vietnamese: String = ""
+
+        var brazilian: String? = "",
+
+        var bulgarian: String? = "",
+
+        var czech: String? = "",
+
+        var danish: String? = "",
+
+        var dutch: String? = "",
+
+        var english: String? = "",
+
+        var finnish: String? = "",
+
+        var french: String? = "",
+
+        var german: String? = "",
+
+        var greek: String? = "",
+
+        var hungarian: String? = "",
+
+        var italian: String? = "",
+
+        var japanese: String? = "",
+
+        var koreana: String? = "",
+
+        var latam: String? = "",
+
+        var norwegian: String? = "",
+
+        var polish: String? = "",
+
+        var portuguese: String? = "",
+
+        var romanian: String? = "",
+
+        var russian: String? = "",
+
+        var schinese: String? = "",
+
+        var spanish: String? = "",
+
+        var swedish: String? = "",
+
+        var tchinese: String? = "",
+
+        var thai: String? = "",
+
+        var turkish: String? = "",
+
+        var ukrainian: String? = "",
+
+        var vietnamese: String? = ""
 )
 
 data class CardTextDAO(
-        @Json(name = "brazilian")
-        var brazilian: String = "",
-        @Json(name = "bulgarian")
-        var bulgarian: String = "",
-        @Json(name = "czech")
-        var czech: String = "",
-        @Json(name = "danish")
-        var danish: String = "",
-        @Json(name = "dutch")
-        var dutch: String = "",
-        @Json(name = "english")
-        var english: String = "",
-        @Json(name = "finnish")
-        var finnish: String = "",
-        @Json(name = "french")
-        var french: String = "",
-        @Json(name = "german")
-        var german: String = "",
-        @Json(name = "greek")
-        var greek: String = "",
-        @Json(name = "hungarian")
-        var hungarian: String = "",
-        @Json(name = "italian")
-        var italian: String = "",
-        @Json(name = "japanese")
-        var japanese: String = "",
-        @Json(name = "koreana")
-        var koreana: String = "",
-        @Json(name = "latam")
-        var latam: String = "",
-        @Json(name = "norwegian")
-        var norwegian: String = "",
-        @Json(name = "polish")
-        var polish: String = "",
-        @Json(name = "portuguese")
-        var portuguese: String = "",
-        @Json(name = "romanian")
-        var romanian: String = "",
-        @Json(name = "russian")
-        var russian: String = "",
-        @Json(name = "schinese")
-        var schinese: String = "",
-        @Json(name = "spanish")
-        var spanish: String = "",
-        @Json(name = "swedish")
-        var swedish: String = "",
-        @Json(name = "tchinese")
-        var tchinese: String = "",
-        @Json(name = "thai")
-        var thai: String = "",
-        @Json(name = "turkish")
-        var turkish: String = "",
-        @Json(name = "ukrainian")
-        var ukrainian: String = "",
-        @Json(name = "vietnamese")
-        var vietnamese: String = ""
+
+        var brazilian: String? = "",
+
+        var bulgarian: String? = "",
+
+        var czech: String? = "",
+
+        var danish: String? = "",
+
+        var dutch: String? = "",
+
+        var english: String? = "",
+
+        var finnish: String? = "",
+
+        var french: String? = "",
+
+        var german: String? = "",
+
+        var greek: String? = "",
+
+        var hungarian: String? = "",
+
+        var italian: String? = "",
+
+        var japanese: String? = "",
+
+        var koreana: String? = "",
+
+        var latam: String? = "",
+
+        var norwegian: String? = "",
+
+        var polish: String? = "",
+
+        var portuguese: String? = "",
+
+        var romanian: String? = "",
+
+        var russian: String? = "",
+
+        var schinese: String? = "",
+
+        var spanish: String? = "",
+
+        var swedish: String? = "",
+
+        var tchinese: String? = "",
+
+        var thai: String? = "",
+
+        var turkish: String? = "",
+
+        var ukrainian: String? = "",
+
+        var vietnamese: String? = ""
 )
+
