@@ -44,8 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/icon72"
-            tools:srcCompat="@drawable/icon72" />
+            app:srcCompat="@drawable/mainicon"
+            tools:srcCompat="@drawable/mainicon" />
 
     </android.support.constraint.ConstraintLayout>
 

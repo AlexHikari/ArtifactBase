@@ -16,4 +16,5 @@
     <color name="TextBackground">#c82d2d2d</color>
     <color name="TextBackgroundCard">#e71b1b1b</color>
     <color name="TextBackgroundCardDark">#e7000000</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>
