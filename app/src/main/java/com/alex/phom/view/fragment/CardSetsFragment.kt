@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
-import com.alex.phom.models.CardSetView
+import com.alex.phom.models.Cardview
 import com.alex.phom.presenter.CardSetsPresenter
 import com.alex.phom.view.adapter.CardAdapter
 import com.github.salomonbrys.kodein.Kodein
@@ -50,10 +50,8 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun hideProgress() = progressView.hideMe()
 
-    override fun showCards(cardSet: List<CardSetView>) {
-        cardSet.forEach { set ->
-            cardAdapter.addAll(set.cardList.toMutableList())
-        }
+    override fun showCards(cardList: List<Cardview>) {
+        cardAdapter.addAll(cardList.toMutableList())
     }
 
 }
