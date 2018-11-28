@@ -13,19 +13,18 @@
         android:layout_height="match_parent"
         android:background="@drawable/headerbg">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="back"
+            android:background="@drawable/backicon"
             android:textAllCaps="true"
             android:textColor="@color/colorTextColor"
             android:textSize="10sp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,8 +34,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:contentDescription="@string/ImgDescriptionIco"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -4,283 +4,170 @@ import io.realm.RealmList
 import io.realm.RealmObject
 
 
-open class CardSetInfoVo(
+open class CardVo(
 
-        var card_list: RealmList<CardVo> = RealmList(),
+        open var armor: Long = 0,
+        open var attack: Long = 0,
+        open var base_card_id: Long = 0,
+        open var card_id: Long = 0,
+        open var card_name: CardNameVo = CardNameVo(),
+        open var card_text: CardTextVo = CardTextVo(),
+        open var card_type: String = "",
+        open var charges: Long = 0,
+        open var gold_cost: Long = 0,
+        open var hit_points: Long = 0,
+        open var illustrator: String = "",
+        open var ingame_image: MiniImageVo = MiniImageVo(),
+        open var is_black: Boolean = false,
+        open var is_blue: Boolean = false,
+        open var is_crosslane: Boolean = false,
+        open var is_green: Boolean = false,
+        open var is_quick: Boolean = false,
+        open var is_red: Boolean = false,
+        open var item_def: Long = 0,
+        open var large_image: LargeImageVo = LargeImageVo(),
+        open var mana_cost: Long = 0,
+        open var mini_image: MiniImageVo = MiniImageVo(),
+        open var rarity: String = "",
+        open var references: RealmList<ReferenceVo> = RealmList(ReferenceVo()),
+        open var sub_type: String = ""
+) : RealmObject()
 
-        var set_info: SetInfoVo = SetInfoVo(),
+open class ReferenceVo(
+        open var card_id: Long = 0,
+        open var ref_type: String = "",
+        open var count: Long = 0
 
-        var version: Long = 0
+) : RealmObject()
+
+open class CardSetVo(
+
+        open var card_list: RealmList<CardVo> = RealmList(CardVo()),
+        open var set_info: SetInfoVo = SetInfoVo(),
+        open var version: Long = 0
 ) : RealmObject()
 
 open class SetInfoVo(
 
-        var name: NameVo = NameVo(),
-
-        var pack_item_def: Long = 0,
-
-        var set_id: Long = 0
+        open var name: NameVo = NameVo(),
+        open var pack_item_def: Long = 0,
+        open var set_id: Long = 0
 ) : RealmObject()
 
 open class NameVo(
 
-        var brazilian: String = "",
-
-        var bulgarian: String = "",
-
-        var czech: String = "",
-
-        var danish: String = "",
-
-        var dutch: String = "",
-
-        var english: String = "",
-
-        var finnish: String = "",
-
-        var french: String = "",
-
-        var german: String = "",
-
-        var greek: String = "",
-
-        var hungarian: String = "",
-
-        var italian: String = "",
-
-        var japanese: String = "",
-
-        var koreana: String = "",
-
-        var latam: String = "",
-
-        var norwegian: String = "",
-
-        var polish: String = "",
-
-        var portuguese: String = "",
-
-        var romanian: String = "",
-
-        var russian: String = "",
-
-        var schinese: String = "",
-
-        var spanish: String = "",
-
-        var swedish: String = "",
-
-        var tchinese: String = "",
-
-        var thai: String = "",
-
-        var turkish: String = "",
-
-        var ukrainian: String = "",
-
-        var vietnamese: String = ""
-) : RealmObject()
-
-open class CardVo(
-
-        var armor: Long = 0,
-
-        var attack: Long = 0,
-
-        var base_card_id: Long = 0,
-
-        var card_id: Long = 0,
-
-        var card_name: CardNameVo = CardNameVo(),
-
-        var card_text: CardTextVo = CardTextVo(),
-
-        var card_type: String = "",
-
-        var charges: Long = 0,
-
-        var gold_cost: Long = 0,
-
-        var hit_points: Long = 0,
-
-        var illustrator: String = "",
-
-        var ingame_image: MiniImageVo = MiniImageVo(),
-
-        var is_black: Boolean = false,
-
-        var is_blue: Boolean = false,
-
-        var is_crosslane: Boolean = false,
-
-        var is_green: Boolean = false,
-
-        var is_quick: Boolean = false,
-
-        var is_red: Boolean = false,
-
-        var item_def: Long = 0,
-
-        var large_image: LargeImageVo = LargeImageVo(),
-
-        var mana_cost: Long = 0,
-
-        var mini_image: MiniImageVo = MiniImageVo(),
-
-        var rarity: String = "",
-
-        var references: RealmList<Any> = RealmList(),
-
-        var sub_type: String = ""
+        open var brazilian: String = "",
+        open var bulgarian: String = "",
+        open var czech: String = "",
+        open var danish: String = "",
+        open var dutch: String = "",
+        open var english: String = "",
+        open var finnish: String = "",
+        open var french: String = "",
+        open var german: String = "",
+        open var greek: String = "",
+        open var hungarian: String = "",
+        open var italian: String = "",
+        open var japanese: String = "",
+        open var koreana: String = "",
+        open var latam: String = "",
+        open var norwegian: String = "",
+        open var polish: String = "",
+        open var portuguese: String = "",
+        open var romanian: String = "",
+        open var russian: String = "",
+        open var schinese: String = "",
+        open var spanish: String = "",
+        open var swedish: String = "",
+        open var tchinese: String = "",
+        open var thai: String = "",
+        open var turkish: String = "",
+        open var ukrainian: String = "",
+        open var vietnamese: String = ""
 ) : RealmObject()
 
 
 open class MiniImageVo(
-        var defauldt: String = ""
+        open var defauldt: String = ""
 ) : RealmObject()
 
 open class LargeImageVo(
 
-        var brazilian: String = "",
-
-        var default: String = "",
-
-        var french: String = "",
-
-        var german: String = "",
-
-        var italian: String = "",
-
-        var japanese: String = "",
-
-        var koreana: String = "",
-
-        var latam: String = "",
-
-        var russian: String = "",
-
-        var schinese: String = "",
-
-        var spanish: String = "",
-
-        var tchinese: String = ""
+        open var brazilian: String = "",
+        open var default: String = "",
+        open var french: String = "",
+        open var german: String = "",
+        open var italian: String = "",
+        open var japanese: String = "",
+        open var koreana: String = "",
+        open var latam: String = "",
+        open var russian: String = "",
+        open var schinese: String = "",
+        open var spanish: String = "",
+        open var tchinese: String = ""
 ) : RealmObject()
 
 open class CardNameVo(
 
-        var brazilian: String = "",
-
-        var bulgarian: String = "",
-
-        var czech: String = "",
-
-        var danish: String = "",
-
-        var dutch: String = "",
-
-        var english: String = "",
-
-        var finnish: String = "",
-
-        var french: String = "",
-
-        var german: String = "",
-
-        var greek: String = "",
-
-        var hungarian: String = "",
-
-        var italian: String = "",
-
-        var japanese: String = "",
-
-        var koreana: String = "",
-
-        var latam: String = "",
-
-        var norwegian: String = "",
-
-        var polish: String = "",
-
-        var portuguese: String = "",
-
-        var romanian: String = "",
-
-        var russian: String = "",
-
-        var schinese: String = "",
-
-        var spanish: String = "",
-
-        var swedish: String = "",
-
-        var tchinese: String = "",
-
-        var thai: String = "",
-
-        var turkish: String = "",
-
-        var ukrainian: String = "",
-
-        var vietnamese: String = ""
+        open var brazilian: String = "",
+        open var bulgarian: String = "",
+        open var czech: String = "",
+        open var danish: String = "",
+        open var dutch: String = "",
+        open var english: String = "",
+        open var finnish: String = "",
+        open var french: String = "",
+        open var german: String = "",
+        open var greek: String = "",
+        open var hungarian: String = "",
+        open var italian: String = "",
+        open var japanese: String = "",
+        open var koreana: String = "",
+        open var latam: String = "",
+        open var norwegian: String = "",
+        open var polish: String = "",
+        open var portuguese: String = "",
+        open var romanian: String = "",
+        open var russian: String = "",
+        open var schinese: String = "",
+        open var spanish: String = "",
+        open var swedish: String = "",
+        open var tchinese: String = "",
+        open var thai: String = "",
+        open var turkish: String = "",
+        open var ukrainian: String = "",
+        open var vietnamese: String = ""
 ) : RealmObject()
 
 open class CardTextVo(
 
-        var brazilian: String = "",
-
-        var bulgarian: String = "",
-
-        var czech: String = "",
-
-        var danish: String = "",
-
-        var dutch: String = "",
-
-        var english: String = "",
-
-        var finnish: String = "",
-
-        var french: String = "",
-
-        var german: String = "",
-
-        var greek: String = "",
-
-        var hungarian: String = "",
-
-        var italian: String = "",
-
-        var japanese: String = "",
-
-        var koreana: String = "",
-
-        var latam: String = "",
-
-        var norwegian: String = "",
-
-        var polish: String = "",
-
-        var portuguese: String = "",
-
-        var romanian: String = "",
-
-        var russian: String = "",
-
-        var schinese: String = "",
-
-        var spanish: String = "",
-
-        var swedish: String = "",
-
-        var tchinese: String = "",
-
-        var thai: String = "",
-
-        var turkish: String = "",
-
-        var ukrainian: String = "",
-
-        var vietnamese: String = ""
+        open var brazilian: String = "",
+        open var bulgarian: String = "",
+        open var czech: String = "",
+        open var danish: String = "",
+        open var dutch: String = "",
+        open var english: String = "",
+        open var finnish: String = "",
+        open var french: String = "",
+        open var german: String = "",
+        open var greek: String = "",
+        open var hungarian: String = "",
+        open var italian: String = "",
+        open var japanese: String = "",
+        open var koreana: String = "",
+        open var latam: String = "",
+        open var norwegian: String = "",
+        open var polish: String = "",
+        open var portuguese: String = "",
+        open var romanian: String = "",
+        open var russian: String = "",
+        open var schinese: String = "",
+        open var spanish: String = "",
+        open var swedish: String = "",
+        open var tchinese: String = "",
+        open var thai: String = "",
+        open var turkish: String = "",
+        open var ukrainian: String = "",
+        open var vietnamese: String = ""
 ) : RealmObject()
 

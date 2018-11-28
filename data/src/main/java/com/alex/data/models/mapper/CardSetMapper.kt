@@ -2,6 +2,7 @@ package com.alex.data.models.mapper
 
 import com.alex.data.models.*
 import com.alex.domain.models.*
+import io.realm.RealmList
 
 fun CardSetDAO.toCardSet(): CardSet = CardSet(
         cardList = this.card_set.card_list.toCards(),
@@ -75,10 +76,26 @@ fun CardDAO.toCard(): Card = Card(
         manaCost = this.mana_cost,
         miniImage = this.mini_image.toImage(),
         rarity = this.rarity?.toRarity(),
-        references = this.references,
+        references = this.references.toReferenceList(),
         subType = this.sub_type?.toSubType()
 
 
+)
+
+fun List<ReferenceDAO>.toReferenceList(): List<Reference> {
+
+    val references = mutableListOf<Reference>()
+
+    this.forEach { reference ->
+        references.add(reference.toReference())
+    }
+    return references
+}
+
+fun ReferenceDAO.toReference(): Reference = Reference(
+        card_id = this.card_id!!,
+        ref_type = this.ref_type!!,
+        count = this.count!!
 )
 
 fun LargeImageDAO.toLargeImage(): LargeImage = LargeImage(
@@ -242,7 +259,7 @@ fun List<Card>.toCardsDAO(): List<CardDAO> {
 
 fun Card.toCardDAO(): CardDAO = CardDAO(
         base_card_id = this.baseCardID,
-        references = this.references,
+        references = this.references.toReferenceDAOList(),
         rarity = this.rarity.toString().toLowerCase().replace("_", " "),
         illustrator = this.illustrator,
         charges = this.charges!!,
@@ -268,6 +285,19 @@ fun Card.toCardDAO(): CardDAO = CardDAO(
         sub_type = this.subType.toString().toLowerCase().replace("_", " ")
 )
 
+fun List<Reference>.toReferenceDAOList(): List<ReferenceDAO> {
+    val references = mutableListOf<ReferenceDAO>()
+    this.forEach { reference ->
+        reference.toReferenceDAO()
+    }
+    return references
+}
+
+fun Reference.toReferenceDAO(): ReferenceDAO = ReferenceDAO(
+        card_id = this.card_id,
+        count = this.count,
+        ref_type = this.ref_type
+)
 
 fun Name.toCardNameDAO(): CardNameDAO = CardNameDAO(
         brazilian = this.brazilian,
@@ -386,3 +416,357 @@ fun Name.toNameDAO(): NameDAO = NameDAO(
         bulgarian = this.bulgarian,
         english = this.english
 )
+
+fun CardSetVo.toCardSet(): CardSet = CardSet(
+        cardList = this.card_list.toCardList(),
+        setInfo = this.set_info.toSetInfo(),
+        version = this.version
+)
+
+fun RealmList<CardVo>.toCardList(): List<Card> {
+    return this.toList().map { return@map it.toCard() }
+}
+
+fun SetInfoVo.toSetInfo(): SetInfo = SetInfo(
+        name = this.name.toName(),
+        packItemDef = this.pack_item_def,
+        setID = this.set_id
+)
+
+fun NameVo.toName(): Name = Name(
+        english = this.english,
+        tchinese = this.tchinese,
+        spanish = this.spanish,
+        schinese = this.schinese,
+        russian = this.russian,
+        latam = this.latam,
+        koreana = this.koreana,
+        japanese = this.japanese,
+        italian = this.italian,
+        german = this.german,
+        french = this.french,
+        brazilian = this.brazilian,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian
+)
+
+fun CardVo.toCard(): Card = Card(
+        cardID = this.card_id,
+        subType = this.sub_type.toSubType(),
+        references = this.references.toListOfReference(),
+        rarity = this.rarity.toRarity(),
+        miniImage = this.mini_image.toImage(),
+        manaCost = this.mana_cost,
+        largeImage = this.large_image.toLargeImage(),
+        itemDef = this.item_def,
+        isQuick = this.is_quick,
+        isCrosslane = this.is_crosslane,
+        illustrator = this.illustrator,
+        hitPoints = this.hit_points,
+        heroIngameImage = this.ingame_image.toImage(),
+        goldCost = this.gold_cost,
+        charges = this.charges,
+        cardText = this.card_text.toName(),
+        cardName = this.card_name.toName(),
+        cardColor = this.toCardColor(),
+        attack = this.attack,
+        armor = this.armor,
+        cardType = this.card_type.toCardType(),
+        baseCardID = this.base_card_id
+)
+
+fun RealmList<ReferenceVo>.toListOfReference(): List<Reference> {
+    return this.toList().map { return@map it.toReference() }
+}
+
+fun ReferenceVo.toReference(): Reference = Reference(
+        card_id = this.card_id,
+        ref_type = this.ref_type,
+        count = this.count
+)
+
+fun MiniImageVo.toImage(): Image = Image(
+        default = this.defauldt
+)
+
+fun LargeImageVo.toLargeImage(): LargeImage = LargeImage(
+        default = this.default,
+        brazilian = this.brazilian,
+        french = this.french,
+        german = this.german,
+        italian = this.italian,
+        japanese = this.japanese,
+        koreana = this.koreana,
+        latam = this.latam,
+        russian = this.russian,
+        schinese = this.schinese,
+        spanish = this.spanish,
+        tchinese = this.tchinese
+)
+
+fun CardTextVo.toName(): Name = Name(
+        english = this.english,
+        tchinese = this.tchinese,
+        spanish = this.spanish,
+        schinese = this.schinese,
+        russian = this.russian,
+        latam = this.latam,
+        koreana = this.koreana,
+        japanese = this.japanese,
+        italian = this.italian,
+        german = this.german,
+        french = this.french,
+        brazilian = this.brazilian,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian
+)
+
+fun CardNameVo.toName(): Name = Name(
+        english = this.english,
+        tchinese = this.tchinese,
+        spanish = this.spanish,
+        schinese = this.schinese,
+        russian = this.russian,
+        latam = this.latam,
+        koreana = this.koreana,
+        japanese = this.japanese,
+        italian = this.italian,
+        german = this.german,
+        french = this.french,
+        brazilian = this.brazilian,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian
+)
+
+fun CardVo.toCardColor(): CardColor {
+
+    var color: CardColor = CardColor.UNKNOWN
+    if (is_black)
+        color = CardColor.BLACK
+    if (is_blue)
+        color = CardColor.BLUE
+    if (is_green)
+        color = CardColor.GREEN
+    if (is_red)
+        color = CardColor.RED
+    return color
+}
+
+fun CardSet.toCardSetVo(): CardSetVo = CardSetVo(
+        card_list = this.cardList.toRealmList(),
+        version = this.version,
+        set_info = this.setInfo.toSetInfoVo()
+)
+
+fun SetInfo.toSetInfoVo(): SetInfoVo = SetInfoVo(
+        name = this.name.toNameVo(),
+        pack_item_def = this.packItemDef,
+        set_id = this.setID
+)
+
+fun Name.toNameVo(): NameVo = NameVo(
+        english = this.english!!,
+        tchinese = this.tchinese!!,
+        spanish = this.spanish!!,
+        schinese = this.schinese!!,
+        russian = this.russian!!,
+        latam = this.latam!!,
+        koreana = this.koreana!!,
+        japanese = this.japanese!!,
+        italian = this.italian!!,
+        german = this.german!!,
+        french = this.french!!,
+        brazilian = this.brazilian!!,
+        vietnamese = this.vietnamese!!,
+        ukrainian = this.ukrainian!!,
+        turkish = this.turkish!!,
+        thai = this.thai!!,
+        swedish = this.swedish!!,
+        romanian = this.romanian!!,
+        portuguese = this.portuguese!!,
+        polish = this.polish!!,
+        norwegian = this.norwegian!!,
+        hungarian = this.hungarian!!,
+        greek = this.greek!!,
+        finnish = this.finnish!!,
+        dutch = this.dutch!!,
+        danish = this.danish!!,
+        czech = this.czech!!,
+        bulgarian = this.bulgarian!!
+)
+
+fun List<Card>.toRealmList(): RealmList<CardVo> {
+    val cards = RealmList<CardVo>()
+    this.forEach {
+        cards.add(it.toCardVo())
+    }
+    return cards
+}
+
+fun Card.toCardVo(): CardVo = CardVo(
+        base_card_id = this.baseCardID,
+        armor = this.armor!!,
+        attack = this.attack!!,
+        charges = this.charges!!,
+        illustrator = this.illustrator!!,
+        rarity = this.rarity.toString().toLowerCase().replace("_", " "),
+        references = this.references.toRealmListReferences(),
+        card_id = this.cardID,
+        card_name = this.cardName.toCardNameVo(),
+        card_text = this.cardText.toCardTextVo(),
+        card_type = this.cardType.toString().toLowerCase().replace("_", " "),
+        gold_cost = this.goldCost!!,
+        hit_points = this.hitPoints!!,
+        ingame_image = this.heroIngameImage.toMiniImageVo(),
+        is_black = this.cardColor == CardColor.BLACK,
+        is_blue = this.cardColor == CardColor.BLUE,
+        is_crosslane = this.isCrosslane!!,
+        is_green = this.cardColor == CardColor.GREEN,
+        is_quick = this.isQuick!!,
+        is_red = this.cardColor == CardColor.RED,
+        item_def = this.itemDef!!,
+        large_image = this.largeImage.toLargeImageVo(),
+        mana_cost = this.manaCost!!,
+        mini_image = this.miniImage.toMiniImageVo(),
+        sub_type = this.subType.toString().toLowerCase().replace("_", " ")
+)
+
+fun LargeImage.toLargeImageVo(): LargeImageVo = LargeImageVo(
+        brazilian = this.brazilian!!,
+        tchinese = this.tchinese!!,
+        spanish = this.spanish!!,
+        schinese = this.schinese!!,
+        russian = this.russian!!,
+        latam = this.latam!!,
+        koreana = this.koreana!!,
+        japanese = this.japanese!!,
+        italian = this.italian!!,
+        german = this.german!!,
+        french = this.french!!,
+        default = this.default!!
+)
+
+fun Image.toMiniImageVo(): MiniImageVo = MiniImageVo(
+        defauldt = this.default!!
+)
+
+fun Name.toCardTextVo(): CardTextVo = CardTextVo(
+        brazilian = this.brazilian!!,
+        bulgarian = this.bulgarian!!,
+        czech = this.czech!!,
+        danish = this.danish!!,
+        dutch = this.dutch!!,
+        finnish = this.finnish!!,
+        greek = this.greek!!,
+        hungarian = this.hungarian!!,
+        norwegian = this.norwegian!!,
+        polish = this.polish!!,
+        romanian = this.romanian!!,
+        swedish = this.swedish!!,
+        thai = this.thai!!,
+        turkish = this.turkish!!,
+        ukrainian = this.ukrainian!!,
+        vietnamese = this.vietnamese!!,
+        french = this.french!!,
+        german = this.german!!,
+        italian = this.italian!!,
+        japanese = this.japanese!!,
+        koreana = this.koreana!!,
+        latam = this.latam!!,
+        russian = this.russian!!,
+        schinese = this.schinese!!,
+        spanish = this.spanish!!,
+        tchinese = this.tchinese!!,
+        portuguese = this.portuguese!!,
+        english = this.english!!
+)
+
+fun Name.toCardNameVo(): CardNameVo = CardNameVo(
+        english = this.english!!,
+        tchinese = this.tchinese!!,
+        spanish = this.spanish!!,
+        schinese = this.schinese!!,
+        russian = this.russian!!,
+        latam = this.latam!!,
+        koreana = this.koreana!!,
+        japanese = this.japanese!!,
+        italian = this.italian!!,
+        german = this.german!!,
+        french = this.french!!,
+        brazilian = this.brazilian!!,
+        vietnamese = this.vietnamese!!,
+        ukrainian = this.ukrainian!!,
+        turkish = this.turkish!!,
+        thai = this.thai!!,
+        swedish = this.swedish!!,
+        romanian = this.romanian!!,
+        portuguese = this.portuguese!!,
+        polish = this.polish!!,
+        norwegian = this.norwegian!!,
+        hungarian = this.hungarian!!,
+        greek = this.greek!!,
+        finnish = this.finnish!!,
+        dutch = this.dutch!!,
+        danish = this.danish!!,
+        czech = this.czech!!,
+        bulgarian = this.bulgarian!!
+)
+
+fun List<Reference>.toRealmListReferences(): RealmList<ReferenceVo> {
+
+    val references = RealmList<ReferenceVo>()
+    this.forEach { reference ->
+        references.add(reference.toReferenceVo())
+    }
+    return references
+}
+
+
+fun Reference.toReferenceVo(): ReferenceVo = ReferenceVo(
+        card_id = this.card_id,
+        count = this.count,
+        ref_type = this.ref_type
+)
+

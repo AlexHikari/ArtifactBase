@@ -21,7 +21,7 @@ data class Card(
         val itemDef: Long? = null,
         val attack: Long? = null,
         val hitPoints: Long? = null,
-        val references: List<Any>,
+        val references: List<Reference>,
         val manaCost: Long? = null,
         val isCrosslane: Boolean? = null,
         val charges: Long? = null,
@@ -29,6 +29,13 @@ data class Card(
         val subType: SubType? = null,
         val goldCost: Long? = null,
         val isQuick: Boolean? = null
+)
+
+data class Reference(
+        var card_id: Long = 0,
+        var ref_type: String = "",
+        var count: Long = 0
+
 )
 
 data class Name(
