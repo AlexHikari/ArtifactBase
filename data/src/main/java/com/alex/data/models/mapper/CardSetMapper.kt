@@ -179,8 +179,11 @@ fun CardDAO.toCardColor(): CardColor {
 fun String.toRarity(): Rarity {
     return when (this) {
         "Common" -> Rarity.COMMON
+        "common" -> Rarity.COMMON
         "Rare" -> Rarity.RARE
+        "rare" -> Rarity.RARE
         "Uncommon" -> Rarity.UNCOMMON
+        "uncommon" -> Rarity.UNCOMMON
         else -> Rarity.UNKNOWN
     }
 }
@@ -188,12 +191,19 @@ fun String.toRarity(): Rarity {
 fun String.toCardType(): CardType {
     return when (this) {
         "Ability" -> CardType.ABILITY
+        "ability" -> CardType.ABILITY
         "Creep" -> CardType.CREEP
+        "creep" -> CardType.CREEP
         "Hero" -> CardType.HERO
+        "hero" -> CardType.HERO
         "Improvement" -> CardType.IMPROVEMENT
+        "improvement" -> CardType.IMPROVEMENT
         "Item" -> CardType.ITEM
+        "item" -> CardType.ITEM
         "Passive Ability" -> CardType.PASSIVE_ABILITY
+        "passive ability" -> CardType.PASSIVE_ABILITY
         "Spell" -> CardType.SPELL
+        "spell" -> CardType.SPELL
         else -> CardType.UNKNOWN
     }
 }
@@ -201,9 +211,178 @@ fun String.toCardType(): CardType {
 fun String.toSubType(): SubType {
     return when (this) {
         "Accessory" -> SubType.ACCESSORY
+        "accessory" -> SubType.ACCESSORY
         "Armor" -> SubType.ARMOR
+        "armor" -> SubType.ARMOR
         "Consumable" -> SubType.CONSUMABLE
+        "consumable" -> SubType.CONSUMABLE
         "Deed" -> SubType.DEED
+        "deed" -> SubType.DEED
         else -> SubType.UNKNOWN
     }
 }
+
+fun CardSet.toCardSetDAO(): CardSetDAO = CardSetDAO(
+        card_set = CardSetInfoDAO(
+                card_list = this.cardList.toCardsDAO(),
+                version = this.version,
+                set_info = this.setInfo.toSetInfoDAO()
+        )
+)
+
+fun List<Card>.toCardsDAO(): List<CardDAO> {
+
+    val cardList = mutableListOf<CardDAO>()
+    this.forEach { card ->
+        cardList.add(card.toCardDAO())
+    }
+
+    return cardList
+}
+
+fun Card.toCardDAO(): CardDAO = CardDAO(
+        base_card_id = this.baseCardID,
+        references = this.references,
+        rarity = this.rarity.toString().toLowerCase().replace("_", " "),
+        illustrator = this.illustrator,
+        charges = this.charges!!,
+        attack = this.attack,
+        armor = this.armor!!,
+        card_id = this.cardID,
+        card_name = this.cardName.toCardNameDAO(),
+        card_text = this.cardText.toCardTextDAO(),
+        card_type = this.cardType.toString().toLowerCase().replace("_", " "),
+        gold_cost = this.goldCost!!,
+        hit_points = this.hitPoints,
+        ingame_image = this.heroIngameImage.toMiniImageDAO(),
+        is_black = this.cardColor == CardColor.BLACK,
+        is_blue = this.cardColor == CardColor.BLUE,
+        is_crosslane = this.isCrosslane,
+        is_green = this.cardColor == CardColor.GREEN,
+        is_quick = this.isQuick,
+        is_red = this.cardColor == CardColor.RED,
+        item_def = this.itemDef,
+        large_image = this.largeImage.toLargeImageDAO(),
+        mana_cost = this.manaCost,
+        mini_image = this.miniImage.toMiniImageDAO(),
+        sub_type = this.subType.toString().toLowerCase().replace("_", " ")
+)
+
+
+fun Name.toCardNameDAO(): CardNameDAO = CardNameDAO(
+        brazilian = this.brazilian,
+        french = this.french,
+        german = this.german,
+        italian = this.italian,
+        japanese = this.japanese,
+        koreana = this.koreana,
+        latam = this.latam,
+        russian = this.russian,
+        schinese = this.schinese,
+        spanish = this.spanish,
+        tchinese = this.tchinese,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian,
+        english = this.english
+)
+
+fun Name.toCardTextDAO(): CardTextDAO = CardTextDAO(
+        brazilian = this.brazilian,
+        french = this.french,
+        german = this.german,
+        italian = this.italian,
+        japanese = this.japanese,
+        koreana = this.koreana,
+        latam = this.latam,
+        russian = this.russian,
+        schinese = this.schinese,
+        spanish = this.spanish,
+        tchinese = this.tchinese,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian,
+        english = this.english
+)
+
+fun Image.toMiniImageDAO(): MiniImageDAO = MiniImageDAO(
+        default = this.default
+)
+
+fun LargeImage.toLargeImageDAO(): LargeImageDAO = LargeImageDAO(
+        brazilian = this.brazilian,
+        default = this.default,
+        tchinese = this.tchinese,
+        spanish = this.spanish,
+        schinese = this.schinese,
+        russian = this.russian,
+        latam = this.latam,
+        koreana = this.koreana,
+        japanese = this.japanese,
+        italian = this.italian,
+        german = this.german,
+        french = this.french
+)
+
+fun SetInfo.toSetInfoDAO(): SetInfoDAO = SetInfoDAO(
+        name = this.name.toNameDAO(),
+        pack_item_def = this.packItemDef,
+        set_id = this.setID
+)
+
+fun Name.toNameDAO(): NameDAO = NameDAO(
+        brazilian = this.brazilian,
+        french = this.french,
+        german = this.german,
+        italian = this.italian,
+        japanese = this.japanese,
+        koreana = this.koreana,
+        latam = this.latam,
+        russian = this.russian,
+        schinese = this.schinese,
+        spanish = this.spanish,
+        tchinese = this.tchinese,
+        vietnamese = this.vietnamese,
+        ukrainian = this.ukrainian,
+        turkish = this.turkish,
+        thai = this.thai,
+        swedish = this.swedish,
+        romanian = this.romanian,
+        portuguese = this.portuguese,
+        polish = this.polish,
+        norwegian = this.norwegian,
+        hungarian = this.hungarian,
+        greek = this.greek,
+        finnish = this.finnish,
+        dutch = this.dutch,
+        danish = this.danish,
+        czech = this.czech,
+        bulgarian = this.bulgarian,
+        english = this.english
+)

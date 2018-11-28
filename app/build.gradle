@@ -38,6 +38,7 @@ dependencies {
     implementation appDependencies.ahbottomnavigation
 
     implementation appDependencies.glide
+    annotationProcessor appDependencies.glideAnnotationProcessor
 
     implementation appDependencies.permissions
 

@@ -1,6 +1,9 @@
 package com.alex.domain.repository
 
-import com.alex.domain.models.*
+import com.alex.domain.models.Article
+import com.alex.domain.models.CardSet
+import com.alex.domain.models.EndPoint
+import com.alex.domain.models.News
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -11,7 +14,9 @@ interface CardSetRemoteSource {
 }
 
 interface CardSetLocalSource {
-    fun retrieveCards()
+    fun retrieveCardSets(): Flowable<CardSet>
+    fun isCardSetsEmpty(): Boolean
+    fun addCardSet(cardSet: CardSet)
 }
 
 /**
@@ -68,6 +73,5 @@ interface INewsRepository {
 interface ICardSetRepository {
 
     fun retrieveAllCards(): Flowable<CardSet>
-    fun retrieveSingleCard(cardId: Long): Single<Card>
 }
 
