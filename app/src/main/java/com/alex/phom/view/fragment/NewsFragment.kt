@@ -84,7 +84,6 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
 
     override fun hideIcons() {
         activity?.let {
-            it.home_header.button_filter.visibility = View.GONE
             it.home_header.button_sortby.visibility = View.GONE
         }
     }

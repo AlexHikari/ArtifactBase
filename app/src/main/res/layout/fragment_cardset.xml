@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,11 +9,23 @@
         android:id="@+id/cards-recycler-view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:drawable/screen_background_light_transparent"
+        android:background="@color/colorSecondary"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_card">
+        tools:listitem="@layout/item_card" />
 
-    </android.support.v7.widget.RecyclerView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/filtericon"
+        android:visibility="visible"
+        app:backgroundTint="@color/colorBottomNavigationNotification" />
+
 
     <include
         android:id="@+id/progressView"

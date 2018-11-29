@@ -47,17 +47,6 @@
             tools:srcCompat="@drawable/mainicon" />
 
         <ImageButton
-            android:id="@+id/button_filter"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/filtericon"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_sortby"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
             android:id="@+id/button_sortby"
             android:layout_width="30dp"
             android:layout_height="30dp"

@@ -59,8 +59,8 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun showIcons() {
         activity?.let {
-            it.home_header.button_filter.visibility = View.VISIBLE
             it.home_header.button_sortby.visibility = View.VISIBLE
+            button_filter.visibility = View.VISIBLE
         }
     }
 
