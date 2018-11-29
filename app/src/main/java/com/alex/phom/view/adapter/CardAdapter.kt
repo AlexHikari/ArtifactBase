@@ -13,9 +13,7 @@ class CardAdapter(onItemClickListener: (Cardview) -> Unit) : RootAdapter<Cardvie
 
     class ViewHolder(view: View) : RootViewHolder<Cardview>(itemView = view) {
         override fun bind(model: Cardview) {
-            if (model.largeImage.default != null) {
-                itemView.cardImage.load(model.largeImage.default)
-            }
+            itemView.cardImage.load(model.largeImage.imgdef)
         }
     }
 }

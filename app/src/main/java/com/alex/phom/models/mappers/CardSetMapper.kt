@@ -20,26 +20,26 @@ fun List<Card>.toCardListView(): List<Cardview> {
 fun Card.toCardView(): Cardview = Cardview(
         baseCardID = this.baseCardID,
         cardText = this.cardText.toNameView(),
-        armor = this.armor,
-        attack = this.attack,
+        armor = this.armor!!,
+        attack = this.attack!!,
         cardColor = this.cardColor.toCardColorView(),
         cardID = this.cardID,
         cardName = this.cardName.toNameView(),
         CardType = this.cardType.toTypeView(),
-        charges = this.charges,
-        goldCost = this.goldCost,
+        charges = this.charges!!,
+        goldCost = this.goldCost!!,
         heroIngameImage = this.heroIngameImage.toImageView(),
-        hitPoints = this.hitPoints,
-        illustrator = this.illustrator,
-        isCrosslane = this.isCrosslane,
-        isQuick = this.isQuick,
-        itemDef = this.itemDef,
+        hitPoints = this.hitPoints!!,
+        illustrator = this.illustrator!!,
+        isCrosslane = this.isCrosslane!!,
+        isQuick = this.isQuick!!,
+        itemDef = this.itemDef!!,
         largeImage = this.largeImage.toLargeImageView(),
-        manaCost = this.manaCost,
+        manaCost = this.manaCost!!,
         miniImage = this.miniImage.toImageView(),
-        rarity = this.rarity?.toRarityView(),
+        rarity = this.rarity!!.toRarityView(),
         references = this.references,
-        subType = this.subType?.toSubTypeView()
+        subType = this.subType!!.toSubTypeView()
 )
 
 fun CardColor.toCardColorView(): CardColorView {
@@ -86,53 +86,53 @@ fun SubType.toSubTypeView(): SubTypeView {
 }
 
 fun Image.toImageView(): ImageView = ImageView(
-        default = this.default
+        img = this.img!!
 )
 
 fun Name.toNameView(): NameView = NameView(
-        english = this.english,
-        brazilian = this.brazilian,
-        bulgarian = this.bulgarian,
-        czech = this.czech,
-        danish = this.danish,
-        dutch = this.dutch,
-        finnish = this.finnish,
-        french = this.french,
-        german = this.german,
-        greek = this.greek,
-        hungarian = this.hungarian,
-        italian = this.italian,
-        japanese = this.japanese,
-        koreana = this.koreana,
-        latam = this.latam,
-        norwegian = this.norwegian,
-        polish = this.polish,
-        portuguese = this.portuguese,
-        romanian = this.romanian,
-        russian = this.russian,
-        schinese = this.schinese,
-        spanish = this.spanish,
-        swedish = this.swedish,
-        tchinese = this.tchinese,
-        thai = this.thai,
-        turkish = this.turkish,
-        ukrainian = this.ukrainian,
-        vietnamese = this.vietnamese
+        english = this.english!!,
+        brazilian = this.brazilian!!,
+        bulgarian = this.bulgarian!!,
+        czech = this.czech!!,
+        danish = this.danish!!,
+        dutch = this.dutch!!,
+        finnish = this.finnish!!,
+        french = this.french!!,
+        german = this.german!!,
+        greek = this.greek!!,
+        hungarian = this.hungarian!!,
+        italian = this.italian!!,
+        japanese = this.japanese!!,
+        koreana = this.koreana!!,
+        latam = this.latam!!,
+        norwegian = this.norwegian!!,
+        polish = this.polish!!,
+        portuguese = this.portuguese!!,
+        romanian = this.romanian!!,
+        russian = this.russian!!,
+        schinese = this.schinese!!,
+        spanish = this.spanish!!,
+        swedish = this.swedish!!,
+        tchinese = this.tchinese!!,
+        thai = this.thai!!,
+        turkish = this.turkish!!,
+        ukrainian = this.ukrainian!!,
+        vietnamese = this.vietnamese!!
 )
 
 fun LargeImage.toLargeImageView(): LargeImageView = LargeImageView(
-        default = this.default,
-        tchinese = this.tchinese,
-        spanish = this.spanish,
-        schinese = this.schinese,
-        russian = this.russian,
-        latam = this.latam,
-        koreana = this.koreana,
-        japanese = this.japanese,
-        italian = this.italian,
-        german = this.german,
-        french = this.french,
-        brazilian = this.brazilian
+        imgdef = this.imgdef!!,
+        tchinese = this.tchinese!!,
+        spanish = this.spanish!!,
+        schinese = this.schinese!!,
+        russian = this.russian!!,
+        latam = this.latam!!,
+        koreana = this.koreana!!,
+        japanese = this.japanese!!,
+        italian = this.italian!!,
+        german = this.german!!,
+        french = this.french!!,
+        brazilian = this.brazilian!!
 )
 
 fun SetInfo.toSetInfoView(): SetInfoView = SetInfoView(

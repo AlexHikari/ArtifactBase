@@ -15,39 +15,39 @@ data class Cardview(
         val miniImage: ImageView,
         val largeImage: LargeImageView,
         val heroIngameImage: ImageView,
-        val illustrator: String? = "",
-        val rarity: RarityView? = null,
+        val illustrator: String = "",
+        val rarity: RarityView = RarityView.UNKNOWN,
         val cardColor: CardColorView,
-        val itemDef: Long? = null,
-        val attack: Long? = null,
-        val hitPoints: Long? = null,
+        val itemDef: Long = 0,
+        val attack: Long = 0,
+        val hitPoints: Long = 0,
         val references: List<Any>,
-        val manaCost: Long? = null,
-        val isCrosslane: Boolean? = null,
-        val charges: Long? = null,
-        val armor: Long? = null,
-        val subType: SubTypeView? = null,
-        val goldCost: Long? = null,
-        val isQuick: Boolean? = null
+        val manaCost: Long = 0,
+        val isCrosslane: Boolean = false,
+        val charges: Long = 0,
+        val armor: Long = 0,
+        val subType: SubTypeView = SubTypeView.UNKNOWN,
+        val goldCost: Long = 0,
+        val isQuick: Boolean = false
 )
 
 data class ImageView(
-        val default: String? = null
+        val img: String = ""
 )
 
 data class LargeImageView(
-        val default: String? = null,
-        val german: String? = null,
-        val french: String? = null,
-        val italian: String? = null,
-        val koreana: String? = null,
-        val spanish: String? = null,
-        val schinese: String? = null,
-        val tchinese: String? = null,
-        val russian: String? = null,
-        val japanese: String? = null,
-        val brazilian: String? = null,
-        val latam: String? = null
+        val imgdef: String = "",
+        val german: String = "",
+        val french: String = "",
+        val italian: String = "",
+        val koreana: String = "",
+        val spanish: String = "",
+        val schinese: String = "",
+        val tchinese: String = "",
+        val russian: String = "",
+        val japanese: String = "",
+        val brazilian: String = "",
+        val latam: String = ""
 )
 
 enum class CardColorView {
@@ -78,34 +78,34 @@ enum class RarityView {
 }
 
 data class NameView(
-        val english: String? = null,
-        val german: String? = null,
-        val french: String? = null,
-        val italian: String? = null,
-        val koreana: String? = null,
-        val spanish: String? = null,
-        val schinese: String? = null,
-        val tchinese: String? = null,
-        val russian: String? = null,
-        val thai: String? = null,
-        val japanese: String? = null,
-        val portuguese: String? = null,
-        val polish: String? = null,
-        val danish: String? = null,
-        val dutch: String? = null,
-        val finnish: String? = null,
-        val norwegian: String? = null,
-        val swedish: String? = null,
-        val hungarian: String? = null,
-        val czech: String? = null,
-        val romanian: String? = null,
-        val turkish: String? = null,
-        val brazilian: String? = null,
-        val bulgarian: String? = null,
-        val greek: String? = null,
-        val ukrainian: String? = null,
-        val latam: String? = null,
-        val vietnamese: String? = null
+        val english: String = "",
+        val german: String = "",
+        val french: String = "",
+        val italian: String = "",
+        val koreana: String = "",
+        val spanish: String = "",
+        val schinese: String = "",
+        val tchinese: String = "",
+        val russian: String = "",
+        val thai: String = "",
+        val japanese: String = "",
+        val portuguese: String = "",
+        val polish: String = "",
+        val danish: String = "",
+        val dutch: String = "",
+        val finnish: String = "",
+        val norwegian: String = "",
+        val swedish: String = "",
+        val hungarian: String = "",
+        val czech: String = "",
+        val romanian: String = "",
+        val turkish: String = "",
+        val brazilian: String = "",
+        val bulgarian: String = "",
+        val greek: String = "",
+        val ukrainian: String = "",
+        val latam: String = "",
+        val vietnamese: String = ""
 )
 
 enum class SubTypeView {
@@ -118,7 +118,7 @@ enum class SubTypeView {
 }
 
 data class SetInfoView(
-        val setID: Long,
-        val packItemDef: Long,
+        val setID: Long = 0,
+        val packItemDef: Long = 0,
         val name: NameView
 )

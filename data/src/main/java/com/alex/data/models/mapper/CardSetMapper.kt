@@ -99,7 +99,7 @@ fun ReferenceDAO.toReference(): Reference = Reference(
 )
 
 fun LargeImageDAO.toLargeImage(): LargeImage = LargeImage(
-        default = this.default,
+        imgdef = this.default,
         brazilian = this.brazilian,
         french = this.french,
         german = this.german,
@@ -114,7 +114,7 @@ fun LargeImageDAO.toLargeImage(): LargeImage = LargeImage(
 )
 
 fun MiniImageDAO.toImage(): Image = Image(
-        default = this.default
+        img = this.default
 )
 
 fun CardTextDAO.toCardText(): Name = Name(
@@ -362,12 +362,12 @@ fun Name.toCardTextDAO(): CardTextDAO = CardTextDAO(
 )
 
 fun Image.toMiniImageDAO(): MiniImageDAO = MiniImageDAO(
-        default = this.default
+        default = this.img
 )
 
 fun LargeImage.toLargeImageDAO(): LargeImageDAO = LargeImageDAO(
         brazilian = this.brazilian,
-        default = this.default,
+        default = this.imgdef,
         tchinese = this.tchinese,
         spanish = this.spanish,
         schinese = this.schinese,
@@ -500,11 +500,11 @@ fun ReferenceVo.toReference(): Reference = Reference(
 )
 
 fun MiniImageVo.toImage(): Image = Image(
-        default = this.defauldt
+        img = this.img
 )
 
 fun LargeImageVo.toLargeImage(): LargeImage = LargeImage(
-        default = this.default,
+        imgdef = this.imgdef,
         brazilian = this.brazilian,
         french = this.french,
         german = this.german,
@@ -686,11 +686,11 @@ fun LargeImage.toLargeImageVo(): LargeImageVo = LargeImageVo(
         italian = this.italian!!,
         german = this.german!!,
         french = this.french!!,
-        default = this.default!!
+        imgdef = this.imgdef!!
 )
 
 fun Image.toMiniImageVo(): MiniImageVo = MiniImageVo(
-        defauldt = this.default!!
+        img = this.img!!
 )
 
 fun Name.toCardTextVo(): CardTextVo = CardTextVo(

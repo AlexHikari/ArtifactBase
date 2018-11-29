@@ -89,11 +89,11 @@ enum class CardType {
 }
 
 data class Image(
-        val default: String? = null
+        val img: String? = null
 )
 
 data class LargeImage(
-        val default: String? = null,
+        val imgdef: String? = null,
         val german: String? = null,
         val french: String? = null,
         val italian: String? = null,

@@ -96,14 +96,14 @@ open class NameVo(
 
 @RealmClass
 open class MiniImageVo(
-        open var defauldt: String = ""
+        open var img: String = ""
 ) : RealmObject()
 
 @RealmClass
 open class LargeImageVo(
 
         open var brazilian: String = "",
-        open var default: String = "",
+        open var imgdef: String = "",
         open var french: String = "",
         open var german: String = "",
         open var italian: String = "",
