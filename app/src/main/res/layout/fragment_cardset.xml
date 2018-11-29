@@ -23,7 +23,7 @@
         android:layout_marginBottom="22dp"
         android:scaleType="centerInside"
         android:src="@drawable/filtericon"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/colorBottomNavigationNotification" />
 
 
