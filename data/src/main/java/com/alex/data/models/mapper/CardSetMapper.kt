@@ -594,10 +594,11 @@ fun CardVo.toCardColor(): CardColor {
     return color
 }
 
-fun CardSet.toCardSetVo(): CardSetVo = CardSetVo(
+fun CardSet.toCardSetVo(setId: Long): CardSetVo = CardSetVo(
         card_list = this.cardList.toRealmList(),
         version = this.version,
-        set_info = this.setInfo.toSetInfoVo()
+        set_info = this.setInfo.toSetInfoVo(),
+        set_id = setId
 )
 
 fun SetInfo.toSetInfoVo(): SetInfoVo = SetInfoVo(

@@ -38,7 +38,7 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun initializeUI() {
-        home_header.button_back.visibility = View.VISIBLE
+
         articleText.setBackgroundColor(Color.TRANSPARENT)
         articleText.settings.javaScriptEnabled = true
         articleText.settings.defaultFontSize = 14
@@ -94,5 +94,9 @@ class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.
 
     override fun finishActivity() {
         onBackPressed()
+    }
+
+    override fun showBack() {
+        home_header.button_back.visibility = View.VISIBLE
     }
 }

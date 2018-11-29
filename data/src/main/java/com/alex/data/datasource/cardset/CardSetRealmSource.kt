@@ -1,6 +1,7 @@
 package com.alex.data.datasource.cardset
 
 import com.alex.data.models.CardSetVo
+import com.alex.data.models.CardVo
 import com.alex.data.models.mapper.toCardSet
 import com.alex.data.models.mapper.toCardSetVo
 import com.alex.domain.models.CardSet
@@ -16,6 +17,7 @@ class CardSetRealmSource : CardSetLocalSource {
     private var config = RealmConfiguration.Builder().build()
     override fun retrieveCardSets(): Flowable<CardSet> {
         val results: RealmResults<CardSetVo> = Realm.getInstance(config).where(CardSetVo::class.java).findAll()
+        val results2: RealmResults<CardVo> = Realm.getInstance(config).where(CardVo::class.java).findAll()
         val returnedResults = mutableListOf<CardSet>()
         results.forEach {
             returnedResults.add(it.toCardSet())
@@ -29,9 +31,9 @@ class CardSetRealmSource : CardSetLocalSource {
         return Realm.getInstance(config).where(CardSetVo::class.java).findAll().isEmpty()
     }
 
-    override fun addCardSet(cardSet: CardSet) {
+    override fun addCardSet(cardSet: CardSet, cardSetId: Long) {
         Realm.getInstance(config).executeTransaction {
-            it.insertOrUpdate(cardSet.toCardSetVo())
+            it.copyToRealmOrUpdate(cardSet.toCardSetVo(cardSetId))
         }
     }
 }

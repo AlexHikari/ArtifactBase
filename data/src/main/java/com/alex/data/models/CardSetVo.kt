@@ -2,13 +2,16 @@ package com.alex.data.models
 
 import io.realm.RealmList
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
 
-
+@RealmClass
 open class CardVo(
 
         open var armor: Long = 0,
         open var attack: Long = 0,
         open var base_card_id: Long = 0,
+        @PrimaryKey
         open var card_id: Long = 0,
         open var card_name: CardNameVo = CardNameVo(),
         open var card_text: CardTextVo = CardTextVo(),
@@ -33,6 +36,7 @@ open class CardVo(
         open var sub_type: String = ""
 ) : RealmObject()
 
+@RealmClass
 open class ReferenceVo(
         open var card_id: Long = 0,
         open var ref_type: String = "",
@@ -40,13 +44,16 @@ open class ReferenceVo(
 
 ) : RealmObject()
 
+@RealmClass
 open class CardSetVo(
-
-        open var card_list: RealmList<CardVo> = RealmList(CardVo()),
+        open var card_list: RealmList<CardVo> = RealmList(),
         open var set_info: SetInfoVo = SetInfoVo(),
-        open var version: Long = 0
+        open var version: Long = 0,
+        @PrimaryKey
+        open var set_id: Long = 0
 ) : RealmObject()
 
+@RealmClass
 open class SetInfoVo(
 
         open var name: NameVo = NameVo(),
@@ -54,6 +61,7 @@ open class SetInfoVo(
         open var set_id: Long = 0
 ) : RealmObject()
 
+@RealmClass
 open class NameVo(
 
         open var brazilian: String = "",
@@ -86,11 +94,12 @@ open class NameVo(
         open var vietnamese: String = ""
 ) : RealmObject()
 
-
+@RealmClass
 open class MiniImageVo(
         open var defauldt: String = ""
 ) : RealmObject()
 
+@RealmClass
 open class LargeImageVo(
 
         open var brazilian: String = "",
@@ -107,6 +116,7 @@ open class LargeImageVo(
         open var tchinese: String = ""
 ) : RealmObject()
 
+@RealmClass
 open class CardNameVo(
 
         open var brazilian: String = "",
@@ -139,6 +149,7 @@ open class CardNameVo(
         open var vietnamese: String = ""
 ) : RealmObject()
 
+@RealmClass
 open class CardTextVo(
 
         open var brazilian: String = "",

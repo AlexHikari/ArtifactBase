@@ -16,7 +16,7 @@ interface CardSetRemoteSource {
 interface CardSetLocalSource {
     fun retrieveCardSets(): Flowable<CardSet>
     fun isCardSetsEmpty(): Boolean
-    fun addCardSet(cardSet: CardSet)
+    fun addCardSet(cardSet: CardSet, cardSetId: Long)
 }
 
 /**

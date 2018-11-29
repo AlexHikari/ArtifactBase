@@ -12,6 +12,7 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
     private val newsListView = mutableListOf<NewsCardView>()
 
     override fun initialize() {
+        view.hideIcons()
         view.showProgress()
         getNewsUseCase.execute(
                 onSuccess = {
@@ -58,5 +59,6 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresen
         fun showNews(newsListView: List<NewsCardView>)
         fun navigateToArticle(articleViewList: ArrayList<ArticleView>)
         fun getNetworkInfo(): Boolean
+        fun hideIcons()
     }
 }

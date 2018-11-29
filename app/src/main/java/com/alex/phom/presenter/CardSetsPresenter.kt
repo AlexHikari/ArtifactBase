@@ -21,8 +21,9 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
                 },
                 onComplete = {
                     filterCards(cardSets)
-                    view.hideProgress()
                     view.showCards(cardsToShow)
+                    view.showIcons()
+                    view.hideProgress()
                 },
                 onError = onError { view.showError(it) }
         )
@@ -58,5 +59,6 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     interface View : Presenter.View {
         fun showCards(cardList: List<Cardview>)
+        fun showIcons()
     }
 }

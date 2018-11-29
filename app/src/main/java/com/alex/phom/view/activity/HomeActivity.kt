@@ -13,6 +13,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.header_bar.*
 
 class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
 
@@ -66,6 +67,14 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
         bottom_navigation.defaultBackgroundColor = ContextCompat.getColor(this, R.color.colorPrimary)
         bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
         bottom_navigation.currentItem = 0
+    }
+
+    private fun ShowFilterIcon(show: Boolean) {
+        if (show) {
+            button_filter.visibility = View.VISIBLE
+        } else {
+            button_filter.visibility = View.GONE
+        }
     }
 
     override fun showNewsScreen() {

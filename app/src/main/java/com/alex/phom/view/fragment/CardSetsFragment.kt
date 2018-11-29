@@ -1,6 +1,7 @@
 package com.alex.phom.view.fragment
 
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
@@ -11,7 +12,9 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_cardset.*
+import kotlinx.android.synthetic.main.header_bar.view.*
 
 class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresenter.View {
 
@@ -52,6 +55,13 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun showCards(cardList: List<Cardview>) {
         cardAdapter.addAll(cardList.toMutableList())
+    }
+
+    override fun showIcons() {
+        activity?.let {
+            it.home_header.button_filter.visibility = View.VISIBLE
+            it.home_header.button_sortby.visibility = View.VISIBLE
+        }
     }
 
 }

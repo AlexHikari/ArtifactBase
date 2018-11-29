@@ -3,6 +3,7 @@ package com.alex.phom.view.fragment
 import android.content.Context
 import android.net.ConnectivityManager
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.alex.phom.R
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
@@ -15,7 +16,9 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.header_bar.view.*
 
 class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
 
@@ -77,5 +80,12 @@ class NewsFragment : RootFragment<NewsPresenter.View>(), NewsPresenter.View {
             }
         }
         return false
+    }
+
+    override fun hideIcons() {
+        activity?.let {
+            it.home_header.button_filter.visibility = View.GONE
+            it.home_header.button_sortby.visibility = View.GONE
+        }
     }
 }

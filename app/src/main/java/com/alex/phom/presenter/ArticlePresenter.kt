@@ -25,6 +25,7 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
                         }
                     }
                     view.showArticle(articleView = article, isLast = false, isFist = false)
+                    view.showBack()
                 },
                 onError = onError { view.showError(it) })
     }
@@ -51,5 +52,6 @@ class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: A
         fun getArticleList(): ArrayList<ArticleView>
         fun getArticleUrl(articleViewList: ArrayList<ArticleView>): String
         fun finishActivity()
+        fun showBack()
     }
 }
