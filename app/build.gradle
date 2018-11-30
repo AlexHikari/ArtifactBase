@@ -47,6 +47,7 @@ dependencies {
 
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
+    implementation appDependencies.crystalRangeSeekbar
 
     testImplementation appTestDependencies.jUnit
     testImplementation appTestDependencies.mockito

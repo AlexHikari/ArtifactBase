@@ -9,4 +9,13 @@
     <string name="tab_3">Deck Builder</string>
     <string name="articleActivity">ArticleActivity</string>
     <string name="tab_4">NoIdea</string>
+    <string name="mana">Mana</string>
+    <string name="cardtype">CardType</string>
+    <string name="card_name">Card Name</string>
+    <string name="filtersearchbutton">FilterSearchButton</string>
+    <string name="hero">HERO</string>
+    <string name="spell">SPELL</string>
+    <string name="creep">CREEP</string>
+    <string name="item">ITEM</string>
+    <string name="improvement">IMPROVEMENT</string>
 </resources>

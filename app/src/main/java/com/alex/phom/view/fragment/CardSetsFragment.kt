@@ -40,13 +40,24 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
 
     override fun initializeUI() {
-        cards_recycler_view.apply {
+        cardsRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = cardAdapter
         }
     }
 
     override fun registerListeners() {
+        mana_Rangeseekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            mana_leftvalue.text = minValue.toString()
+            mana_rightvalue.text = maxValue.toString()
+        }
+        button_filter.setOnClickListener {
+            filterView.visibility = when (filterView.visibility) {
+                View.VISIBLE -> View.GONE
+                View.GONE -> View.VISIBLE
+                else -> View.VISIBLE
+            }
+        }
     }
 
     override fun showProgress() = progressView.showMe()
