@@ -23,6 +23,8 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         fun newInstance(): CardSetsFragment = CardSetsFragment()
     }
 
+    // black-red-green-blue
+    private val colorfilter: Array<Boolean> = Array(4) { false }
     override val presenter: CardSetsPresenter by instance()
     override val layoutResourceId: Int = R.layout.fragment_cardset
     private val cardAdapter: CardAdapter = CardAdapter {
@@ -46,17 +48,54 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         }
     }
 
+
     override fun registerListeners() {
         mana_Rangeseekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
             mana_leftvalue.text = minValue.toString()
             mana_rightvalue.text = maxValue.toString()
         }
+        blackColorButton.setOnClickListener {
+            colorfilter[0] = !colorfilter[0]
+            if (colorfilter[0])
+                blackColor.setBackgroundResource(R.color.colorSelected)
+            else
+                blackColor.setBackgroundResource(R.color.colorSecondary)
+        }
+        redColorButton.setOnClickListener {
+            colorfilter[1] = !colorfilter[1]
+            if (colorfilter[1])
+                redColor.setBackgroundResource(R.color.colorSelected)
+            else
+                redColor.setBackgroundResource(R.color.colorSecondary)
+        }
+        greenColorButton.setOnClickListener {
+            colorfilter[2] = !colorfilter[2]
+            if (colorfilter[2])
+                greenColor.setBackgroundResource(R.color.colorSelected)
+            else
+                greenColor.setBackgroundResource(R.color.colorSecondary)
+        }
+        blueColorButton.setOnClickListener {
+            colorfilter[3] = !colorfilter[3]
+            if (colorfilter[3])
+                blueColor.setBackgroundResource(R.color.colorSelected)
+            else
+                blueColor.setBackgroundResource(R.color.colorSecondary)
+        }
+
         button_filter.setOnClickListener {
-            filterView.visibility = when (filterView.visibility) {
-                View.VISIBLE -> View.GONE
-                View.GONE -> View.VISIBLE
+
+            when (filterView.visibility) {
+                View.VISIBLE -> {
+                    filterView.visibility = View.GONE
+                    presenter.filterCardsByColor(colorfilter)
+                }
+                View.GONE -> {
+                    filterView.visibility = View.VISIBLE
+                }
                 else -> View.VISIBLE
             }
+
         }
     }
 
@@ -65,7 +104,7 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
     override fun hideProgress() = progressView.hideMe()
 
     override fun showCards(cardList: List<Cardview>) {
-        cardAdapter.addAll(cardList.toMutableList())
+        cardAdapter.replace(cardList.toMutableList())
     }
 
     override fun showIcons() {

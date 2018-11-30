@@ -3,6 +3,7 @@ package com.alex.phom.presenter
 import android.util.Log
 import com.alex.domain.interactor.cards.GetCardSetsUseCase
 import com.alex.phom.error.ErrorHandler
+import com.alex.phom.models.CardColorView
 import com.alex.phom.models.CardSetView
 import com.alex.phom.models.CardTypeView
 import com.alex.phom.models.Cardview
@@ -12,6 +13,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     private val cardSets = mutableListOf<CardSetView>()
     private val cardsToShow = mutableListOf<Cardview>()
+    private var filteredCards = mutableListOf<Cardview>()
 
     override fun initialize() {
         view.showProgress()
@@ -43,6 +45,50 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
             }
         }
 
+    }
+
+    fun filterCardsByColor(colors: Array<Boolean>) {
+
+        filteredCards = mutableListOf()
+
+        var shouldReplace: Boolean = false
+        colors.forEach {
+            if (it && !shouldReplace)
+                shouldReplace = true
+        }
+        if (!shouldReplace) {
+            filteredCards.addAll(cardsToShow)
+        } else {
+            colors.forEachIndexed { index, b ->
+                when (index) {
+                    0 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.cardColor == CardColorView.BLACK)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    1 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.cardColor == CardColorView.RED)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    2 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.cardColor == CardColorView.GREEN)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    3 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.cardColor == CardColorView.BLUE)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                }
+            }
+        }
+        view.showCards(filteredCards)
     }
 
     override fun resume() {

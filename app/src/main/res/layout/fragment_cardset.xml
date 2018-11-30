@@ -17,12 +17,11 @@
     <ScrollView
         android:id="@+id/filterView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_filter"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/TextBackgroundCard"
+        android:background="@color/colorbackgroundFilter"
         android:padding="20dp"
         android:scrollbarStyle="insideOverlay"
         android:visibility="gone">
@@ -49,15 +48,17 @@
                     android:id="@+id/cardSearch_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:hint="@string/cardSearchPlaceholder"
                     android:inputType="text"
+                    android:singleLine="true"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="12sp"
+                    android:textColorHint="@color/colorSecondary"
+                    android:textColorLink="@color/colorTextColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/search_button"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Search for a Card Here" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/search_button"
@@ -147,12 +148,14 @@
                 android:orientation="horizontal">
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/heroImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="8dp"
+                    android:padding="2dp">
 
                     <ImageButton
-                        android:id="@+id/heroImg"
+                        android:id="@+id/heroImgButton"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@null"
@@ -172,17 +175,19 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/heroImg" />
+                        app:layout_constraintTop_toBottomOf="@+id/heroImgButton" />
                 </android.support.constraint.ConstraintLayout>
 
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/spellImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="8dp"
+                    android:padding="2dp">
 
                     <ImageButton
-                        android:id="@+id/spellImg"
+                        android:id="@+id/spellImgButton"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@null"
@@ -202,16 +207,18 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spellImg" />
+                        app:layout_constraintTop_toBottomOf="@+id/spellImgButton" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/creepImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="8dp"
+                    android:padding="2dp">
 
                     <ImageButton
-                        android:id="@+id/creepImg"
+                        android:id="@+id/creepImgButton"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@null"
@@ -231,16 +238,18 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/creepImg" />
+                        app:layout_constraintTop_toBottomOf="@+id/creepImgButton" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/improvementImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="8dp"
+                    android:padding="2dp">
 
                     <ImageButton
-                        android:id="@+id/improvementImg"
+                        android:id="@+id/improvementImgButton"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@null"
@@ -260,16 +269,17 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/improvementImg" />
+                        app:layout_constraintTop_toBottomOf="@+id/improvementImgButton" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
+                    android:id="@+id/itemImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:padding="2dp">
 
                     <ImageButton
-                        android:id="@+id/itemImg"
+                        android:id="@+id/itemImgButton"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@null"
@@ -289,12 +299,215 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/itemImg" />
+                        app:layout_constraintTop_toBottomOf="@+id/itemImgButton" />
                 </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/card_color"
+                android:textColor="@color/colorTextColor"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/redColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/redColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorRedSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/redSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/redColorButton" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/greenColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/greenColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorGreenSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/greenSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/greenColorButton" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/blueColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/blueColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorBlueSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blueSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/blueColorButton" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/blackColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/blackColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorBlackSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blackSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/blackColorButton" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/card_rarity"
+                android:textColor="@color/colorTextColor"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/basicCard"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp"
+                    android:text="@string/CardBasic"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/commonCard"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp"
+                    android:text="@string/CardCommon"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/uncommonCard"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp"
+                    android:text="@string/CardUncommon"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/rareCard"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp"
+                    android:text="@string/CardRare"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="8sp" />
+
             </LinearLayout>
 
 
         </LinearLayout>
+
     </ScrollView>
 
     <android.support.design.widget.FloatingActionButton

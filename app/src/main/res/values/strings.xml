@@ -10,12 +10,23 @@
     <string name="articleActivity">ArticleActivity</string>
     <string name="tab_4">NoIdea</string>
     <string name="mana">Mana</string>
-    <string name="cardtype">CardType</string>
-    <string name="card_name">Card Name</string>
+    <string name="cardtype">Card type</string>
+    <string name="card_name">Card name</string>
     <string name="filtersearchbutton">FilterSearchButton</string>
     <string name="hero">HERO</string>
     <string name="spell">SPELL</string>
     <string name="creep">CREEP</string>
     <string name="item">ITEM</string>
     <string name="improvement">IMPROVEMENT</string>
+    <string name="card_color">Card color</string>
+    <string name="redSource">Red</string>
+    <string name="greenSource">Green</string>
+    <string name="blueSource">Blue</string>
+    <string name="blackSource">Black</string>
+    <string name="cardSearchPlaceholder">Search for a Card Here</string>
+    <string name="card_rarity">Card rarity</string>
+    <string name="CardBasic">Basic</string>
+    <string name="CardCommon">Common</string>
+    <string name="CardUncommon">Uncommon</string>
+    <string name="CardRare">Rare</string>
 </resources>
