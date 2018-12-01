@@ -164,7 +164,11 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         val disable = typeFilter[3] || typeFilter[4]
         when (disable) {
             true -> {
-                colorFilter.map { false }
+                colorFilter.fill(false)
+                blueColor.setBackgroundResource(R.color.colorSecondary)
+                blackColor.setBackgroundResource(R.color.colorSecondary)
+                greenColor.setBackgroundResource(R.color.colorSecondary)
+                redColor.setBackgroundResource(R.color.colorSecondary)
                 disabledColor.visibility = View.VISIBLE
 
             }

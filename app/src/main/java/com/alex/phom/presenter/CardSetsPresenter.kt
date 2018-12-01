@@ -49,8 +49,13 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     fun filterCards(colors: Array<Boolean>, types: Array<Boolean>) {
         filteredCards = mutableListOf()
-        filterCardsByColor(colors)
-        filterCardsByType(types)
+        var noFilters = !colors.contains(true) && !types.contains(true)
+        if (!noFilters) {
+            filterCardsByColor(colors)
+            filterCardsByType(types)
+        } else
+            filteredCards.addAll(cardsToShow)
+
         view.showCards(filteredCards)
     }
 
@@ -60,9 +65,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
             if (it && !shouldReplace)
                 shouldReplace = true
         }
-        if (!shouldReplace) {
-            filteredCards.addAll(cardsToShow)
-        } else {
+        if (shouldReplace) {
             types.forEachIndexed { index, b ->
                 when (index) {
                     0 -> {
@@ -107,9 +110,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
             if (it && !shouldReplace)
                 shouldReplace = true
         }
-        if (!shouldReplace) {
-            filteredCards.addAll(cardsToShow)
-        } else {
+        if (shouldReplace) {
             colors.forEachIndexed { index, b ->
                 when (index) {
                     0 -> {
