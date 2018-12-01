@@ -22,15 +22,18 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:background="@color/colorbackgroundFilter"
-        android:padding="20dp"
+        android:padding="8dp"
         android:scrollbarStyle="insideOverlay"
         android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:elevation="8dp"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -175,7 +178,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/heroImgButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/heroImgButton"
+                        tools:ignore="SmallSp" />
                 </android.support.constraint.ConstraintLayout>
 
 
@@ -207,7 +211,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spellImgButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/spellImgButton"
+                        tools:ignore="SmallSp" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
@@ -238,7 +243,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/creepImgButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/creepImgButton"
+                        tools:ignore="SmallSp" />
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
@@ -299,7 +305,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/itemImgButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/itemImgButton"
+                        tools:ignore="SmallSp" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
@@ -311,136 +318,158 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/redColor"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorSecondary"
-                    android:padding="2dp">
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/redColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:background="@color/colorRedSource"
-                        android:scaleType="fitXY"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/redColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/redSource"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/redColorButton" />
-                </android.support.constraint.ConstraintLayout>
+                        android:layout_margin="8dp"
+                        android:background="@color/colorSecondary"
+                        android:padding="2dp">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/greenColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorSecondary"
-                    android:padding="2dp">
+                        <Button
+                            android:id="@+id/redColorButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorRedSource"
+                            android:scaleType="fitXY"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-                    <Button
-                        android:id="@+id/greenColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:background="@color/colorGreenSource"
-                        android:scaleType="fitXY"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/redSource"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/redColorButton"
+                            tools:ignore="SmallSp" />
+                    </android.support.constraint.ConstraintLayout>
 
-                    <TextView
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/greenColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/greenSource"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/greenColorButton" />
-                </android.support.constraint.ConstraintLayout>
+                        android:layout_margin="8dp"
+                        android:background="@color/colorSecondary"
+                        android:padding="2dp">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/blueColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorSecondary"
-                    android:padding="2dp">
+                        <Button
+                            android:id="@+id/greenColorButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorGreenSource"
+                            android:scaleType="fitXY"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-                    <Button
-                        android:id="@+id/blueColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:background="@color/colorBlueSource"
-                        android:scaleType="fitXY"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/greenSource"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/greenColorButton"
+                            tools:ignore="SmallSp" />
+                    </android.support.constraint.ConstraintLayout>
 
-                    <TextView
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/blueColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/blueSource"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/blueColorButton" />
-                </android.support.constraint.ConstraintLayout>
+                        android:layout_margin="8dp"
+                        android:background="@color/colorSecondary"
+                        android:padding="2dp">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/blackColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorSecondary"
-                    android:padding="2dp">
+                        <Button
+                            android:id="@+id/blueColorButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorBlueSource"
+                            android:scaleType="fitXY"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-                    <Button
-                        android:id="@+id/blackColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:background="@color/colorBlackSource"
-                        android:scaleType="fitXY"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/blueSource"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/blueColorButton"
+                            tools:ignore="SmallSp" />
+                    </android.support.constraint.ConstraintLayout>
 
-                    <TextView
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/blackColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/blackSource"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/blackColorButton" />
-                </android.support.constraint.ConstraintLayout>
-            </LinearLayout>
+                        android:layout_margin="8dp"
+                        android:background="@color/colorSecondary"
+                        android:padding="2dp">
+
+                        <Button
+                            android:id="@+id/blackColorButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorBlackSource"
+                            android:scaleType="fitXY"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/blackSource"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/blackColorButton"
+                            tools:ignore="SmallSp" />
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/disabledColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+                    android:background="@color/colorDisabled"
+                    android:gravity="center"
+                    android:text="@string/disable_message_color"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="8dp"
+                    android:visibility="gone"
+                    tools:ignore="SpUsage" />
+            </RelativeLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -451,6 +480,7 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center_horizontal"
@@ -458,6 +488,7 @@
 
                 <Button
                     android:id="@+id/basicCard"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="55dp"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -466,10 +497,12 @@
                     android:text="@string/CardBasic"
                     android:textAlignment="center"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
 
                 <Button
                     android:id="@+id/commonCard"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="55dp"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -478,10 +511,12 @@
                     android:text="@string/CardCommon"
                     android:textAlignment="center"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
 
                 <Button
                     android:id="@+id/uncommonCard"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="55dp"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -490,10 +525,12 @@
                     android:text="@string/CardUncommon"
                     android:textAlignment="center"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
 
                 <Button
                     android:id="@+id/rareCard"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="55dp"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -501,7 +538,8 @@
                     android:padding="2dp"
                     android:text="@string/CardRare"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    tools:ignore="SmallSp" />
 
             </LinearLayout>
 

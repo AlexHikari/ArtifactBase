@@ -18,5 +18,6 @@
     <color name="colorbackgroundFilter">#f51b1b1b</color>
     <color name="TextBackgroundCardDark">#e7000000</color>
     <color name="colorTransparent">#00000000</color>
-    <color name="colorSelected">#1e0035</color>
+    <color name="colorDisabled">#e91d1d1d</color>
+    <color name="colorSelected">#600039</color>
 </resources>

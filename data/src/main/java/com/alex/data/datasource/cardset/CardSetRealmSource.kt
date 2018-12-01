@@ -17,7 +17,6 @@ class CardSetRealmSource : CardSetLocalSource {
     private var config = RealmConfiguration.Builder().build()
     override fun retrieveCardSets(): Flowable<CardSet> {
         val results: RealmResults<CardSetVo> = Realm.getInstance(config).where(CardSetVo::class.java).findAll()
-        val results2: RealmResults<CardVo> = Realm.getInstance(config).where(CardVo::class.java).findAll()
         val returnedResults = mutableListOf<CardSet>()
         results.forEach {
             returnedResults.add(it.toCardSet())

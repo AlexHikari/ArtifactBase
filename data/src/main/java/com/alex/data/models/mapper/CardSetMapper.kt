@@ -183,13 +183,17 @@ fun CardDAO.toCardColor(): CardColor {
 
     var color: CardColor = CardColor.UNKNOWN
     if (is_black != null)
-        color = CardColor.BLACK
+        if (is_black!!)
+            color = CardColor.BLACK
     if (is_blue != null)
-        color = CardColor.BLUE
+        if (is_blue!!)
+            color = CardColor.BLUE
     if (is_green != null)
-        color = CardColor.GREEN
+        if (is_green!!)
+            color = CardColor.GREEN
     if (is_red != null)
-        color = CardColor.RED
+        if (is_red!!)
+            color = CardColor.RED
     return color
 }
 

@@ -22,7 +22,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
                     cardSets.add(it.toCardSetView())
                 },
                 onComplete = {
-                    filterCards(cardSets)
+                    firstFilterCards(cardSets)
                     view.showCards(cardsToShow)
                     view.showIcons()
                     view.hideProgress()
@@ -35,7 +35,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
         Log.i("a", "a")
     }
 
-    private fun filterCards(cardSet: MutableList<CardSetView>) {
+    private fun firstFilterCards(cardSet: MutableList<CardSetView>) {
 
         cardSet.forEach {
             it.cardList.forEach { card ->
@@ -47,11 +47,62 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     }
 
-    fun filterCardsByColor(colors: Array<Boolean>) {
-
+    fun filterCards(colors: Array<Boolean>, types: Array<Boolean>) {
         filteredCards = mutableListOf()
+        filterCardsByColor(colors)
+        filterCardsByType(types)
+        view.showCards(filteredCards)
+    }
 
-        var shouldReplace: Boolean = false
+    private fun filterCardsByType(types: Array<Boolean>) {
+        var shouldReplace = false
+        types.forEach {
+            if (it && !shouldReplace)
+                shouldReplace = true
+        }
+        if (!shouldReplace) {
+            filteredCards.addAll(cardsToShow)
+        } else {
+            types.forEachIndexed { index, b ->
+                when (index) {
+                    0 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.CardType == CardTypeView.HERO)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    1 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.CardType == CardTypeView.SPELL)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    2 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.CardType == CardTypeView.CREEP)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    3 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.CardType == CardTypeView.IMPROVEMENT)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                    4 -> {
+                        if (b) cardsToShow.map { cardview ->
+                            if (cardview.CardType == CardTypeView.ITEM)
+                                filteredCards.add(cardview)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun filterCardsByColor(colors: Array<Boolean>) {
+
+        var shouldReplace = false
         colors.forEach {
             if (it && !shouldReplace)
                 shouldReplace = true
@@ -88,7 +139,6 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
                 }
             }
         }
-        view.showCards(filteredCards)
     }
 
     override fun resume() {

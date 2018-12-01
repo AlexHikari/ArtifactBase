@@ -1,5 +1,6 @@
 package com.alex.phom.view.fragment
 
+import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.alex.phom.R
@@ -24,7 +25,9 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
     }
 
     // black-red-green-blue
-    private val colorfilter: Array<Boolean> = Array(4) { false }
+    private val colorFilter: Array<Boolean> = Array(4) { false }
+    // hero-spell-creep-improvement-item
+    private val typeFilter: Array<Boolean> = Array(5) { false }
     override val presenter: CardSetsPresenter by instance()
     override val layoutResourceId: Int = R.layout.fragment_cardset
     private val cardAdapter: CardAdapter = CardAdapter {
@@ -54,30 +57,73 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
             mana_leftvalue.text = minValue.toString()
             mana_rightvalue.text = maxValue.toString()
         }
+
+        heroImgButton.setOnClickListener {
+            typeFilter[0] = !typeFilter[0]
+            if (typeFilter[0])
+                heroImg.setBackgroundResource(R.color.colorSelected)
+            else
+                heroImg.setBackgroundResource(R.color.colorSecondary)
+        }
+
+        spellImgButton.setOnClickListener {
+            typeFilter[1] = !typeFilter[1]
+            if (typeFilter[1])
+                spellImg.setBackgroundResource(R.color.colorSelected)
+            else
+                spellImg.setBackgroundResource(R.color.colorSecondary)
+        }
+
+        creepImgButton.setOnClickListener {
+            typeFilter[2] = !typeFilter[2]
+            if (typeFilter[2])
+                creepImg.setBackgroundResource(R.color.colorSelected)
+            else
+                creepImg.setBackgroundResource(R.color.colorSecondary)
+        }
+
+        improvementImgButton.setOnClickListener {
+            typeFilter[3] = !typeFilter[3]
+            checkColorsAndToggle()
+            if (typeFilter[3]) {
+                improvementImg.setBackgroundResource(R.color.colorSelected)
+            } else
+                improvementImg.setBackgroundResource(R.color.colorSecondary)
+        }
+
+        itemImgButton.setOnClickListener {
+            typeFilter[4] = !typeFilter[4]
+            checkColorsAndToggle()
+            if (typeFilter[4])
+                itemImg.setBackgroundResource(R.color.colorSelected)
+            else
+                itemImg.setBackgroundResource(R.color.colorSecondary)
+        }
+
         blackColorButton.setOnClickListener {
-            colorfilter[0] = !colorfilter[0]
-            if (colorfilter[0])
+            colorFilter[0] = !colorFilter[0]
+            if (colorFilter[0])
                 blackColor.setBackgroundResource(R.color.colorSelected)
             else
                 blackColor.setBackgroundResource(R.color.colorSecondary)
         }
         redColorButton.setOnClickListener {
-            colorfilter[1] = !colorfilter[1]
-            if (colorfilter[1])
+            colorFilter[1] = !colorFilter[1]
+            if (colorFilter[1])
                 redColor.setBackgroundResource(R.color.colorSelected)
             else
                 redColor.setBackgroundResource(R.color.colorSecondary)
         }
         greenColorButton.setOnClickListener {
-            colorfilter[2] = !colorfilter[2]
-            if (colorfilter[2])
+            colorFilter[2] = !colorFilter[2]
+            if (colorFilter[2])
                 greenColor.setBackgroundResource(R.color.colorSelected)
             else
                 greenColor.setBackgroundResource(R.color.colorSecondary)
         }
         blueColorButton.setOnClickListener {
-            colorfilter[3] = !colorfilter[3]
-            if (colorfilter[3])
+            colorFilter[3] = !colorFilter[3]
+            if (colorFilter[3])
                 blueColor.setBackgroundResource(R.color.colorSelected)
             else
                 blueColor.setBackgroundResource(R.color.colorSecondary)
@@ -88,10 +134,16 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
             when (filterView.visibility) {
                 View.VISIBLE -> {
                     filterView.visibility = View.GONE
-                    presenter.filterCardsByColor(colorfilter)
+                    presenter.filterCards(colorFilter, typeFilter)
+                    context?.let { context ->
+                        button_filter.backgroundTintList = AppCompatResources.getColorStateList(context, R.color.colorBottomNavigationNotification)
+                    }
                 }
                 View.GONE -> {
                     filterView.visibility = View.VISIBLE
+                    context?.let { context ->
+                        button_filter.backgroundTintList = AppCompatResources.getColorStateList(context, R.color.colorSelected)
+                    }
                 }
                 else -> View.VISIBLE
             }
@@ -105,6 +157,21 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun showCards(cardList: List<Cardview>) {
         cardAdapter.replace(cardList.toMutableList())
+    }
+
+    private fun checkColorsAndToggle() {
+
+        val disable = typeFilter[3] || typeFilter[4]
+        when (disable) {
+            true -> {
+                colorFilter.map { false }
+                disabledColor.visibility = View.VISIBLE
+
+            }
+            false -> {
+                disabledColor.visibility = View.GONE
+            }
+        }
     }
 
     override fun showIcons() {
