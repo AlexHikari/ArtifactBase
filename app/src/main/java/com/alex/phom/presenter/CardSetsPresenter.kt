@@ -47,100 +47,42 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     }
 
-    fun filterCards(colors: Array<Boolean>, types: Array<Boolean>) {
+    fun filterCards(colors: ArrayList<CardColorView>, types: ArrayList<CardTypeView>) {
         filteredCards = mutableListOf()
-        var noFilters = !colors.contains(true) && !types.contains(true)
-        if (!noFilters) {
-            filterCardsByColor(colors)
-            filterCardsByType(types)
-        } else
+        if (colors.isEmpty() && types.isEmpty()) {
             filteredCards.addAll(cardsToShow)
-
+        } else {
+            if (colors.isNotEmpty()) {
+                colors.map { color ->
+                    if (types.isNotEmpty()) {
+                        types.map { type ->
+                            cardsToShow.forEach { card ->
+                                if (card.cardColor == color && card.CardType == type) {
+                                    filteredCards.add(card)
+                                }
+                            }
+                        }
+                    } else {
+                        cardsToShow.forEach { card ->
+                            if (card.cardColor == color) {
+                                filteredCards.add(card)
+                            }
+                        }
+                    }
+                }
+            } else {
+                types.map { type ->
+                    cardsToShow.forEach { card ->
+                        if (card.CardType == type) {
+                            filteredCards.add(card)
+                        }
+                    }
+                }
+            }
+        }
         view.showCards(filteredCards)
     }
 
-    private fun filterCardsByType(types: Array<Boolean>) {
-        var shouldReplace = false
-        types.forEach {
-            if (it && !shouldReplace)
-                shouldReplace = true
-        }
-        if (shouldReplace) {
-            types.forEachIndexed { index, b ->
-                when (index) {
-                    0 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.CardType == CardTypeView.HERO)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    1 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.CardType == CardTypeView.SPELL)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    2 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.CardType == CardTypeView.CREEP)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    3 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.CardType == CardTypeView.IMPROVEMENT)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    4 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.CardType == CardTypeView.ITEM)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun filterCardsByColor(colors: Array<Boolean>) {
-
-        var shouldReplace = false
-        colors.forEach {
-            if (it && !shouldReplace)
-                shouldReplace = true
-        }
-        if (shouldReplace) {
-            colors.forEachIndexed { index, b ->
-                when (index) {
-                    0 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.cardColor == CardColorView.BLACK)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    1 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.cardColor == CardColorView.RED)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    2 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.cardColor == CardColorView.GREEN)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                    3 -> {
-                        if (b) cardsToShow.map { cardview ->
-                            if (cardview.cardColor == CardColorView.BLUE)
-                                filteredCards.add(cardview)
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     override fun resume() {
 

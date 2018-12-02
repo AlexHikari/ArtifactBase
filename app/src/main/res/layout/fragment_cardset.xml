@@ -20,18 +20,16 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:background="@color/colorbackgroundFilter"
+        android:background="@color/colorTransparent"
         android:padding="8dp"
         android:scrollbarStyle="insideOverlay"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSecondary"
+            android:background="@color/colorSecondaryDark"
             android:elevation="8dp"
-            android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -154,8 +152,8 @@
                     android:id="@+id/heroImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="2dp">
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
 
                     <ImageButton
                         android:id="@+id/heroImgButton"
@@ -187,8 +185,8 @@
                     android:id="@+id/spellImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="2dp">
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
 
                     <ImageButton
                         android:id="@+id/spellImgButton"
@@ -219,8 +217,8 @@
                     android:id="@+id/creepImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="2dp">
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
 
                     <ImageButton
                         android:id="@+id/creepImgButton"
@@ -251,8 +249,8 @@
                     android:id="@+id/improvementImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="2dp">
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
 
                     <ImageButton
                         android:id="@+id/improvementImgButton"
@@ -282,7 +280,8 @@
                     android:id="@+id/itemImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp">
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
 
                     <ImageButton
                         android:id="@+id/itemImgButton"

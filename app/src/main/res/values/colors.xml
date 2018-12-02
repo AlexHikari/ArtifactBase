@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorSecondary">#242428</color>
     <color name="colorSecondaryLight">#000000</color>
-    <color name="colorSecondaryDark">#000000</color>
+    <color name="colorSecondaryDark">#f0000000</color>
     <color name="colorGreenSource">#2f693c</color>
     <color name="colorBlackSource">#3d3d3d</color>
     <color name="colorBlueSource">#214f6c</color>
