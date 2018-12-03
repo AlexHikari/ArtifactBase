@@ -3,10 +3,7 @@ package com.alex.phom.presenter
 import android.util.Log
 import com.alex.domain.interactor.cards.GetCardSetsUseCase
 import com.alex.phom.error.ErrorHandler
-import com.alex.phom.models.CardColorView
-import com.alex.phom.models.CardSetView
-import com.alex.phom.models.CardTypeView
-import com.alex.phom.models.Cardview
+import com.alex.phom.models.*
 import com.alex.phom.models.mappers.toCardSetView
 
 class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view: CardSetsPresenter.View, errorHandler: ErrorHandler) : Presenter<CardSetsPresenter.View>(view = view, errorHandler = errorHandler) {
@@ -47,39 +44,38 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     }
 
-    fun filterCards(colors: ArrayList<CardColorView>, types: ArrayList<CardTypeView>) {
-        filteredCards = mutableListOf()
-        if (colors.isEmpty() && types.isEmpty()) {
-            filteredCards.addAll(cardsToShow)
-        } else {
+    fun filterCards(colors: ArrayList<CardColorView>, types: ArrayList<CardTypeView>, rarities: ArrayList<RarityView>, minMana: Int, maxMana: Int, minGold: Int, maxGold: Int) {
+
+        filteredCards = cardsToShow.filter {
             if (colors.isNotEmpty()) {
-                colors.map { color ->
-                    if (types.isNotEmpty()) {
-                        types.map { type ->
-                            cardsToShow.forEach { card ->
-                                if (card.cardColor == color && card.CardType == type) {
-                                    filteredCards.add(card)
-                                }
-                            }
-                        }
-                    } else {
-                        cardsToShow.forEach { card ->
-                            if (card.cardColor == color) {
-                                filteredCards.add(card)
-                            }
-                        }
-                    }
+                if (!colors.contains(it.cardColor)) {
+                    return@filter false
+                }
+            }
+            if (types.isNotEmpty()) {
+                if (!types.contains(it.CardType)) {
+                    return@filter false
+                }
+            }
+            if (rarities.isNotEmpty()) {
+                if (!rarities.contains(it.rarity)) {
+                    return@filter false
+                }
+            }
+
+            if (types.contains(CardTypeView.ITEM)) {
+                if (it.goldCost !in minGold..maxGold) {
+                    return@filter false
                 }
             } else {
-                types.map { type ->
-                    cardsToShow.forEach { card ->
-                        if (card.CardType == type) {
-                            filteredCards.add(card)
-                        }
+                if (!types.contains(CardTypeView.HERO)) {
+                    if (it.manaCost !in minMana..maxMana) {
+                        return@filter false
                     }
                 }
             }
-        }
+            return@filter true
+        }.toMutableList()
         view.showCards(filteredCards)
     }
 

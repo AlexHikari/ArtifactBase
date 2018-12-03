@@ -10,6 +10,7 @@
     <string name="articleActivity">ArticleActivity</string>
     <string name="tab_4">NoIdea</string>
     <string name="mana">Mana</string>
+    <string name="gold">Gold</string>
     <string name="cardtype">Card type</string>
     <string name="card_name">Card name</string>
     <string name="filtersearchbutton">FilterSearchButton</string>
@@ -19,15 +20,16 @@
     <string name="item">ITEM</string>
     <string name="improvement">IMPROVEMENT</string>
     <string name="card_color">Card color</string>
-    <string name="redSource">Red</string>
-    <string name="greenSource">Green</string>
-    <string name="blueSource">Blue</string>
-    <string name="blackSource">Black</string>
+    <string name="redSource">RED</string>
+    <string name="greenSource">GREEN</string>
+    <string name="blueSource">BLUE</string>
+    <string name="blackSource">BLACK</string>
     <string name="cardSearchPlaceholder">Search for a Card Here</string>
     <string name="card_rarity">Card rarity</string>
     <string name="CardBasic">Basic</string>
     <string name="CardCommon">Common</string>
     <string name="CardUncommon">Uncommon</string>
     <string name="CardRare">Rare</string>
-    <string name="disable_message_color">Improvements and items have no color</string>
+    <string name="disable_message_color">ITEMS HAVE NO COLOR</string>
+    <string name="items_have_no_mana_cost">ITEMS HAVE NO MANA COST</string>
 </resources>

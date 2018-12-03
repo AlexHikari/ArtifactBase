@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filterView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:background="@color/TextBackgroundCard"
+    android:padding="8dp"
+    android:scrollbarStyle="insideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/TextBackgroundCard"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_name"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/cardSearchInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/cardSearchPlaceholder"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorTextColor"
+                android:textColorHint="@color/colorSecondary"
+                android:textColorLink="@color/colorTextColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardSearchButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/cardSearchButton"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:contentDescription="@string/filtersearchbutton"
+                android:src="@android:drawable/ic_menu_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cardSearchInput"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@android:drawable/ic_menu_search" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/manaGoldTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mana"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/manaRangeSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_color="@color/colorBar"
+                app:bar_highlight_color="@color/colorSelected"
+                app:corner_radius="10"
+                app:data_type="_integer"
+                app:left_thumb_color="@color/colorThumb"
+                app:left_thumb_color_pressed="@color/colorThumbPressed"
+                app:max_value="10"
+                app:min_value="1"
+                app:right_thumb_color="@color/colorThumb"
+                app:right_thumb_color_pressed="@color/colorThumbPressed" />
+
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/goldRangeSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:bar_color="@color/colorBar"
+                app:bar_highlight_color="@color/colorSelected"
+                app:corner_radius="10"
+                app:data_type="_integer"
+                app:left_thumb_color="@color/colorThumb"
+                app:left_thumb_color_pressed="@color/colorThumbPressed"
+                app:max_value="25"
+                app:min_value="1"
+                app:right_thumb_color="@color/colorThumb"
+                app:right_thumb_color_pressed="@color/colorThumbPressed" />
+
+            <TextView
+                android:id="@+id/goldManaLeftValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorTextColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/manaRangeSeekBar"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/goldManaRightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorTextColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/manaRangeSeekBar"
+                tools:text="10" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cardtype"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/heroTypeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
+
+                    <ImageButton
+                        android:id="@+id/heroImgButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypehero"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hero"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/heroImgButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/spellTypeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
+
+                    <ImageButton
+                        android:id="@+id/spellImgButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypespell"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spell"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/spellImgButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/creepTypeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
+
+                    <ImageButton
+                        android:id="@+id/creepImgButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypecreep"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/creep"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/creepImgButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/improvementTypeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
+
+                    <ImageButton
+                        android:id="@+id/improvementImgButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypeimprovement"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/improvement"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/improvementImgButton" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/itemTypeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorSecondary">
+
+                    <ImageButton
+                        android:id="@+id/itemImgButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypeitem"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/item"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/itemImgButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_color"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/redColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/redColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorRedSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/redSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/redColorButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/greenColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/greenColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorGreenSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/greenSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/greenColorButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/blueColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/blueColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorBlueSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blueSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/blueColorButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/blackColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorSecondary"
+                    android:padding="2dp">
+
+                    <Button
+                        android:id="@+id/blackColorButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorBlackSource"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blackSource"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorTextColor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/blackColorButton"
+                        tools:ignore="SmallSp" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/disabledColorButtons"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:background="@color/colorDisabled"
+                android:gravity="center"
+                android:text="@string/disable_message_color"
+                android:textColor="@color/colorTextColor"
+                android:textSize="12dp"
+                android:visibility="gone"
+                tools:ignore="SpUsage" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_rarity"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/basicRarityButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorSecondary"
+                android:padding="2dp"
+                android:text="@string/CardBasic"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextColor"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/commonRarityButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorSecondary"
+                android:padding="2dp"
+                android:text="@string/CardCommon"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextColor"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/uncommonCard"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorSecondary"
+                android:padding="2dp"
+                android:text="@string/CardUncommon"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextColor"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/rareRarityButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorSecondary"
+                android:padding="2dp"
+                android:text="@string/CardRare"
+                android:textColor="@color/colorTextColor"
+                android:textSize="8sp"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
