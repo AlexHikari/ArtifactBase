@@ -15,58 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/TextBackgroundCard"
-        android:elevation="8dp"
+        android:gravity="top"
         android:orientation="vertical"
         android:padding="8dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/card_name"
-            android:textColor="@color/colorTextColor"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/cardSearchInput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/cardSearchPlaceholder"
-                android:inputType="text"
-                android:singleLine="true"
-                android:textColor="@color/colorTextColor"
-                android:textColorHint="@color/colorSecondary"
-                android:textColorLink="@color/colorTextColor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cardSearchButton"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/cardSearchButton"
-                style="@style/Widget.AppCompat.ImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                android:contentDescription="@string/filtersearchbutton"
-                android:src="@android:drawable/ic_menu_search"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cardSearchInput"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@android:drawable/ic_menu_search" />
-        </android.support.constraint.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/manaGoldTittle"
+            android:id="@+id/manaTittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mana"
@@ -76,7 +30,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp">
 
             <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                 android:id="@+id/manaRangeSeekBar"
@@ -93,24 +47,8 @@
                 app:right_thumb_color="@color/colorThumb"
                 app:right_thumb_color_pressed="@color/colorThumbPressed" />
 
-            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
-                android:id="@+id/goldRangeSeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:bar_color="@color/colorBar"
-                app:bar_highlight_color="@color/colorSelected"
-                app:corner_radius="10"
-                app:data_type="_integer"
-                app:left_thumb_color="@color/colorThumb"
-                app:left_thumb_color_pressed="@color/colorThumbPressed"
-                app:max_value="25"
-                app:min_value="1"
-                app:right_thumb_color="@color/colorThumb"
-                app:right_thumb_color_pressed="@color/colorThumbPressed" />
-
             <TextView
-                android:id="@+id/goldManaLeftValue"
+                android:id="@+id/manaLeftValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -123,7 +61,7 @@
                 tools:text="1" />
 
             <TextView
-                android:id="@+id/goldManaRightValue"
+                android:id="@+id/manaRightValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -134,6 +72,64 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/manaRangeSeekBar"
                 tools:text="10" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/goldTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gold"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/goldLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="gone">
+
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/goldRangeSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_color="@color/colorBar"
+                app:bar_highlight_color="@color/colorSelected"
+                app:corner_radius="10"
+                app:data_type="_integer"
+                app:left_thumb_color="@color/colorThumb"
+                app:left_thumb_color_pressed="@color/colorThumbPressed"
+                app:max_value="25"
+                app:min_value="1"
+                app:right_thumb_color="@color/colorThumb"
+                app:right_thumb_color_pressed="@color/colorThumbPressed" />
+
+            <TextView
+                android:id="@+id/goldLeftValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorTextColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/goldRangeSeekBar"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/goldRightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorTextColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/goldRangeSeekBar"
+                tools:text="25" />
         </android.support.constraint.ConstraintLayout>
 
         <TextView
@@ -165,8 +161,8 @@
 
                     <ImageButton
                         android:id="@+id/heroImgButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/cardtypehero"
@@ -198,8 +194,8 @@
 
                     <ImageButton
                         android:id="@+id/spellImgButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/cardtypespell"
@@ -230,8 +226,8 @@
 
                     <ImageButton
                         android:id="@+id/creepImgButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/cardtypecreep"
@@ -262,8 +258,8 @@
 
                     <ImageButton
                         android:id="@+id/improvementImgButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/cardtypeimprovement"
@@ -293,8 +289,8 @@
 
                     <ImageButton
                         android:id="@+id/itemImgButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:scaleType="fitXY"
                         android:src="@drawable/cardtypeitem"
@@ -347,8 +343,8 @@
 
                     <Button
                         android:id="@+id/redColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
                         android:background="@color/colorRedSource"
                         android:scaleType="fitXY"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -379,8 +375,8 @@
 
                     <Button
                         android:id="@+id/greenColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
                         android:background="@color/colorGreenSource"
                         android:scaleType="fitXY"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -411,8 +407,8 @@
 
                     <Button
                         android:id="@+id/blueColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
                         android:background="@color/colorBlueSource"
                         android:scaleType="fitXY"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -443,8 +439,8 @@
 
                     <Button
                         android:id="@+id/blackColorButton"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
                         android:background="@color/colorBlackSource"
                         android:scaleType="fitXY"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -465,18 +461,6 @@
                         tools:ignore="SmallSp" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/disabledColorButtons"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:background="@color/colorDisabled"
-                android:gravity="center"
-                android:text="@string/disable_message_color"
-                android:textColor="@color/colorTextColor"
-                android:textSize="12dp"
-                android:visibility="gone"
-                tools:ignore="SpUsage" />
         </RelativeLayout>
 
 
@@ -498,56 +482,56 @@
             <Button
                 android:id="@+id/basicRarityButton"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="55dp"
-                android:layout_height="45dp"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
                 android:text="@string/CardBasic"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 tools:ignore="SmallSp" />
 
             <Button
                 android:id="@+id/commonRarityButton"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="55dp"
-                android:layout_height="45dp"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
                 android:text="@string/CardCommon"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 tools:ignore="SmallSp" />
 
             <Button
                 android:id="@+id/uncommonCard"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="55dp"
-                android:layout_height="45dp"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
                 android:text="@string/CardUncommon"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 tools:ignore="SmallSp" />
 
             <Button
                 android:id="@+id/rareRarityButton"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="55dp"
-                android:layout_height="45dp"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
                 android:text="@string/CardRare"
                 android:textColor="@color/colorTextColor"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 tools:ignore="SmallSp" />
 
         </LinearLayout>

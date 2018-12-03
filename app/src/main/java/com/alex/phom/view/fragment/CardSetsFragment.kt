@@ -18,9 +18,7 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_cardset.*
-import kotlinx.android.synthetic.main.header_bar.view.*
 import kotlinx.android.synthetic.main.view_filter.view.*
 
 class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresenter.View {
@@ -128,15 +126,15 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         filterView.goldRangeSeekBar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
             minGold = minValue.toInt()
             maxGold = maxValue.toInt()
-            filterView.goldManaLeftValue.text = minValue.toString()
-            filterView.goldManaRightValue.text = maxValue.toString()
+            filterView.goldLeftValue.text = minValue.toString()
+            filterView.goldRightValue.text = maxValue.toString()
         }
 
         filterView.manaRangeSeekBar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
             minMana = minValue.toInt()
             maxMana = maxValue.toInt()
-            filterView.goldManaLeftValue.text = minValue.toString()
-            filterView.goldManaRightValue.text = maxValue.toString()
+            filterView.manaLeftValue.text = minValue.toString()
+            filterView.manaRightValue.text = maxValue.toString()
         }
 
         filterView.basicRarityButton.setOnClickListener {
@@ -208,50 +206,18 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         filterView.itemImgButton.setOnClickListener {
             if (typeFilter.contains(CardTypeView.ITEM)) {
                 //Toggle visibilities of the elements
-                filterView.disabledColorButtons.visibility = View.GONE
-                filterView.goldRangeSeekBar.visibility = View.GONE
-                filterView.manaRangeSeekBar.visibility = View.VISIBLE
-                //Set text to mana
-                filterView.manaGoldTittle.text = resources.getString(R.string.mana)
-                filterView.itemTypeLayout.setBackgroundResource(R.color.colorSecondary)
 
+                filterView.goldTittle.visibility = View.GONE
+                filterView.goldLayout.visibility = View.GONE
+                filterView.itemTypeLayout.setBackgroundResource(R.color.colorSecondary)
                 typeFilter.removeIf { type -> type == CardTypeView.ITEM }
-                //Reload mana bar and values
-                minMana = MIN_MANA
-                maxMana = MAX_MANA
-                filterView.goldManaLeftValue.text = MIN_MANA.toString()
-                filterView.goldManaRightValue.text = MAX_MANA.toString()
+
             } else {
                 typeFilter.add(CardTypeView.ITEM)
-
+                filterView.itemTypeLayout.setBackgroundResource(R.color.colorSelected)
                 //Toggle visibilities of the elements
-                filterView.disabledColorButtons.visibility = View.VISIBLE
-                filterView.goldRangeSeekBar.visibility = View.VISIBLE
-                filterView.manaRangeSeekBar.visibility = View.GONE
-
-                //Disable colors and types
-                filterView.blueColor.setBackgroundResource(R.color.colorSecondary)
-                filterView.blackColor.setBackgroundResource(R.color.colorSecondary)
-                filterView.greenColor.setBackgroundResource(R.color.colorSecondary)
-                filterView.redColor.setBackgroundResource(R.color.colorSecondary)
-                filterView.heroTypeLayout.setBackgroundResource(R.color.colorSecondary)
-                filterView.spellTypeLayout.setBackgroundResource(R.color.colorSecondary)
-                filterView.creepTypeLayout.setBackgroundResource(R.color.colorSecondary)
-                filterView.improvementTypeLayout.setBackgroundResource(R.color.colorSecondary)
-
-                //Set text to gold
-                filterView.manaGoldTittle.text = resources.getString(R.string.gold)
-
-                //clear filters but item
-                colorFilter.clear()
-                typeFilter.clear()
-                typeFilter.add(CardTypeView.ITEM)
-
-                //Reload gold bar and values
-                minGold = MIN_GOLD
-                maxGold = MAX_GOLD
-                filterView.goldManaLeftValue.text = MIN_GOLD.toString()
-                filterView.goldManaRightValue.text = MAX_GOLD.toString()
+                filterView.goldTittle.visibility = View.VISIBLE
+                filterView.goldLayout.visibility = View.VISIBLE
             }
         }
 
@@ -324,7 +290,6 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun showIcons() {
         activity?.let {
-            it.home_header.button_sortby.visibility = View.VISIBLE
             button_filter.visibility = View.VISIBLE
         }
     }

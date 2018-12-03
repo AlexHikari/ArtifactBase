@@ -46,17 +46,6 @@
             app:srcCompat="@drawable/mainicon"
             tools:srcCompat="@drawable/mainicon" />
 
-        <ImageButton
-            android:id="@+id/button_sortby"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/sortbyicon"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

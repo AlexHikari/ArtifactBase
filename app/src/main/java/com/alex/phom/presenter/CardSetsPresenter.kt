@@ -63,12 +63,12 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
                 }
             }
 
-            if (types.contains(CardTypeView.ITEM)) {
+            if (types.contains(CardTypeView.ITEM) && it.goldCost.toInt() != 0) {
                 if (it.goldCost !in minGold..maxGold) {
                     return@filter false
                 }
             } else {
-                if (!types.contains(CardTypeView.HERO)) {
+                if (!types.contains(CardTypeView.HERO) && it.manaCost.toInt() != 0) {
                     if (it.manaCost !in minMana..maxMana) {
                         return@filter false
                     }
