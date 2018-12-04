@@ -36,4 +36,5 @@
     <string name="attack">Attack:</string>
     <string name="armor">Armor:</string>
     <string name="hitpoints">Hit Points:</string>
+    <string name="passive_ability">Passive ability</string>
 </resources>
