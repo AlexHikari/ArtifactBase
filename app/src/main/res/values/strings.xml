@@ -32,4 +32,8 @@
     <string name="CardRare">Rare</string>
     <string name="disable_message_color">ITEMS HAVE NO COLOR</string>
     <string name="items_have_no_mana_cost">ITEMS HAVE NO MANA COST</string>
+    <string name="gold_cost">Gold cost:</string>
+    <string name="attack">Attack:</string>
+    <string name="armor">Armor:</string>
+    <string name="hitpoints">Hit Points:</string>
 </resources>
