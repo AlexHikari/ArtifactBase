@@ -43,121 +43,129 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/itemSubtypeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:text="@string/hero"
-                    android:textColor="@color/colorTextColor"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/heroIconImage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@null"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/cardtypehero" />
-
-                <TextView
-                    android:id="@+id/heroName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/colorTextColor"
-                    android:textSize="18sp"
-                    tools:text="Hero Name" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/heroAttack"
+                        android:id="@+id/itemSubtypeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/attack"
+                        android:layout_marginBottom="15dp"
+                        android:text="@string/hero"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp" />
 
+                    <ImageButton
+                        android:id="@+id/heroIconImage"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cardtypehero" />
+
                     <TextView
-                        android:id="@+id/heroAttackText"
+                        android:id="@+id/heroName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="15dp"
-                        android:gravity="center"
                         android:textColor="@color/colorTextColor"
-                        android:textSize="12sp"
-                        tools:text="Hero attack value" />
+                        android:textSize="18sp"
+                        tools:text="Hero Name" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/heroAttack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/attack"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/heroAttackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="12sp"
+                            tools:text="Hero attack value" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/heroArmor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/armor"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/heroArmorText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="12sp"
+                            tools:text="Hero armor value" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/heroHitPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/hitpoints"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/heroHitPointsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="12sp"
+                            tools:text="Hero hit Points value" />
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
+            </ScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/heroArmor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/armor"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/heroArmorText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="12sp"
-                        tools:text="Hero armor value" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/heroHitPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/hitpoints"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/heroHitPointsText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="12sp"
-                        tools:text="Hero hitpoints value" />
-
-                </LinearLayout>
-            </LinearLayout>
         </android.support.v7.widget.CardView>
 
 

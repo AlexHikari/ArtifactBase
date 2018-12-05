@@ -28,6 +28,10 @@
             android:name=".view.activity.ArticleActivity"
             android:parentActivityName=".view.activity.HomeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.HeroSingleCardActivity"
+            android:parentActivityName=".view.activity.HomeActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>

@@ -9,15 +9,15 @@ fun CardSet.toCardSetView(): CardSetView = CardSetView(
         version = this.version
 )
 
-fun List<Card>.toCardListView(): List<Cardview> {
-    val list = mutableListOf<Cardview>()
+fun List<Card>.toCardListView(): List<CardView> {
+    val list = mutableListOf<CardView>()
     this.forEach {
         list.add(it.toCardView())
     }
     return list
 }
 
-fun Card.toCardView(): Cardview = Cardview(
+fun Card.toCardView(): CardView = CardView(
         baseCardID = this.baseCardID,
         cardText = this.cardText.toNameView(),
         armor = this.armor!!,
@@ -28,10 +28,10 @@ fun Card.toCardView(): Cardview = Cardview(
         CardType = this.cardType.toTypeView(),
         charges = this.charges!!,
         goldCost = this.goldCost!!,
-        heroIngameImage = this.heroIngameImage.toImageView(),
+        heroInGameImage = this.heroIngameImage.toImageView(),
         hitPoints = this.hitPoints!!,
         illustrator = this.illustrator!!,
-        isCrosslane = this.isCrosslane!!,
+        isCrossLane = this.isCrosslane!!,
         isQuick = this.isQuick!!,
         itemDef = this.itemDef!!,
         largeImage = this.largeImage.toLargeImageView(),
@@ -121,7 +121,7 @@ fun Name.toNameView(): NameView = NameView(
 )
 
 fun LargeImage.toLargeImageView(): LargeImageView = LargeImageView(
-        imgdef = this.imgdef!!,
+        imgDef = this.imgdef!!,
         tchinese = this.tchinese!!,
         spanish = this.spanish!!,
         schinese = this.schinese!!,

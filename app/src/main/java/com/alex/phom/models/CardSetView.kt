@@ -1,12 +1,12 @@
 package com.alex.phom.models
 
 data class CardSetView(
-        val cardList: List<Cardview>,
+        val cardList: List<CardView>,
         val setInfo: SetInfoView,
         val version: Long
 )
 
-data class Cardview(
+data class CardView(
         val cardID: Long,
         val cardText: NameView,
         val baseCardID: Long,
@@ -14,7 +14,7 @@ data class Cardview(
         val cardName: NameView,
         val miniImage: ImageView,
         val largeImage: LargeImageView,
-        val heroIngameImage: ImageView,
+        val heroInGameImage: ImageView,
         val illustrator: String = "",
         val rarity: RarityView = RarityView.UNKNOWN,
         val cardColor: CardColorView,
@@ -23,7 +23,7 @@ data class Cardview(
         val hitPoints: Long = 0,
         val references: List<Any>,
         val manaCost: Long = 0,
-        val isCrosslane: Boolean = false,
+        val isCrossLane: Boolean = false,
         val charges: Long = 0,
         val armor: Long = 0,
         val subType: SubTypeView = SubTypeView.UNKNOWN,
@@ -36,7 +36,7 @@ data class ImageView(
 )
 
 data class LargeImageView(
-        val imgdef: String = "",
+        val imgDef: String = "",
         val german: String = "",
         val french: String = "",
         val italian: String = "",

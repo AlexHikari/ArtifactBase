@@ -1,6 +1,5 @@
 package com.alex.phom.presenter
 
-import android.util.Log
 import com.alex.domain.interactor.cards.GetCardSetsUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.*
@@ -9,8 +8,8 @@ import com.alex.phom.models.mappers.toCardSetView
 class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view: CardSetsPresenter.View, errorHandler: ErrorHandler) : Presenter<CardSetsPresenter.View>(view = view, errorHandler = errorHandler) {
 
     private val cardSets = mutableListOf<CardSetView>()
-    private val cardsToShow = mutableListOf<Cardview>()
-    private var filteredCards = mutableListOf<Cardview>()
+    private val cardsToShow = mutableListOf<CardView>()
+    private var filteredCards = mutableListOf<CardView>()
 
     override fun initialize() {
         view.showProgress()
@@ -28,8 +27,10 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
         )
     }
 
-    fun onCardClicked(card: Cardview) {
-        Log.i("a", "a")
+    fun onCardClicked(card: CardView) {
+        when (card.CardType) {
+            CardTypeView.HERO -> view.navigateToHeroSingleCard(card)
+        }
     }
 
     private fun firstFilterCards(cardSet: MutableList<CardSetView>) {
@@ -93,7 +94,8 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
     }
 
     interface View : Presenter.View {
-        fun showCards(cardList: List<Cardview>)
+        fun showCards(cardList: List<CardView>)
         fun showIcons()
+        fun navigateToHeroSingleCard(card: CardView)
     }
 }

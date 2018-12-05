@@ -10,7 +10,7 @@ import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.showMe
 import com.alex.phom.models.CardColorView
 import com.alex.phom.models.CardTypeView
-import com.alex.phom.models.Cardview
+import com.alex.phom.models.CardView
 import com.alex.phom.models.RarityView
 import com.alex.phom.presenter.CardSetsPresenter
 import com.alex.phom.view.adapter.CardAdapter
@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.view_filter.view.*
 
 class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresenter.View {
 
-
     companion object {
         fun newInstance(): CardSetsFragment = CardSetsFragment()
         private const val MIN_MANA = 1
@@ -32,7 +31,7 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         private const val MAX_GOLD = 25
     }
 
-    // ******* Those apply to all Cards and filter them in the presenter ******* //
+    // ******* Those apply to all Cards and filter them in the presenterHero ******* //
     private val colorFilter = arrayListOf<CardColorView>()
     private val typeFilter = arrayListOf<CardTypeView>()
     private val rarityFilter = arrayListOf<RarityView>()
@@ -283,7 +282,7 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
 
     override fun hideProgress() = progressView.hideMe()
 
-    override fun showCards(cardList: List<Cardview>) {
+    override fun showCards(cardList: List<CardView>) {
         cardAdapter.replace(cardList.toMutableList())
     }
 
@@ -291,6 +290,12 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
     override fun showIcons() {
         activity?.let {
             button_filter.visibility = View.VISIBLE
+        }
+    }
+
+    override fun navigateToHeroSingleCard(card: CardView) {
+        context?.let {
+            com.alex.phom.navigator.navigateToHeroSingleCard(context = it, card = card)
         }
     }
 
