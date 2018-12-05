@@ -2,6 +2,7 @@ package com.alex.phom.view.activity
 
 import android.view.View
 import com.alex.phom.R
+import com.alex.phom.extension.load
 import com.alex.phom.models.CardView
 import com.alex.phom.presenter.HeroSingleCardPresenter
 import com.github.salomonbrys.kodein.Kodein
@@ -39,7 +40,7 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
     }
 
     override fun showCard(card: CardView) {
-
+        itemCardDisplayLarge.load(card.largeImage.imgDef)
     }
 
     override fun getCard(): CardView {

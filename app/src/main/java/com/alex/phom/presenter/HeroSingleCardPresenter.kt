@@ -8,6 +8,7 @@ class HeroSingleCardPresenter(view: HeroSingleCardPresenter.View, errorHandler: 
     override fun initialize() {
         view.showProgress()
         val card = view.getCard()
+        view.hideProgress()
         view.showCard(card)
     }
 
