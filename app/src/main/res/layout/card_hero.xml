@@ -19,29 +19,30 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/heroCardDisplayLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="50dp"
+            android:visibility="visible"
             app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="8dp"
             app:cardElevation="@dimen/bottom_navigation_elevation">
 
             <ImageView
-                android:id="@+id/itemCardDisplayLarge"
+                android:id="@+id/heroCardDisplayImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:visibility="visible"
                 tools:srcCompat="@drawable/cardplaceholder" />
         </android.support.v7.widget.CardView>
 
 
         <android.support.v7.widget.CardView
-            android:id="@+id/itemProperties"
-            android:layout_width="285dp"
+            android:id="@+id/heroProperties"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_margin="50dp"
             android:layout_marginBottom="16dp"
             android:visibility="gone"
             app:cardBackgroundColor="@color/TextBackgroundCardDark"

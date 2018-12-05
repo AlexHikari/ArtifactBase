@@ -36,11 +36,23 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
     }
 
     override fun registerListeners() {
+        heroCardDisplayLarge.setOnClickListener {
+            heroCardDisplayLarge.visibility = View.GONE
+            heroProperties.visibility = View.VISIBLE
+        }
+        heroProperties.setOnClickListener {
+            heroProperties.visibility = View.GONE
+            heroCardDisplayLarge.visibility = View.VISIBLE
+        }
 
     }
 
     override fun showCard(card: CardView) {
-        itemCardDisplayLarge.load(card.largeImage.imgDef)
+        heroCardDisplayImage.load(card.largeImage.imgDef)
+        heroName.text = card.cardName.english
+        heroAttackText.text = card.attack.toString()
+        heroArmor.text = card.armor.toString()
+        heroHitPointsText.text = card.hitPoints.toString()
     }
 
     override fun getCard(): CardView {
