@@ -19,4 +19,6 @@ fun navigateToArticle(context: Context, articleViewList: ArrayList<ArticleView>)
 
 fun navigateToHeroSingleCard(context: Context, card: CardView) {
     val intent = Intent(context, HeroSingleCardActivity::class.java)
+    intent.putExtra(HeroSingleCardActivity.HERO_CARD_BUNDLE, card)
+    context.startActivity(intent)
 }

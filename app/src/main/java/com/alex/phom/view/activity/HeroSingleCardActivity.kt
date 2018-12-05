@@ -2,6 +2,7 @@ package com.alex.phom.view.activity
 
 import android.view.View
 import com.alex.phom.R
+import com.alex.phom.models.CardView
 import com.alex.phom.presenter.HeroSingleCardPresenter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -10,6 +11,7 @@ import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.card_hero.*
 
 class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), HeroSingleCardPresenter.View {
+
 
     companion object {
         const val HERO_CARD_BUNDLE = "HERO_CARD_BUNDLE"
@@ -36,7 +38,11 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
 
     }
 
-    override fun showCard() {
+    override fun showCard(card: CardView) {
 
+    }
+
+    override fun getCard(): CardView {
+        return intent.getParcelableExtra(HERO_CARD_BUNDLE)
     }
 }

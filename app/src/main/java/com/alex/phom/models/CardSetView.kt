@@ -1,11 +1,15 @@
 package com.alex.phom.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class CardSetView(
         val cardList: List<CardView>,
         val setInfo: SetInfoView,
         val version: Long
 )
 
+@Parcelize
 data class CardView(
         val cardID: Long,
         val cardText: NameView,
@@ -21,7 +25,7 @@ data class CardView(
         val itemDef: Long = 0,
         val attack: Long = 0,
         val hitPoints: Long = 0,
-        val references: List<Any>,
+        val references: List<ReferenceView>,
         val manaCost: Long = 0,
         val isCrossLane: Boolean = false,
         val charges: Long = 0,
@@ -29,12 +33,14 @@ data class CardView(
         val subType: SubTypeView = SubTypeView.UNKNOWN,
         val goldCost: Long = 0,
         val isQuick: Boolean = false
-)
+) : Parcelable
 
+@Parcelize
 data class ImageView(
         val img: String = ""
-)
+) : Parcelable
 
+@Parcelize
 data class LargeImageView(
         val imgDef: String = "",
         val german: String = "",
@@ -48,9 +54,10 @@ data class LargeImageView(
         val japanese: String = "",
         val brazilian: String = "",
         val latam: String = ""
-)
+) : Parcelable
 
-enum class CardColorView {
+@Parcelize
+enum class CardColorView : Parcelable {
     BLACK,
     GREEN,
     BLUE,
@@ -58,7 +65,8 @@ enum class CardColorView {
     UNKNOWN
 }
 
-enum class CardTypeView {
+@Parcelize
+enum class CardTypeView : Parcelable {
     ABILITY,
     CREEP,
     HERO,
@@ -69,14 +77,15 @@ enum class CardTypeView {
     UNKNOWN
 }
 
-
-enum class RarityView {
+@Parcelize
+enum class RarityView : Parcelable {
     COMMON,
     RARE,
     UNCOMMON,
     UNKNOWN
 }
 
+@Parcelize
 data class NameView(
         val english: String = "",
         val german: String = "",
@@ -106,9 +115,10 @@ data class NameView(
         val ukrainian: String = "",
         val latam: String = "",
         val vietnamese: String = ""
-)
+) : Parcelable
 
-enum class SubTypeView {
+@Parcelize
+enum class SubTypeView : Parcelable {
     ACCESSORY,
     ARMOR,
     CONSUMABLE,
@@ -116,6 +126,13 @@ enum class SubTypeView {
     WEAPON,
     UNKNOWN
 }
+
+@Parcelize
+data class ReferenceView(
+        var card_id: Long = 0,
+        var ref_type: String = "",
+        var count: Long = 0
+) : Parcelable
 
 data class SetInfoView(
         val setID: Long = 0,

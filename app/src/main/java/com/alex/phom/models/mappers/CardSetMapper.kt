@@ -38,8 +38,22 @@ fun Card.toCardView(): CardView = CardView(
         manaCost = this.manaCost!!,
         miniImage = this.miniImage.toImageView(),
         rarity = this.rarity!!.toRarityView(),
-        references = this.references,
+        references = this.references.toReferenceListView(),
         subType = this.subType!!.toSubTypeView()
+)
+
+fun List<Reference>.toReferenceListView(): List<ReferenceView> {
+    val list = mutableListOf<ReferenceView>()
+    this.forEach {
+        list.add(it.toReferenceView())
+    }
+    return list
+}
+
+fun Reference.toReferenceView(): ReferenceView = ReferenceView(
+        card_id = this.card_id,
+        count = this.count,
+        ref_type = this.ref_type
 )
 
 fun CardColor.toCardColorView(): CardColorView {

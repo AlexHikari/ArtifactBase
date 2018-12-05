@@ -24,6 +24,9 @@ android {
         }
     }
 }
+androidExtensions {
+    experimental = true
+}
 
 dependencies {
     def appDependencies = rootProject.ext.applicationDependencies
