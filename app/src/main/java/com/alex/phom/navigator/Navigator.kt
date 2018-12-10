@@ -17,8 +17,13 @@ fun navigateToArticle(context: Context, articleViewList: ArrayList<ArticleView>)
     context.startActivity(intent)
 }
 
-fun navigateToHeroSingleCard(context: Context, card: CardView) {
+fun navigateToHeroSingleCard(context: Context, card: CardView, heroReferenceList: List<CardView>) {
     val intent = Intent(context, HeroSingleCardActivity::class.java)
     intent.putExtra(HeroSingleCardActivity.HERO_CARD_BUNDLE, card)
+    val references = ArrayList<CardView>()
+    heroReferenceList.forEach {
+        references.add(it)
+    }
+    intent.putParcelableArrayListExtra(HeroSingleCardActivity.HERO_REFERENCE_BUNDLE, references)
     context.startActivity(intent)
 }

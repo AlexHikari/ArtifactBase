@@ -293,9 +293,9 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         }
     }
 
-    override fun navigateToHeroSingleCard(card: CardView) {
+    override fun navigateToHeroSingleCard(card: CardView, heroReferenceList: List<CardView>) {
         context?.let {
-            com.alex.phom.navigator.navigateToHeroSingleCard(context = it, card = card)
+            com.alex.phom.navigator.navigateToHeroSingleCard(context = it, card = card, heroReferenceList = heroReferenceList)
         }
     }
 

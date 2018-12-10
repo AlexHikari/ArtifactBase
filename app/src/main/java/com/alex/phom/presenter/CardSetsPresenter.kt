@@ -29,8 +29,26 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
 
     fun onCardClicked(card: CardView) {
         when (card.CardType) {
-            CardTypeView.HERO -> view.navigateToHeroSingleCard(card)
+            CardTypeView.HERO -> {
+                val heroReferenceList = getReferenceHeroCards(card)
+                view.navigateToHeroSingleCard(card, heroReferenceList)
+            }
         }
+    }
+
+    private fun getReferenceHeroCards(card: CardView): List<CardView> {
+        val references = mutableListOf<CardView>()
+        card.references.forEach { reference ->
+            cardSets.forEach { cardSet ->
+                val card = cardSet.cardList.find {
+                    it.cardID == reference.card_id
+                }
+                card?.let {
+                    references.add(it)
+                }
+            }
+        }
+        return references
     }
 
     private fun firstFilterCards(cardSet: MutableList<CardSetView>) {
@@ -96,6 +114,6 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
     interface View : Presenter.View {
         fun showCards(cardList: List<CardView>)
         fun showIcons()
-        fun navigateToHeroSingleCard(card: CardView)
+        fun navigateToHeroSingleCard(card: CardView, heroReferenceList: List<CardView>)
     }
 }
