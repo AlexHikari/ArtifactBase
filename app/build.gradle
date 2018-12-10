@@ -51,6 +51,8 @@ dependencies {
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
     implementation appDependencies.crystalRangeSeekbar
+    implementation appDependencies.recyclerTabLayout
+    implementation appDependencies.recyclerView
 
     testImplementation appTestDependencies.jUnit
     testImplementation appTestDependencies.mockito

@@ -56,7 +56,8 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
         heroPremierCardDisplayImage.loadWithPlaceholder(references.getPremierCard(), R.drawable.cardplaceholder)
         illustratorNameText.text = card.illustrator
         heroIconImage.load(card.heroInGameImage.img)
-        heroName.text = Html.fromHtml(card.cardText.english, Html.FROM_HTML_OPTION_USE_CSS_COLORS)
+        heroName.text = card.cardName.english
+        heroAbility.text = Html.fromHtml(card.cardText.english, Html.FROM_HTML_OPTION_USE_CSS_COLORS)
         heroAttackText.text = card.attack.toString()
         heroArmorText.text = card.armor.toString()
         heroHitPointsText.text = card.hitPoints.toString()

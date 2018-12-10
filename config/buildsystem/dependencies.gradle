@@ -31,6 +31,8 @@ ext {
     crashlyticsVersion = '2.7.1'
     jsoupVersion = '1.11.3'
     crystalVersion = '1.1.3'
+    recyclerTabLayoutVersion = '1.5.0'
+    recyclerViewVersion = '26.1.0'
 
     //Testing
     robolectricVersion = '3.0'
@@ -57,7 +59,9 @@ ext {
             glideAnnotationProcessor: "com.github.bumptech.glide:compiler:${glideVersion}",
             permissions             : "pub.devrel:easypermissions:${permissionsVersion}",
             crashlytics             : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar",
-            crystalRangeSeekbar     : "com.crystal:crystalrangeseekbar:${crystalVersion}"
+            crystalRangeSeekbar     : "com.crystal:crystalrangeseekbar:${crystalVersion}",
+            recyclerTabLayout       : "com.nshmura:recyclertablayout:${recyclerTabLayoutVersion}",
+            recyclerView            : "com.android.support:recyclerview-v7:${recyclerViewVersion}"
     ]
 
     applicationTestDependencies = [
