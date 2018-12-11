@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/hitpoints"
+                        android:text="@string/hitPoints"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="@string/active_ability"
+                    android:text="@string/activeAbility"
                     android:textColor="@color/colorTextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />

@@ -1,9 +1,10 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.galleryTab.hero
 
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.CardView
+import com.alex.phom.presenter.Presenter
 
-class HeroSingleCardPresenter(view: HeroSingleCardPresenter.View, errorHandler: ErrorHandler) : Presenter<HeroSingleCardPresenter.View>(view = view, errorHandler = errorHandler) {
+class HeroSingleCardPresenter(view: View, errorHandler: ErrorHandler) : Presenter<HeroSingleCardPresenter.View>(view = view, errorHandler = errorHandler) {
 
     private var references = listOf<CardView>()
     private var heroCard = CardView()

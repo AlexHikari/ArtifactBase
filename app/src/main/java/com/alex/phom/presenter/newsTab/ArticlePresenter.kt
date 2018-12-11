@@ -1,11 +1,12 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.newsTab
 
 import com.alex.domain.interactor.article.GetArticleUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.ArticleView
 import com.alex.phom.models.mappers.toArticleView
+import com.alex.phom.presenter.Presenter
 
-class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: ArticlePresenter.View, errorHandler: ErrorHandler) :
+class ArticlePresenter(private val getArticleUseCase: GetArticleUseCase, view: View, errorHandler: ErrorHandler) :
         Presenter<ArticlePresenter.View>(view = view, errorHandler = errorHandler) {
 
     private var articleList = arrayListOf<ArticleView>()

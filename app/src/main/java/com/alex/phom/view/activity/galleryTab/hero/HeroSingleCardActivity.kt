@@ -1,17 +1,18 @@
-package com.alex.phom.view.activity
+package com.alex.phom.view.activity.galleryTab.hero
 
 import android.view.View
 import com.alex.phom.R
 import com.alex.phom.models.CardView
-import com.alex.phom.presenter.HeroSingleCardPresenter
-import com.alex.phom.view.adapter.HeroCardPageAdapter
-import com.alex.phom.view.fragment.HeroDetailsFragment
-import com.alex.phom.view.fragment.HeroImageFragment
+import com.alex.phom.presenter.galleryTab.hero.HeroSingleCardPresenter
+import com.alex.phom.view.activity.RootActivity
+import com.alex.phom.view.adapter.fragments.HeroCardPageAdapter
+import com.alex.phom.view.fragment.galleryTab.hero.HeroDetailsFragment
+import com.alex.phom.view.fragment.galleryTab.hero.HeroImageFragment
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import kotlinx.android.synthetic.main.card_hero.*
+import kotlinx.android.synthetic.main.activity_hero.*
 
 class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), HeroSingleCardPresenter.View {
 
@@ -25,7 +26,7 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
 
     override val progress: View by lazy { progressView }
     override val presenter: HeroSingleCardPresenter by instance()
-    override val layoutResourceId: Int = R.layout.card_hero
+    override val layoutResourceId: Int = R.layout.activity_hero
     override val activityModule: Kodein.Module = Kodein.Module {
         bind<HeroSingleCardPresenter>() with provider {
             HeroSingleCardPresenter(
@@ -36,9 +37,9 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
     }
 
     override fun initializeUI() {
-        recyclerTabLayout.setIndicatorColor(R.color.colorSelected)
-        recyclerTabLayout.setBackgroundResource(R.color.colorBlackSource)
-        recyclerTabLayout.textAlignment = View.TEXT_ALIGNMENT_CENTER
+        heroRecyclerTabLayout.setIndicatorColor(R.color.colorSelected)
+        heroRecyclerTabLayout.setBackgroundResource(R.color.colorBlackSource)
+        heroRecyclerTabLayout.textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
 
     override fun initializeFragmentAdapter(card: CardView, references: List<CardView>) {
@@ -48,7 +49,7 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
         heroFragmentAdapter.addFragment(fragment = HeroImageFragment.newInstance(referenceBundle), title = "Overview")
         heroFragmentAdapter.addFragment(fragment = HeroDetailsFragment.newInstance(referenceBundle), title = "Details")
         heroViewPager.adapter = heroFragmentAdapter
-        recyclerTabLayout.setUpWithViewPager(heroViewPager)
+        heroRecyclerTabLayout.setUpWithViewPager(heroViewPager)
 
     }
 

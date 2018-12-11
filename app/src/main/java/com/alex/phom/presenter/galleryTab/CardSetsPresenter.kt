@@ -1,11 +1,12 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.galleryTab
 
 import com.alex.domain.interactor.cards.GetCardSetsUseCase
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.*
 import com.alex.phom.models.mappers.toCardSetView
+import com.alex.phom.presenter.Presenter
 
-class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view: CardSetsPresenter.View, errorHandler: ErrorHandler) : Presenter<CardSetsPresenter.View>(view = view, errorHandler = errorHandler) {
+class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view: View, errorHandler: ErrorHandler) : Presenter<CardSetsPresenter.View>(view = view, errorHandler = errorHandler) {
 
     private val cardSets = mutableListOf<CardSetView>()
     private val cardsToShow = mutableListOf<CardView>()

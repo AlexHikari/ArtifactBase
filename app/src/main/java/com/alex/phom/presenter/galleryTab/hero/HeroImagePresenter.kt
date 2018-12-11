@@ -1,7 +1,8 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.galleryTab.hero
 
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.CardView
+import com.alex.phom.presenter.Presenter
 
 class HeroImagePresenter(view: View, errorHandler: ErrorHandler) : Presenter<HeroImagePresenter.View>(view = view, errorHandler = errorHandler) {
 

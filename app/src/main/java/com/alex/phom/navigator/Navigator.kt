@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.alex.phom.models.ArticleView
 import com.alex.phom.models.CardView
-import com.alex.phom.view.activity.ArticleActivity
-import com.alex.phom.view.activity.HeroSingleCardActivity
+import com.alex.phom.view.activity.newsTab.ArticleActivity
+import com.alex.phom.view.activity.galleryTab.hero.HeroSingleCardActivity
 
 /**
  * Navigator.

@@ -1,4 +1,4 @@
-package com.alex.phom.view.activity
+package com.alex.phom.view.activity.newsTab
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -9,13 +9,14 @@ import android.webkit.WebViewClient
 import com.alex.phom.R
 import com.alex.phom.extension.load
 import com.alex.phom.models.ArticleView
-import com.alex.phom.presenter.ArticlePresenter
+import com.alex.phom.presenter.newsTab.ArticlePresenter
+import com.alex.phom.view.activity.RootActivity
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import kotlinx.android.synthetic.main.activity_article.*
-import kotlinx.android.synthetic.main.header_bar.view.*
+import kotlinx.android.synthetic.main.view_header_bar.view.*
 
 class ArticleActivity : RootActivity<ArticlePresenter.View>(), ArticlePresenter.View {
 

@@ -1,9 +1,10 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.galleryTab.hero
 
 import com.alex.phom.error.ErrorHandler
 import com.alex.phom.models.CardView
+import com.alex.phom.presenter.Presenter
 
-class HeroDetailsPresenter(view: HeroDetailsPresenter.View, errorHandler: ErrorHandler) : Presenter<HeroDetailsPresenter.View>(view = view, errorHandler = errorHandler) {
+class HeroDetailsPresenter(view: View, errorHandler: ErrorHandler) : Presenter<HeroDetailsPresenter.View>(view = view, errorHandler = errorHandler) {
 
     private var heroBundleCards = mutableListOf<CardView>()
 

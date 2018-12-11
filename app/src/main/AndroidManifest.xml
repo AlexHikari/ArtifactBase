@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.ArticleActivity"
+            android:name=".view.activity.newsTab.ArticleActivity"
             android:parentActivityName=".view.activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activity.HeroSingleCardActivity"
+            android:name=".view.activity.galleryTab.hero.HeroSingleCardActivity"
             android:parentActivityName=".view.activity.HomeActivity"
             android:screenOrientation="portrait" />
 

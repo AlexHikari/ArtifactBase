@@ -1,4 +1,4 @@
-package com.alex.phom.view.adapter
+package com.alex.phom.view.adapter.fragments
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

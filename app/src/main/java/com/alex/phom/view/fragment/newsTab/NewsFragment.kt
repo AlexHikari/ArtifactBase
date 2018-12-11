@@ -1,4 +1,4 @@
-package com.alex.phom.view.fragment
+package com.alex.phom.view.fragment.newsTab
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -9,8 +9,9 @@ import com.alex.phom.extension.showMe
 import com.alex.phom.models.ArticleView
 import com.alex.phom.models.NewsCardView
 import com.alex.phom.navigator.navigateToArticle
-import com.alex.phom.presenter.NewsPresenter
-import com.alex.phom.view.adapter.NewsAdapter
+import com.alex.phom.presenter.newsTab.NewsPresenter
+import com.alex.phom.view.adapter.recyclerViews.NewsAdapter
+import com.alex.phom.view.fragment.RootFragment
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance

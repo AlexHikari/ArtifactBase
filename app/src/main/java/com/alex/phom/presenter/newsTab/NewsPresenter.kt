@@ -1,4 +1,4 @@
-package com.alex.phom.presenter
+package com.alex.phom.presenter.newsTab
 
 import com.alex.domain.interactor.home.GetNewsUseCase
 import com.alex.phom.error.ErrorHandler
@@ -6,8 +6,9 @@ import com.alex.phom.models.ArticleView
 import com.alex.phom.models.NewsCardView
 import com.alex.phom.models.mappers.toArticleView
 import com.alex.phom.models.mappers.toNewsCardView
+import com.alex.phom.presenter.Presenter
 
-class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: NewsPresenter.View, errorHandler: ErrorHandler) : Presenter<NewsPresenter.View>(view = view, errorHandler = errorHandler) {
+class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: View, errorHandler: ErrorHandler) : Presenter<NewsPresenter.View>(view = view, errorHandler = errorHandler) {
 
     private val newsListView = mutableListOf<NewsCardView>()
 

@@ -1,19 +1,22 @@
 <resources>
     <string name="app_name">ArtifactBase</string>
 
+    <!-- Home tab names -->
+    <string name="homeTabNews">News</string>
+    <string name="homeTabGallery">Gallery</string>
+    <string name="homeTabBuilder">Deck Builder</string>
+    <string name="homeTabSettings">NoIdea</string>
+    <!-- Error Messages. -->
     <string name="default_error">There was an application error</string>
-    <string name="click_me">Click me</string>
+
+    <!-- Image descriptions will go there. -->
     <string name="ImgDescriptionIco">Logo</string>
-    <string name="tab_1">News</string>
-    <string name="tab_2">Gallery</string>
-    <string name="tab_3">Deck Builder</string>
-    <string name="articleActivity">ArticleActivity</string>
-    <string name="tab_4">NoIdea</string>
+
+    <!-- filter tab view. -->
     <string name="mana">Mana</string>
     <string name="gold">Gold</string>
-    <string name="cardtype">Card type</string>
+    <string name="cardType">Card type</string>
     <string name="card_name">Card name</string>
-    <string name="filtersearchbutton">FilterSearchButton</string>
     <string name="hero">HERO</string>
     <string name="spell">SPELL</string>
     <string name="creep">CREEP</string>
@@ -24,19 +27,20 @@
     <string name="greenSource">GREEN</string>
     <string name="blueSource">BLUE</string>
     <string name="blackSource">BLACK</string>
-    <string name="cardSearchPlaceholder">Search for a Card Here</string>
     <string name="card_rarity">Card rarity</string>
     <string name="CardBasic">Basic</string>
     <string name="CardCommon">Common</string>
     <string name="CardUncommon">Uncommon</string>
     <string name="CardRare">Rare</string>
-    <string name="disable_message_color">ITEMS HAVE NO COLOR</string>
-    <string name="items_have_no_mana_cost">ITEMS HAVE NO MANA COST</string>
+
+    <!-- Individual cards view. -->
     <string name="gold_cost">Gold cost:</string>
     <string name="attack">Attack:</string>
     <string name="armor">Armor:</string>
-    <string name="hitpoints">Hit Points:</string>
-    <string name="passive_ability">Passive ability</string>
+    <string name="hitPoints">Hit Points:</string>
+    <string name="passiveAbility">Passive ability</string>
     <string name="illustrator">Illustrator:</string>
-    <string name="active_ability">Active ability:</string>
+    <string name="activeAbility">Active ability:</string>
+
+
 </resources>

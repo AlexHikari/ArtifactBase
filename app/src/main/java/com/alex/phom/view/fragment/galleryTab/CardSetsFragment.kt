@@ -1,4 +1,4 @@
-package com.alex.phom.view.fragment
+package com.alex.phom.view.fragment.galleryTab
 
 import android.support.constraint.ConstraintLayout
 import android.support.v7.content.res.AppCompatResources
@@ -12,8 +12,9 @@ import com.alex.phom.models.CardColorView
 import com.alex.phom.models.CardTypeView
 import com.alex.phom.models.CardView
 import com.alex.phom.models.RarityView
-import com.alex.phom.presenter.CardSetsPresenter
-import com.alex.phom.view.adapter.CardAdapter
+import com.alex.phom.presenter.galleryTab.CardSetsPresenter
+import com.alex.phom.view.adapter.recyclerViews.CardAdapter
+import com.alex.phom.view.fragment.RootFragment
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance

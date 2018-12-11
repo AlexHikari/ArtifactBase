@@ -4,8 +4,8 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.alex.phom.R
 import com.alex.phom.presenter.HomePresenter
-import com.alex.phom.view.fragment.CardSetsFragment
-import com.alex.phom.view.fragment.NewsFragment
+import com.alex.phom.view.fragment.galleryTab.CardSetsFragment
+import com.alex.phom.view.fragment.newsTab.NewsFragment
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.github.salomonbrys.kodein.Kodein

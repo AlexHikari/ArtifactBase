@@ -1,4 +1,4 @@
-package com.alex.phom.view.fragment
+package com.alex.phom.view.fragment.galleryTab.hero
 
 import android.os.Bundle
 import com.alex.phom.R
@@ -8,12 +8,13 @@ import com.alex.phom.extension.loadWithPlaceholder
 import com.alex.phom.extension.showMe
 import com.alex.phom.models.CardTypeView
 import com.alex.phom.models.CardView
-import com.alex.phom.presenter.HeroImagePresenter
+import com.alex.phom.presenter.galleryTab.hero.HeroImagePresenter
+import com.alex.phom.view.fragment.RootFragment
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
-import kotlinx.android.synthetic.main.hero_image.*
+import kotlinx.android.synthetic.main.fragment_hero_image.*
 
 class HeroImageFragment : RootFragment<HeroImagePresenter.View>(), HeroImagePresenter.View {
 
@@ -33,7 +34,7 @@ class HeroImageFragment : RootFragment<HeroImagePresenter.View>(), HeroImagePres
     }
 
     override val presenter: HeroImagePresenter by instance()
-    override val layoutResourceId: Int = R.layout.hero_image
+    override val layoutResourceId: Int = R.layout.fragment_hero_image
     override val fragmentModule: Kodein.Module = Kodein.Module {
         bind<HeroImagePresenter>() with provider {
             HeroImagePresenter(
