@@ -1,13 +1,12 @@
 package com.alex.phom.view.activity
 
-import android.text.Html
 import android.view.View
 import com.alex.phom.R
-import com.alex.phom.extension.getPremierCard
-import com.alex.phom.extension.load
-import com.alex.phom.extension.loadWithPlaceholder
 import com.alex.phom.models.CardView
 import com.alex.phom.presenter.HeroSingleCardPresenter
+import com.alex.phom.view.adapter.HeroCardPageAdapter
+import com.alex.phom.view.fragment.HeroDetailsFragment
+import com.alex.phom.view.fragment.HeroImageFragment
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
@@ -22,8 +21,9 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
         const val HERO_REFERENCE_BUNDLE = "HERO_REFERENCE_BUNDLE"
     }
 
-    override val progress: View by lazy { progressView }
+    private val heroFragmentAdapter: HeroCardPageAdapter = HeroCardPageAdapter(supportFragmentManager)
 
+    override val progress: View by lazy { progressView }
     override val presenter: HeroSingleCardPresenter by instance()
     override val layoutResourceId: Int = R.layout.card_hero
     override val activityModule: Kodein.Module = Kodein.Module {
@@ -36,31 +36,24 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
     }
 
     override fun initializeUI() {
+        recyclerTabLayout.setIndicatorColor(R.color.colorSelected)
+        recyclerTabLayout.setBackgroundResource(R.color.colorBlackSource)
+        recyclerTabLayout.textAlignment = View.TEXT_ALIGNMENT_CENTER
+    }
+
+    override fun initializeFragmentAdapter(card: CardView, references: List<CardView>) {
+        val referenceBundle = mutableListOf<CardView>()
+        referenceBundle.add(card)
+        referenceBundle.addAll(references)
+        heroFragmentAdapter.addFragment(fragment = HeroImageFragment.newInstance(referenceBundle), title = "Overview")
+        heroFragmentAdapter.addFragment(fragment = HeroDetailsFragment.newInstance(referenceBundle), title = "Details")
+        heroViewPager.adapter = heroFragmentAdapter
+        recyclerTabLayout.setUpWithViewPager(heroViewPager)
 
     }
 
     override fun registerListeners() {
-        heroCardDisplayLarge.setOnClickListener {
-            heroCardDisplayLarge.visibility = View.GONE
-            heroProperties.visibility = View.VISIBLE
-        }
-        heroProperties.setOnClickListener {
-            heroProperties.visibility = View.GONE
-            heroCardDisplayLarge.visibility = View.VISIBLE
-        }
 
-    }
-
-    override fun showCard(card: CardView, references: List<CardView>) {
-        heroCardDisplayImage.loadWithPlaceholder(card.largeImage.imgDef, R.drawable.cardplaceholder)
-        heroPremierCardDisplayImage.loadWithPlaceholder(references.getPremierCard(), R.drawable.cardplaceholder)
-        illustratorNameText.text = card.illustrator
-        heroIconImage.load(card.heroInGameImage.img)
-        heroName.text = card.cardName.english
-        heroAbility.text = Html.fromHtml(card.cardText.english, Html.FROM_HTML_OPTION_USE_CSS_COLORS)
-        heroAttackText.text = card.attack.toString()
-        heroArmorText.text = card.armor.toString()
-        heroHitPointsText.text = card.hitPoints.toString()
     }
 
     override fun getCard(): CardView {

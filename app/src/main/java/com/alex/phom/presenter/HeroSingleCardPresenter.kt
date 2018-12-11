@@ -11,8 +11,8 @@ class HeroSingleCardPresenter(view: HeroSingleCardPresenter.View, errorHandler: 
         view.showProgress()
         heroCard = view.getCard()
         references = view.getReferences()
+        view.initializeFragmentAdapter(heroCard, references)
         view.hideProgress()
-        view.showCard(heroCard, references)
     }
 
     override fun resume() {
@@ -28,9 +28,9 @@ class HeroSingleCardPresenter(view: HeroSingleCardPresenter.View, errorHandler: 
     }
 
     interface View : Presenter.View {
-        fun showCard(card: CardView, references: List<CardView>)
         fun getCard(): com.alex.phom.models.CardView
         fun getReferences(): List<CardView>
+        fun initializeFragmentAdapter(card: CardView, references: List<CardView>)
     }
 
 }

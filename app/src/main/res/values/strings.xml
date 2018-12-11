@@ -38,4 +38,5 @@
     <string name="hitpoints">Hit Points:</string>
     <string name="passive_ability">Passive ability</string>
     <string name="illustrator">Illustrator:</string>
+    <string name="active_ability">Active ability:</string>
 </resources>
