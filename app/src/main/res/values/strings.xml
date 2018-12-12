@@ -1,11 +1,51 @@
 <resources>
     <string name="app_name">ArtifactBase</string>
 
+    <!-- Home tab names -->
+    <string name="home_tab_news">News</string>
+    <string name="home_tab_gallery">Gallery</string>
+    <string name="home_tab_builder">Deck Builder</string>
+    <string name="home_tab_settings">NoIdea</string>
+    <!-- Error Messages. -->
     <string name="default_error">There was an application error</string>
-    <string name="click_me">Click me</string>
-    <string name="ImgDescriptionIco">Logo</string>
-    <string name="tab_1">News</string>
-    <string name="tab_2">Cards</string>
-    <string name="tab_3">Deck Builder</string>
-    <string name="articleActivity">ArticleActivity</string>
+
+    <!-- Image descriptions will go there. -->
+    <string name="img_description_icon">Logo</string>
+
+    <!-- filter tab view. -->
+    <string name="filter_mana_title">Mana</string>
+    <string name="filter_gold_title">Gold</string>
+    <string name="filter_card_type_title">Card type</string>
+    <string name="filter_card_name_title">Card name</string>
+    <string name="filter_hero_title">HERO</string>
+    <string name="filter_spell_title">SPELL</string>
+    <string name="filter_creep_title">CREEP</string>
+    <string name="filter_item_title">ITEM</string>
+    <string name="filter_improvement_title">IMPROVEMENT</string>
+    <string name="filter_card_color_title">Card color</string>
+    <string name="filter_red_source_title">RED</string>
+    <string name="filter_green_source_title">GREEN</string>
+    <string name="filter_blue_source_title">BLUE</string>
+    <string name="filter_black_source_title">BLACK</string>
+    <string name="filter_card_rarity_title">Card rarity</string>
+    <string name="filter_card_basic_title">Basic</string>
+    <string name="filter_card_common_title">Common</string>
+    <string name="filter_card_uncommon_title">Uncommon</string>
+    <string name="filter_card_rare_title">Rare</string>
+
+    <!-- Individual cards view. -->
+    <string name="card_gold_cost_title">Gold cost:</string>
+    <string name="card_attack_title">Attack:</string>
+    <string name="card_armor_title">Armor:</string>
+    <string name="card_hit_points_title">Hit Points:</string>
+    <string name="card_passive_ability_title">Passive ability</string>
+    <string name="card_illustrator_title">Illustrator:</string>
+    <string name="card_active_ability">Active abilities:</string>
+    <string name="card_premier_ability">Premier ability:</string>
+    <string name="item_text_title">Item text</string>
+    <string name="card_mana_cost_title">Mana cost:</string>
+    <string name="card_text_title">Card text:</string>
+    <string name="generic_hero_reference_title">Referenced hero:</string>
+
+
 </resources>

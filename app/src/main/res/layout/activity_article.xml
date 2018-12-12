@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/home-header"
-            layout="@layout/header_bar"
+            layout="@layout/view_header_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top" />
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
+                    android:scaleType="fitXY"
                     tools:srcCompat="@drawable/placeablenews" />
 
                 <TextView

@@ -4,7 +4,8 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.alex.phom.R
 import com.alex.phom.presenter.HomePresenter
-import com.alex.phom.view.fragment.NewsFragment
+import com.alex.phom.view.fragment.galleryTab.CardSetsFragment
+import com.alex.phom.view.fragment.newsTab.NewsFragment
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.github.salomonbrys.kodein.Kodein
@@ -37,15 +38,36 @@ class HomeActivity : RootActivity<HomePresenter.View>(), HomePresenter.View {
     }
 
     override fun registerListeners() {
-        // Nothing to do yet
+        bottom_navigation.setOnTabSelectedListener { position, wasSelected ->
+            when (position) {
+                0 -> {
+                    if (!wasSelected) {
+                        supportFragmentManager.beginTransaction().replace(R.id.contentView, NewsFragment.newInstance()).commit()
+                        true
+                    } else {
+                        false
+                    }
+                }
+                1 -> {
+                    if (!wasSelected) {
+                        supportFragmentManager.beginTransaction().replace(R.id.contentView, CardSetsFragment.newInstance()).commit()
+                        true
+                    } else {
+                        false
+                    }
+                }
+                else -> false
+            }
+        }
     }
 
     override fun initializeBottomNavigationView(items: List<AHBottomNavigationItem>) {
         bottom_navigation.addItems(items)
-        bottom_navigation.defaultBackgroundColor = ContextCompat.getColor(this, R.color.colorPrimaryLight)
+        bottom_navigation.defaultBackgroundColor = ContextCompat.getColor(this, R.color.colorPrimary)
         bottom_navigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
         bottom_navigation.currentItem = 0
     }
+
 
     override fun showNewsScreen() {
         supportFragmentManager.beginTransaction().replace(R.id.contentView, NewsFragment.newInstance()).commit()

@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorSecondary">#242428</color>
     <color name="colorSecondaryLight">#000000</color>
-    <color name="colorSecondaryDark">#000000</color>
+    <color name="colorTextColorDark">#f0000000</color>
     <color name="colorGreenSource">#2f693c</color>
     <color name="colorBlackSource">#3d3d3d</color>
     <color name="colorBlueSource">#214f6c</color>
@@ -13,5 +13,14 @@
     <color name="colorBackgroundDark">#060808</color>
     <color name="colorAccent">#201240</color>
     <color name="colorTextColor">#ccccc6</color>
-    <color name="TextBackground">#c83d3d3d</color>
+    <color name="TextBackground">#c82d2d2d</color>
+    <color name="TextBackgroundCard">#e71b1b1b</color>
+    <color name="colorbackgroundFilter">#f51b1b1b</color>
+    <color name="TextBackgroundCardDark">#e7000000</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorDisabled">#e91d1d1d</color>
+    <color name="colorSelected">#f1c100</color>
+    <color name="colorBar">#fff4ca</color>
+    <color name="colorThumb">#f9ce28</color>
+    <color name="colorThumbPressed">#ffbb00</color>
 </resources>

@@ -17,14 +17,27 @@
 
         <activity
             android:name=".view.activity.HomeActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.ArticleActivity"
+            android:name=".view.activity.newsTab.ArticleActivity"
+            android:parentActivityName=".view.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.galleryTab.hero.HeroSingleCardActivity"
+            android:parentActivityName=".view.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.galleryTab.item.ItemSingleCardActivity"
+            android:parentActivityName=".view.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.galleryTab.generic.GenericSingleCardActivity"
             android:parentActivityName=".view.activity.HomeActivity"
             android:screenOrientation="portrait" />
 

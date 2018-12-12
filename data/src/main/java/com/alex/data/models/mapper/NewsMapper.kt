@@ -1,16 +1,16 @@
 package com.alex.data.models.mapper
 
-import com.alex.data.models.RawArticleOverview
-import com.alex.data.models.RawNewsOverview
-import com.alex.domain.models.ArticleOverview
-import com.alex.domain.models.NewsOverview
+import com.alex.data.models.ArticleDAO
+import com.alex.data.models.NewsDAO
+import com.alex.domain.models.Article
+import com.alex.domain.models.News
 
 /**
  * Maps from Raw response to Domain news model
- * @receiver RawNewsOverview
- * @return NewsOverview
+ * @receiver NewsDAO
+ * @return News
  */
-fun RawNewsOverview.toNewsOverview(): NewsOverview = NewsOverview(
+fun NewsDAO.toNews(): News = News(
         title = this.title,
         resourceURL = this.resourceURL,
         resourceIMG = this.resourceIMG
@@ -19,17 +19,17 @@ fun RawNewsOverview.toNewsOverview(): NewsOverview = NewsOverview(
 
 /**
  * Maps from Domain news model to RawData
- * @receiver NewsOverview
- * @return RawNewsOverview
+ * @receiver News
+ * @return NewsDAO
  */
-fun NewsOverview.toRawNewsOverview(): RawNewsOverview = RawNewsOverview(
+fun News.toNewsDAO(): NewsDAO = NewsDAO(
         title = this.title,
         resourceURL = this.resourceURL,
         resourceIMG = this.resourceIMG
 )
 
 
-fun ArticleOverview.toRawArticleOverview(): RawArticleOverview = RawArticleOverview(
+fun Article.toArticleDAO(): ArticleDAO = ArticleDAO(
         post_title = this.post_title,
         post_text = this.post_text,
         post_image = this.post_image,
@@ -38,7 +38,7 @@ fun ArticleOverview.toRawArticleOverview(): RawArticleOverview = RawArticleOverv
         selected = this.selected
 )
 
-fun RawArticleOverview.toArticleOverview(): ArticleOverview = ArticleOverview(
+fun ArticleDAO.toArticle(): Article = Article(
         post_title = this.post_title,
         post_text = this.post_text,
         post_image = this.post_image,
