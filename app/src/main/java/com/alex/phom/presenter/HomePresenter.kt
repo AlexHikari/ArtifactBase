@@ -9,10 +9,10 @@ class HomePresenter(view: HomePresenter.View, errorHandler: ErrorHandler) :
 
     override fun initialize() {
         val listItems: List<AHBottomNavigationItem> = listOf(
-                AHBottomNavigationItem(R.string.homeTabNews, R.drawable.newsicon, R.color.colorBlueSource),
-                AHBottomNavigationItem(R.string.homeTabGallery, R.drawable.galleryicon, R.color.colorRedSource),
-                AHBottomNavigationItem(R.string.homeTabBuilder, R.drawable.crafticon, R.color.colorGreenSource),
-                AHBottomNavigationItem(R.string.homeTabSettings, R.drawable.galleryicon, R.color.colorGreenSource))
+                AHBottomNavigationItem(R.string.home_tab_news, R.drawable.newsicon, R.color.colorBlueSource),
+                AHBottomNavigationItem(R.string.home_tab_gallery, R.drawable.galleryicon, R.color.colorRedSource),
+                AHBottomNavigationItem(R.string.home_tab_builder, R.drawable.crafticon, R.color.colorGreenSource),
+                AHBottomNavigationItem(R.string.home_tab_settings, R.drawable.galleryicon, R.color.colorGreenSource))
         view.initializeBottomNavigationView(listItems)
         view.showNewsScreen()
     }

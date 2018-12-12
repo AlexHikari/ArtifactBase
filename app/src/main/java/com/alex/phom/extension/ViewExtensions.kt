@@ -14,6 +14,12 @@ fun ImageView.load(url: String) {
             .into(this)
 }
 
+/**
+ * Load the image with a placeholder
+ * @receiver ImageView
+ * @param url String
+ * @param placeholder Int
+ */
 fun ImageView.loadWithPlaceholder(url: String, placeholder: Int) {
     val options = RequestOptions().placeholder(placeholder)
     Glide.with(this)

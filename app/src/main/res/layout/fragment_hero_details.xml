@@ -56,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/attack"
+                        android:text="@string/card_attack_title"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/armor"
+                        android:text="@string/card_armor_title"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/hitPoints"
+                        android:text="@string/card_hit_points_title"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="@string/activeAbility"
+                    android:text="@string/card_active_ability"
                     android:textColor="@color/colorTextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -156,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="@string/premier_ability"
+                    android:text="@string/card_premier_ability"
                     android:textColor="@color/colorTextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />

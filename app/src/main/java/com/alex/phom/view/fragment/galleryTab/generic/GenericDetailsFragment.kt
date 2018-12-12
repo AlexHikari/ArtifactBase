@@ -59,10 +59,14 @@ class GenericDetailsFragment : RootFragment<GenericDetailsPresenter.View>(), Gen
 
     override fun getReferences(): List<CardView>? = arguments?.getParcelableArrayList(GENERIC_DETAILS_CARD_LIST_BUNDLE)
 
+    /**
+     * Right now there's no hero in the bundle, just because the API
+     * @param genericBundleCards List<CardView>
+     */
     override fun showCardDetails(genericBundleCards: List<CardView>) {
 
-        val heroCard = genericBundleCards.getHeroCard()
-        val genericCard = genericBundleCards.getGenericCard()
+        val heroCard = genericBundleCards.getFirstHeroCard()
+        val genericCard = genericBundleCards.getFirstGenericCard()
 
         if (genericCard != null) {
 

@@ -56,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/item_gold_cost_title"
+                        android:text="@string/card_gold_cost_title"
                         android:textColor="@color/colorTextColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />

@@ -23,7 +23,7 @@
             android:id="@+id/manaTittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mana"
+            android:text="@string/filter_mana_title"
             android:textColor="@color/colorTextColor"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:id="@+id/goldTittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gold"
+            android:text="@string/filter_gold_title"
             android:textColor="@color/colorTextColor"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -135,7 +135,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cardType"
+            android:text="@string/filter_card_type_title"
             android:textColor="@color/colorTextColor"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -173,7 +173,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/hero"
+                        android:text="@string/filter_hero_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -206,7 +206,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/spell"
+                        android:text="@string/filter_spell_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -238,7 +238,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/creep"
+                        android:text="@string/filter_creep_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -270,7 +270,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/improvement"
+                        android:text="@string/filter_improvement_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -301,7 +301,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/item"
+                        android:text="@string/filter_item_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -318,7 +318,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/card_color"
+            android:text="@string/filter_card_color_title"
             android:textColor="@color/colorTextColor"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -354,7 +354,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/redSource"
+                        android:text="@string/filter_red_source_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -386,7 +386,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/greenSource"
+                        android:text="@string/filter_green_source_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -418,7 +418,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/blueSource"
+                        android:text="@string/filter_blue_source_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -450,7 +450,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/blackSource"
+                        android:text="@string/filter_black_source_title"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorTextColor"
                         android:textSize="10sp"
@@ -467,7 +467,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/card_rarity"
+            android:text="@string/filter_card_rarity_title"
             android:textColor="@color/colorTextColor"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -487,7 +487,7 @@
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
-                android:text="@string/CardBasic"
+                android:text="@string/filter_card_basic_title"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
                 android:textSize="10sp"
@@ -501,7 +501,7 @@
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
-                android:text="@string/CardCommon"
+                android:text="@string/filter_card_common_title"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
                 android:textSize="10sp"
@@ -515,7 +515,7 @@
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
-                android:text="@string/CardUncommon"
+                android:text="@string/filter_card_uncommon_title"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextColor"
                 android:textSize="10sp"
@@ -529,7 +529,7 @@
                 android:layout_margin="8dp"
                 android:background="@color/colorSecondary"
                 android:padding="2dp"
-                android:text="@string/CardRare"
+                android:text="@string/filter_card_rare_title"
                 android:textColor="@color/colorTextColor"
                 android:textSize="10sp"
                 tools:ignore="SmallSp" />
