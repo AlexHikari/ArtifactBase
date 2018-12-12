@@ -34,6 +34,9 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
                 val heroReferenceList = getReferenceHeroCards(card)
                 view.navigateToHeroSingleCard(card, heroReferenceList)
             }
+            CardTypeView.ITEM -> {
+                view.navigateToItemSingleCard(card)
+            }
         }
     }
 
@@ -116,5 +119,6 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
         fun showCards(cardList: List<CardView>)
         fun showIcons()
         fun navigateToHeroSingleCard(card: CardView, heroReferenceList: List<CardView>)
+        fun navigateToItemSingleCard(card: CardView)
     }
 }

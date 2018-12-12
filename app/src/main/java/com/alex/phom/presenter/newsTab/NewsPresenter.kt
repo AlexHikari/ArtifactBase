@@ -36,7 +36,7 @@ class NewsPresenter(private val getNewsUseCase: GetNewsUseCase, view: View, erro
     }
 
     override fun stop() {
-
+        getNewsUseCase.clear()
     }
 
     override fun destroy() {

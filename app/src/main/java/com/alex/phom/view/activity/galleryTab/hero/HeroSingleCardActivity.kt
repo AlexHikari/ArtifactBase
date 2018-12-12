@@ -24,7 +24,7 @@ class HeroSingleCardActivity : RootActivity<HeroSingleCardPresenter.View>(), Her
 
     private val heroFragmentAdapter: HeroCardPageAdapter = HeroCardPageAdapter(supportFragmentManager)
 
-    override val progress: View by lazy { progressView }
+    override val progress: View by lazy { heroProgressView }
     override val presenter: HeroSingleCardPresenter by instance()
     override val layoutResourceId: Int = R.layout.activity_hero
     override val activityModule: Kodein.Module = Kodein.Module {

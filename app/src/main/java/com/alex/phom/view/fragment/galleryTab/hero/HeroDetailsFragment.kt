@@ -3,6 +3,7 @@ package com.alex.phom.view.fragment.galleryTab.hero
 import android.os.Bundle
 import android.text.Html
 import com.alex.phom.R
+import com.alex.phom.extension.getPremierCardText
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.load
 import com.alex.phom.extension.showMe
@@ -54,9 +55,9 @@ class HeroDetailsFragment : RootFragment<HeroDetailsPresenter.View>(), HeroDetai
 
     }
 
-    override fun showProgress() = progressView.showMe()
+    override fun showProgress() = heroProgressView.showMe()
 
-    override fun hideProgress() = progressView.hideMe()
+    override fun hideProgress() = heroProgressView.hideMe()
 
     override fun getReferences(): List<CardView>? = arguments?.getParcelableArrayList(HERO_DETAILS_CARD_LIST_BUNDLE)
 
@@ -69,6 +70,7 @@ class HeroDetailsFragment : RootFragment<HeroDetailsPresenter.View>(), HeroDetai
             if (heroCard.armor == 0L) heroArmorText.text = "_" else heroArmorText.text = heroCard.armor.toString()
             if (heroCard.hitPoints == 0L) heroHitPointsText.text = "_" else heroHitPointsText.text = heroCard.hitPoints.toString()
             heroActiveAbilityText.text = Html.fromHtml(heroCard.cardText.english, Html.FROM_HTML_MODE_COMPACT)
+            heroPremierText.text = Html.fromHtml(heroBundleCards.getPremierCardText(), Html.FROM_HTML_MODE_COMPACT)
         } else {
             //do something but will never be null
         }

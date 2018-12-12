@@ -2,7 +2,7 @@ package com.alex.phom.view.fragment.galleryTab.hero
 
 import android.os.Bundle
 import com.alex.phom.R
-import com.alex.phom.extension.getPremierCard
+import com.alex.phom.extension.getPremierCardImage
 import com.alex.phom.extension.hideMe
 import com.alex.phom.extension.loadWithPlaceholder
 import com.alex.phom.extension.showMe
@@ -53,9 +53,9 @@ class HeroImageFragment : RootFragment<HeroImagePresenter.View>(), HeroImagePres
 
     }
 
-    override fun showProgress() = progressView.showMe()
+    override fun showProgress() = heroProgressView.showMe()
 
-    override fun hideProgress() = progressView.hideMe()
+    override fun hideProgress() = heroProgressView.hideMe()
 
     override fun getReferences(): List<CardView>? = arguments?.getParcelableArrayList(HERO_IMAGE_CARD_LIST_BUNDLE)
 
@@ -64,7 +64,7 @@ class HeroImageFragment : RootFragment<HeroImagePresenter.View>(), HeroImagePres
         val heroCard: CardView? = heroBundleCards.find { it.CardType == CardTypeView.HERO }
         if (heroCard != null) {
             heroCardDisplayImage.loadWithPlaceholder(heroCard.largeImage.imgDef, R.drawable.cardplaceholder)
-            heroPremierCardDisplayImage.loadWithPlaceholder(heroBundleCards.getPremierCard(), R.drawable.cardplaceholder)
+            heroPremierCardDisplayImage.loadWithPlaceholder(heroBundleCards.getPremierCardImage(), R.drawable.cardplaceholder)
         } else {
             //do something but will never be null
         }

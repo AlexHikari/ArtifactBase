@@ -300,4 +300,10 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         }
     }
 
+    override fun navigateToItemSingleCard(card: CardView) {
+        context?.let {
+            com.alex.phom.navigator.navigateToItemSingleCard(context = it, card = card)
+        }
+    }
+
 }

@@ -235,6 +235,8 @@ fun String.toSubType(): SubType {
         "accessory" -> SubType.ACCESSORY
         "Armor" -> SubType.ARMOR
         "armor" -> SubType.ARMOR
+        "weapon" -> SubType.WEAPON
+        "Weapon" -> SubType.WEAPON
         "Consumable" -> SubType.CONSUMABLE
         "consumable" -> SubType.CONSUMABLE
         "Deed" -> SubType.DEED

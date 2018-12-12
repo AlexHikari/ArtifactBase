@@ -40,7 +40,10 @@
     <string name="hitPoints">Hit Points:</string>
     <string name="passiveAbility">Passive ability</string>
     <string name="illustrator">Illustrator:</string>
-    <string name="activeAbility">Active ability:</string>
+    <string name="activeAbility">Active abilities:</string>
+    <string name="premier_ability">Premier ability:</string>
+    <string name="item_gold_cost_title">Gold Cost:</string>
+    <string name="item_text_title">Item text</string>
 
 
 </resources>

@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         app:cardBackgroundColor="@color/TextBackgroundCardDark"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
         <ScrollView
@@ -22,7 +22,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -144,13 +144,32 @@
                     android:id="@+id/heroActiveAbilityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="start"
                     android:textColor="@color/colorTextColor"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
+                <TextView
+                    android:id="@+id/heroPremier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/premier_ability"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/heroPremierText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="12sp" />
 
             </LinearLayout>
         </ScrollView>
@@ -159,7 +178,7 @@
 
 
     <include
-        android:id="@+id/progressView"
+        android:id="@+id/heroProgressView"
         layout="@layout/view_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
