@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -26,6 +24,9 @@ android {
         }
     }
 }
+androidExtensions {
+    experimental = true
+}
 
 dependencies {
     def appDependencies = rootProject.ext.applicationDependencies
@@ -37,8 +38,10 @@ dependencies {
     implementation appDependencies.appCompat_v7
     implementation appDependencies.design
     implementation appDependencies.cardView
+    implementation appDependencies.ahbottomnavigation
 
     implementation appDependencies.glide
+    annotationProcessor appDependencies.glideAnnotationProcessor
 
     implementation appDependencies.permissions
 
@@ -47,6 +50,9 @@ dependencies {
 
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
+    implementation appDependencies.crystalRangeSeekbar
+    implementation appDependencies.recyclerTabLayout
+    implementation appDependencies.recyclerView
 
     testImplementation appTestDependencies.jUnit
     testImplementation appTestDependencies.mockito
@@ -57,4 +63,5 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':data')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

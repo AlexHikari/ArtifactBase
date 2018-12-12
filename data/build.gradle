@@ -1,6 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+kapt {
+    arguments {
+        arg("realm.ignoreKotlinNullability", true)
+    }
+}
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
 
@@ -38,9 +44,11 @@ dependencies {
     implementation dataDependencies.retrofitGson
     implementation dataDependencies.okthttp
     implementation dataDependencies.loggingInterceptor
+    implementation dataDependencies.jsoup
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxJavaCallAdapter
+
 
     testImplementation dataTestDependencies.jUnit
     testImplementation dataTestDependencies.mockito
