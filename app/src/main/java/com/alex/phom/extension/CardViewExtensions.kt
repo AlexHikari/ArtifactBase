@@ -21,3 +21,10 @@ fun List<CardView>.getPremierCardText(): String {
         return it.cardText.english
     }
 }
+
+fun List<CardView>.getHeroCard(): CardView? = this.find {
+    it.CardType == CardTypeView.HERO
+}
+
+
+fun List<CardView>.getGenericCard(): CardView? = this.find { it.CardType == CardTypeView.SPELL || it.CardType == CardTypeView.CREEP || it.CardType == CardTypeView.IMPROVEMENT }

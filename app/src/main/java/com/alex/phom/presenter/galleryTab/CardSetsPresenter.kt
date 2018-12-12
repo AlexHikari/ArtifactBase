@@ -31,16 +31,20 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
     fun onCardClicked(card: CardView) {
         when (card.CardType) {
             CardTypeView.HERO -> {
-                val heroReferenceList = getReferenceHeroCards(card)
-                view.navigateToHeroSingleCard(card, heroReferenceList)
+                val referenceList = getReferencedCards(card)
+                view.navigateToHeroSingleCard(card, referenceList)
             }
             CardTypeView.ITEM -> {
                 view.navigateToItemSingleCard(card)
             }
+            else -> {
+                val referenceList = getReferencedCards(card)
+                view.navigateToGenericSingleCard(card, referenceList)
+            }
         }
     }
 
-    private fun getReferenceHeroCards(card: CardView): List<CardView> {
+    private fun getReferencedCards(card: CardView): List<CardView> {
         val references = mutableListOf<CardView>()
         card.references.forEach { reference ->
             cardSets.forEach { cardSet ->
@@ -119,6 +123,7 @@ class CardSetsPresenter(private val getCardSetsUseCase: GetCardSetsUseCase, view
         fun showCards(cardList: List<CardView>)
         fun showIcons()
         fun navigateToHeroSingleCard(card: CardView, heroReferenceList: List<CardView>)
+        fun navigateToGenericSingleCard(card: CardView, heroReferenceList: List<CardView>)
         fun navigateToItemSingleCard(card: CardView)
     }
 }

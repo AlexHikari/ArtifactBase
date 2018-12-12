@@ -44,6 +44,9 @@
     <string name="premier_ability">Premier ability:</string>
     <string name="item_gold_cost_title">Gold Cost:</string>
     <string name="item_text_title">Item text</string>
+    <string name="generic_mana_cost_title">Mana cost:</string>
+    <string name="generic_ability_title">text:</string>
+    <string name="generic_hero_reference_title">Referenced hero:</string>
 
 
 </resources>

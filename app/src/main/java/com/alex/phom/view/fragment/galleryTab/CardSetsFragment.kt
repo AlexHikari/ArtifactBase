@@ -300,6 +300,12 @@ class CardSetsFragment : RootFragment<CardSetsPresenter.View>(), CardSetsPresent
         }
     }
 
+    override fun navigateToGenericSingleCard(card: CardView, heroReferenceList: List<CardView>) {
+        context?.let {
+            com.alex.phom.navigator.navigateToGenericSingleCard(context = it, card = card, heroReferenceList = heroReferenceList)
+        }
+    }
+
     override fun navigateToItemSingleCard(card: CardView) {
         context?.let {
             com.alex.phom.navigator.navigateToItemSingleCard(context = it, card = card)
